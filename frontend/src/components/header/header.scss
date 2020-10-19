@@ -1,0 +1,27 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2rem;
+  background: rgb(77, 88, 77);
+  z-index: 1;
+  h2 {
+    color: yellowgreen;
+  }
+  span {
+    margin: 1.2em;
+  }
+  .user {
+    margin: 0.5em;
+    display: flex;
+    justify-content: space-around;
+  }
+  a {
+    all: unset;
+    padding: 0.8em;
+    color: white;
+    cursor: pointer;
+    &:hover {
+      color: greenyellow;
+    }
+  }
+}
