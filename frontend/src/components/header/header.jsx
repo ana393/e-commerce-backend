@@ -6,8 +6,8 @@ const Header = () => {
         <header>
             <span className="logo"><h2>MIMO</h2></span>
             <div className="user">
-                <NavLink to="/">SignUp</NavLink>
-                <NavLink to="/">SignIn</NavLink>
+                <NavLink to="/signup">SignUp</NavLink>
+                <NavLink to="/signin">SignIn</NavLink>
             </div>
         </header>
     )
