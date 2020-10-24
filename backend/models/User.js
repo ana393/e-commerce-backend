@@ -14,7 +14,7 @@ const UserSchema = new mongoose.Schema(
     },
     password: {
       type: String,
-      required: [true, "The email is requied!"],
+      required: [true, "The password is requied!"],
       minlength: 8,
     },
     role: {
@@ -24,6 +24,7 @@ const UserSchema = new mongoose.Schema(
     },
   },
   {
+    timestamps:true,
     toJSON: {
       transform: function (doc, ret) {
         delete ret.password;
