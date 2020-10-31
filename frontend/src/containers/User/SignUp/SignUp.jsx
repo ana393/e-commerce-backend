@@ -18,7 +18,7 @@ const SignUp = () => {
     const register = user => {
         signup(user).then(() => {
             notification.success({ message: 'Register', description: 'You signed up successfully!' })
-            history.redirect()
+            history.push('/signin')
         }).catch(error => {
             console.error(error)
             notification.error({ message: 'Error', description: 'Error trying to register!' })
@@ -38,8 +38,8 @@ const SignUp = () => {
                     onFinishFailed={console.error}
                 >
                     <Form.Item
-                        label="Username"
-                        name="username"
+                        label="name"
+                        name="name"
                         rules={[{ required: true, message: 'Please input your username!' }]}
                     >
                         <Input />
