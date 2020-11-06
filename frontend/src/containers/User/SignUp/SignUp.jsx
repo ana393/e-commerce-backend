@@ -70,7 +70,7 @@ const SignUp = () => {
 
             <div>
                 <span>
-                    Have an Account?{''}
+                    Have an Account ?{''}
                     <Link to={redirect ? `/signin?redirect=${redirect}` : '/signup'}>SignIn</Link>
                 </span>
             </div>
