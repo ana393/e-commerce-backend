@@ -1,5 +1,6 @@
 const User = require("../models/User");
 
+
 const UserController = {
   //sign-up
   async signUp(req, res) {
