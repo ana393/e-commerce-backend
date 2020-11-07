@@ -1,5 +1,6 @@
 const User = require("../models/User");
 const issueJWT = require('../config/utils.js');
+const { update } = require("../models/User");
 
 
 const UserController = {
@@ -14,7 +15,7 @@ const UserController = {
         });
       } else {
         const user = await User.create(req.body);
-        res.status(200).json({ user, token, expiresIn, message: "User successfully created" });
+        res.status(200).json({ user,  message: "User successfully created" });
       }
     } catch (error) {
       console.error(error);
@@ -43,8 +44,19 @@ async logIn(req, res) {
   } catch (error) {
     console.error(error);
       res
-        .status(500).json({ message: "There was a problem to sign up the users", error });
+        .status(500).json({ message: "There was a problem to log in the users", error });
   }
+},
+//update profile
+async Update(req, res){
+   try {
+     const Updated = await User.findOneAndUpdate(req.body.email, req.body, {new:true});
+     res.status(200).json({ message: "Successfully updaded", Updated})
+   } catch (error) {
+     console.error(error);
+      res
+        .status(500).json({ message: "There was a problem to update your profile", error });
+   }
 },
   //get all the users from DB
   async getAll(req, res){
