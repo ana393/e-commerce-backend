@@ -1,15 +1,16 @@
-import jsonwebtoken from 'jsonwebtoken';
+const jsonwebtoken = require('jsonwebtoken');
 
-export default issueJWT = (user) =>{
-    const id = user._id;
-    const expireIn = '1d';
+const issueJWT = (isUser) => {
+    const id = isUser._id;
+    const expiresIn = '1d';
     const payload = {
-        sub: _id,
+        sub: id,
         iat: Date.now()
     };
-    const signedToken = jsonwebtoken.sign(payload, process.env.SECRET_JWT, {expireIn: expireIn})
+    const signedToken = jsonwebtoken.sign(payload, process.env.SECRET_JWT, {expiresIn: expiresIn})
     return {
         token: "Bearer " + signedToken,
-        expires: expireIn
+        expires: expiresIn
     }
 }
+module.exports = issueJWT;
