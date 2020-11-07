@@ -1,6 +1,6 @@
 const User = require("../models/User");
-const issueJWT = require('../config/utils.js');
-const { update } = require("../models/User");
+const {issueJWT }= require('../config/utils.js');
+
 
 
 const UserController = {

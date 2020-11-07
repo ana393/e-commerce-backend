@@ -13,4 +13,14 @@ const issueJWT = (isUser) => {
         expires: expiresIn
     }
 }
-module.exports = issueJWT;
+
+const only = (roles) => async(req, res, next) =>{
+    if (!roles.includes(req.user.role)) {
+        return res.status(403).send({msg:"Forbbiden access"})
+    }
+    next();
+}
+module.exports = {
+    issueJWT,
+    only
+ }

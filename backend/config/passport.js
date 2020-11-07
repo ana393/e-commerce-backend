@@ -1,4 +1,4 @@
-const passport = require("passport");
+
 const User = require("../models/User");
 const dotenv = require('dotenv');
 const JwtStrategy =  require('passport-jwt').Strategy;
