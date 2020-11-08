@@ -11,7 +11,11 @@ const CartSchema = new mongoose.Schema({
         quantity:{
             type: Number,
             required: true
-        }   
+        } ,
+        expenditure:{
+            type: mongoose.Schema.Types.Decimal128,
+            required: true
+        }  
        } 
     ]
 })
