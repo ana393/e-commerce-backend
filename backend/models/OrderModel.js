@@ -23,14 +23,13 @@ const OrderSchema = mongoose.Schema({
         }
     ,
     shippingAddress: {
-        telephone:{
-            type:String,
-             maxlength: 9,
-            validate:{
-                validador: function(v) {
-                    return /\d{9}/.test(v);
+        telephone:{ type:String,
+                   maxlength: 9,
+                   validate:{
+                    validador: function(v) {
+                      return /\d{9}/.test(v);
                 },
-                message: '{v} is not a valid phone number! '
+                 message: '{v} is not a valid phone number! '
             }  },
         address: {type: String, required:true},
         city:{type: String, required:true},
