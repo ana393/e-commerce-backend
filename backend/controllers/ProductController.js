@@ -32,17 +32,17 @@ const ProductsController={
         res.status(500).send({ msg: "Unable to delete the product."})
       }
     },
-    //filter product by term from the client-side 
+    //filter product by title/name from the client-side 
     async filterProduct(req, res) {
-      console.log(req.query)
+  
       try {
-        const filter = await Product.find(req.query);
-        if  (!filter) { res.status(404).json({msg:`No product with given ${ req.query} `});
+        const filter = await Product.find({ name : { $regex: req.body.name,  $options: 'i'} });
+        if  (filter.length === 0) { res.status(404).json({msg:`No product with given name: ${ req.body.name}, in your Data Base. `});
       }
         res.status(200).json({ message: "Successfully found", filter})
       } catch (error) {
         console.error(error);
-        res.status(500).send({ msg: "Unable to find the product."})
+        res.status(500).send({ msg: "There were a problem to find the product."})
       }
     },
     //get productsProduct
