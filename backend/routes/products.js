@@ -9,5 +9,6 @@ router.delete('/:id', ProductsController.deleteProduct);
 //for all users
 router.get('/search', ProductsController.filterProduct)
 router.get('/', ProductsController.getProducts);
+router.get('/byPrice', ProductsController.byPriceProduct);
 
 module.exports = router;

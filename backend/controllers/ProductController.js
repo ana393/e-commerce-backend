@@ -13,8 +13,9 @@ const ProductsController={
     },
     //update product
     async updateProduct(req,res) {
+      console.log(req.body)
       try {
-        const updated = await Product.findOneAndUpdate(req.body.name, req.body, {new:true});
+        const updated = await Product.findByIdAndUpdate(req.body._id, req.body, {new:true});
         res.status(200).json({ message: "Successfully updaded product", updated})
         
       } catch (error) {
@@ -42,7 +43,17 @@ const ProductsController={
         res.status(200).json({ message: "Successfully found", filter})
       } catch (error) {
         console.error(error);
-        res.status(500).send({ msg: "There were a problem to find the product."})
+        res.status(500).send({ msg: "There were a problem to find the product by title."})
+      }
+    },
+    //filter by price
+    async byPriceProduct(req, res) {
+      try {
+        const byPrice = await Product.find().sort( { price: 1 } );
+        res.send(byPrice)
+      } catch (error) {
+        console.error(error);
+        res.status(500).send({ msg: "There were a problem to find the product by price."})
       }
     },
     //get productsProduct
