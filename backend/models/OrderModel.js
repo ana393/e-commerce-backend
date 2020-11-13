@@ -1,32 +1,42 @@
 const mongoose = require('mongoose');
 
-const OrderSchema = mongoose.Schema({
+const OrderSchema =  new mongoose.Schema({
     referenceNumber: {
         type: Number,
         unique:true,
     },
-    status: {
-        type: String,
-        enum:['paid', 'shipping', 'delivered','canceled'],
-        required: true,
-    },
+ items: [
+       {
+        prodID: {
+           type: mongoose.Schema.Types.ObjectId,
+           required: true,
+           ref:'Product'
+        },
+        quantity:{
+            type: Number,
+            required: true
+        } ,
+        expenditure:{
+            type: mongoose.Schema.Types.Decimal128,
+            required: true
+        }  
+       } 
+    ],
+   
     user:{
         type: mongoose.Types.ObjectId,
         required: true,
         ref: 'User'
     },
-    articles:
-        {
-            type: mongoose.Types.ObjectId,
-            required: true,
-            ref: 'Cart',
-        }
-    ,
+       status: {
+        type: String,
+        enum:['paid', 'shipping', 'delivered','canceled'],
+        required: true,
+     },
     shippingAddress: {
         telephone:{ type:String,
-                   maxlength: 9,
                    validate:{
-                    validador: function(v) {
+                    validator: function(v) {
                       return /\d{9}/.test(v);
                 },
                  message: '{v} is not a valid phone number! '
@@ -39,6 +49,15 @@ const OrderSchema = mongoose.Schema({
     
 },{
      timestamps: true
+ })
+ //increment reference number of the order
+ OrderSchema.pre('save', async function(next) {
+     try {
+        const order = await Order.find();
+        this.referenceNumber = order.length ++ 
+     } catch (error) {
+             console.error(error)
+     }
  })
  const Order = mongoose.model("Order", OrderSchema);
  module.exports = Order;

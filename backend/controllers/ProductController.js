@@ -43,7 +43,7 @@ const ProductsController={
         res.status(200).json({ message: "Successfully found", filter})
       } catch (error) {
         console.error(error);
-        res.status(500).send({ msg: "There were a problem to find the product by title."})
+        res.status(500).send({ msg: "Unable to find the product by title."})
       }
     },
     //filter by price
@@ -53,7 +53,7 @@ const ProductsController={
         res.send(byPrice)
       } catch (error) {
         console.error(error);
-        res.status(500).send({ msg: "There were a problem to find the product by price."})
+        res.status(500).send({ msg: "Unable to find the product by price."})
       }
     },
     //get productsProduct
