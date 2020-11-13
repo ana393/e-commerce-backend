@@ -31,7 +31,7 @@ async logIn(req, res) {
       if (!isUser) {
         return res.send({
           isUser,
-          message: "We have already a user  with this email"});
+          message: "You are not registered"});
        } else {
          const match = await isUser.matchPassword(req.body.password);
          if (match){

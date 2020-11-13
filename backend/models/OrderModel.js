@@ -16,13 +16,12 @@ const OrderSchema =  new mongoose.Schema({
             type: Number,
             required: true
         } ,
-        expenditure:{
-            type: mongoose.Schema.Types.Decimal128,
-            required: true
-        }  
        } 
     ],
-   
+    expenditure:{
+            type: mongoose.Schema.Types.Decimal128,
+            required: true
+        } , 
     user:{
         type: mongoose.Types.ObjectId,
         required: true,
@@ -36,6 +35,7 @@ const OrderSchema =  new mongoose.Schema({
     shippingAddress: {
         telephone:{ type:String,
                    validate:{
+                    required: true,   
                     validator: function(v) {
                       return /\d{9}/.test(v);
                 },

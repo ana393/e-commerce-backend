@@ -2,7 +2,7 @@ const jsonwebtoken = require('jsonwebtoken');
 
 const issueJWT = (isUser) => {
     const id = isUser._id;
-    const expiresIn = '1d';
+    const expiresIn = '30d';
     const payload = {
         sub: id,
         iat: Date.now()
