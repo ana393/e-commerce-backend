@@ -1,5 +1,6 @@
 const Product = require('../models/Products');
 
+
 const ProductsController={
     //insert new product
     async insertProduct(req, res) {

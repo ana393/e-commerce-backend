@@ -41,7 +41,7 @@ try {
       res.status(500).send({ msg: "Unable to find orders."}) 
     }
  },
- //admin
+ //admin 
  async deleteOrder(req, res) {
     try {
       const earase = await Order.findByIdAndDelete(req.params.id, req.body);
