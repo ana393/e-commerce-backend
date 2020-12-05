@@ -1,4 +1,7 @@
 const User = require("../models/User");
+const {issueJWT }= require('../config/utils.js');
+
+
 
 const UserController = {
   //sign-up
@@ -12,7 +15,7 @@ const UserController = {
         });
       } else {
         const user = await User.create(req.body);
-        res.json({ user, message: "User successfully created" });
+        res.status(200).json({ user,  message: "User successfully created" });
       }
     } catch (error) {
       console.error(error);
@@ -21,7 +24,40 @@ const UserController = {
         .json({ message: "There was a problem to sign up the users", error });
     }
   },
-
+//login
+async logIn(req, res) {
+  try {
+     const isUser = await User.findOne({ email: req.body.email });
+      if (!isUser) {
+        return res.send({
+          isUser,
+          message: "You are not registered"});
+       } else {
+         const match = await isUser.matchPassword(req.body.password);
+         if (match){
+           const tokenObj = issueJWT(isUser);
+           return res.status(200).json({isUser, token: tokenObj.token, expiresIn: tokenObj.expires, msg:"You are logged in"})
+         } else {
+           res.status(401).json({msg:"Wrong pasword"})
+         }  
+       }
+  } catch (error) {
+    console.error(error);
+      res
+        .status(500).json({ message: "There was a problem to log in the users", error });
+  }
+},
+//update profile
+async Update(req, res){
+   try {
+     const Updated = await User.findOneAndUpdate(req.body.email, req.body, {new:true});
+     res.status(200).json({ message: "Successfully updaded", Updated})
+   } catch (error) {
+     console.error(error);
+      res
+        .status(500).json({ message: "There was a problem to update your profile", error });
+   }
+},
   //get all the users from DB
   async getAll(req, res){
     try {

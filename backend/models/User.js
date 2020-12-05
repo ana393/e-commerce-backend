@@ -9,12 +9,12 @@ const UserSchema = new mongoose.Schema(
 
     email: {
       type: String,
-      required: [true, "Your email is required!"],
+      required: true,
       unique: true,
     },
     password: {
       type: String,
-      required: [true, "The email is requied!"],
+      required: true,
       minlength: 8,
     },
     role: {
@@ -24,6 +24,7 @@ const UserSchema = new mongoose.Schema(
     },
   },
   {
+   timestamps:true,
     toJSON: {
       transform: function (doc, ret) {
         delete ret.password;
@@ -31,15 +32,25 @@ const UserSchema = new mongoose.Schema(
       },
     },
   }
-);
+)
+
+
 UserSchema.pre('save', async function(next) {
   try {
-    const user = this;
+  const user = this;
    user.password = await bcrypt.hash(user.password, 9)
    next()
   } catch (error) {
     console.error(error)
   }
 })
+UserSchema.methods.matchPassword = async function(enteredPassword) {
+  try {
+    return await bcrypt.compare(enteredPassword, this.password)
+  } catch (error) {
+    console.error(error)
+  }
+};
+
 const User = mongoose.model("User", UserSchema);
 module.exports = User;
