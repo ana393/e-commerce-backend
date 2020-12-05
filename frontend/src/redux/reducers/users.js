@@ -11,7 +11,7 @@ const userReducer =(state={}, action)=>{
         case userActions.LOGOUT:
             return {
                 ...state,
-                user: undefined
+                user: action.payload
             }
         default:
              return state;

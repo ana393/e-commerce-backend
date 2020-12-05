@@ -1,7 +1,8 @@
-import React from 'react'
-import { Form, Input, Button } from 'antd';
-import { useLocation, Link } from 'react-router-dom';
+import React, { useRef, useEffect } from 'react'
+import { Form, Input, Button, notification } from 'antd';
+import { useLocation, Link, useHistory } from 'react-router-dom';
 import './SignIn.scss';
+import { login } from '../../../redux/actions/userAction';
 
 const layout = {
     labelCol: { span: 8 },
@@ -10,10 +11,25 @@ const layout = {
 const tailLayout = {
     wrapperCol: { offset: 8, span: 16 },
 };
-function SignIn () {
+const SignIn = () => {
     const location = useLocation();
     const redirect = location.search ? location.search.split('=')[1] : '/'
+    const emailInput = useRef(null);//like get get element byId
+    const history = useHistory();
 
+    useEffect(() => {
+        emailInput.current.focus()
+    }, [])
+
+    const Login = user => {
+        login(user).then(() => {
+            notification.success({ message: 'You are successfully connected!' });
+            history.push('/')
+        }).catch(error => {
+            console.error(error)
+            notification.error({ message: 'Invalid entered data', description: 'recheck your email and password' })
+        })
+    };
     return (
         <div className="signIn">
             <h2>Sign In</h2>
@@ -21,7 +37,7 @@ function SignIn () {
                 {...layout}
                 name="basic"
                 initialValues={{ remember: true }}
-
+                onFinish={Login}
                 onFinishFailed={console.error}
             >
 
@@ -30,7 +46,7 @@ function SignIn () {
                     name="email"
                     rules={[{ required: true, message: 'Please input your email!' }]}
                 >
-                    <Input.Password />
+                    <Input ref={emailInput} />
                 </Form.Item>
 
                 <Form.Item
@@ -50,7 +66,7 @@ function SignIn () {
             <div>
                 <span>
                     New Customer?{''}
-                    <Link to={redirect ? `/signup?redirect=${redirect}` : '/signin'}>SignUp</Link>
+                    <Link to={redirect ? `/signUp?redirect=${redirect}` : '/login'}>SignUp</Link>
                 </span>
             </div>
         </div>
