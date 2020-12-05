@@ -1,5 +1,4 @@
 require("./config/mongoose");
-<<<<<<< HEAD
 
 var createError = require("http-errors");
 var express = require("express");
@@ -19,19 +18,6 @@ var orderRouter = require("./routes/orders");
 
 dotenv.config();
 var app = express();
-=======
-const createError = require("http-errors");
-const express = require("express");
-
-const morgan = require("morgan");
-
-const indexRouter = require("./routes/index");
-const usersRouter = require("./routes/users");
-const productsRouter =require("./routes/products");
-const testAPIRouter = require("./routes/testAPI");
-
-const app = express();
->>>>>>> frontend-feature
 // CORS headers to support Cross-site HTTP requests
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
@@ -41,14 +27,9 @@ app.use((req, res, next) => {
 })
 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> frontend-feature
 
 
 app.use(express.json());
-<<<<<<< HEAD
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use('/uploads',express.static('uploads'));
@@ -67,10 +48,6 @@ app.use(passport.session());
 
 //routes
 app.use("/", indexRouter);
-=======
-app.use(morgan('dev'));
-
->>>>>>> frontend-feature
 app.use("/users", usersRouter);
 app.use("/products", productsRouter);
 app.use("/orders", orderRouter );

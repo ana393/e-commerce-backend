@@ -8,14 +8,8 @@ const UserController = {
   async signUp(req, res) {
     try {
         const user = await User.create(req.body);
-<<<<<<< HEAD
         res.status(200).json({ user,  message: "User successfully created" });
-      }
-=======
-        res.status(201).json({ user, message: "User successfully created" , user});
-      
->>>>>>> frontend-feature
-    } catch (error) {
+      } catch (error) {
       console.error(error);
       res
         .status(500)
