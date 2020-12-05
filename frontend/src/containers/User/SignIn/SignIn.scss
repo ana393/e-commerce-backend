@@ -1,18 +1,7 @@
 @import "../../../variables.scss";
 .signIn {
-  margin-left: 8em;
-  padding: 2em;
-  justify-content: center;
-  input {
-    font-size: medium;
-  }
-  button {
-    padding: 0.3em;
-    font-size: medium;
-    background-color: $yellowGreen;
-    font-weight: bold;
-  }
-  div {
-    margin-top: 1em;
-  }
+  margin: 1em 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

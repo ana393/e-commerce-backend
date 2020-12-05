@@ -7,19 +7,21 @@ const UserController = {
   //sign-up
   async signUp(req, res) {
     try {
+      const isUser = await User.findOne({ email: req.body.email });
+      if (isUser) {
+        return res.send({
+          isUser,
+          message: "We have already a user  with this email",
+        });
+      } else {
         const user = await User.create(req.body);
-<<<<<<< HEAD
         res.status(200).json({ user,  message: "User successfully created" });
       }
-=======
-        res.status(201).json({ user, message: "User successfully created" , user});
-      
->>>>>>> frontend-feature
     } catch (error) {
       console.error(error);
       res
         .status(500)
-        .json({ message: "There was a problem to sign up the user", error });
+        .json({ message: "There was a problem to sign up the users", error });
     }
   },
 //login
