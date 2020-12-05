@@ -4,6 +4,7 @@ var createError = require("http-errors");
 var express = require("express");
 var session = require('express-session');
 var passport = require('passport');
+
 var path = require("path");
 var dotenv = require('dotenv');
 var cookieParser = require("cookie-parser");
@@ -13,6 +14,7 @@ var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var productsRouter =require("./routes/products");
 var orderRouter = require("./routes/orders");
+
 
 dotenv.config();
 var app = express();
@@ -50,6 +52,7 @@ app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/products", productsRouter);
 app.use("/orders", orderRouter );
+
 
 
 // catch 404 and forward to error handler

@@ -4,8 +4,9 @@ const Product = require('../models/Products');
 const ProductsController={
     //insert new product
     async insertProduct(req, res) {
+      console.log(req.file);
       try {
-        const product = await Product.create(req.body);
+        const product = await Product.create(req.body, req.file);
         res.send({product, msg:"Successfully created product."})
       } catch (error) {
         console.error(error);

@@ -15,7 +15,8 @@ const ProductSchema = new mongoose.Schema({
         default: 0
         }, 
     imgURL: {
-        type:String,
+        type:String, 
+       
         },
     InStock: {
         type:Number,
