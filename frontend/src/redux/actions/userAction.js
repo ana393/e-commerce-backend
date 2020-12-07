@@ -22,3 +22,8 @@ export const login = async(user) => {
     }) 
     
 }
+export const logout = () => (dispatch)=>{
+    localStorage.removeItem('authToken')
+    dispatch({type: userActions.LOGOUT})
+    document.location.href = '/login'
+}

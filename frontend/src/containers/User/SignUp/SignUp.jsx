@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { Form, Input, Button, notification } from 'antd';
 import { useLocation, useHistory, Link } from 'react-router-dom';
 import './SignUp.scss';
@@ -13,6 +13,7 @@ const tailLayout = {
 const SignUp = () => {
     const history = useHistory();
     const location = useLocation();
+    const emailInput = useRef(null);
     const redirect = location.search ? location.search.split('=')[1] : '/'
 
     const register = user => {
@@ -42,14 +43,14 @@ const SignUp = () => {
                         name="name"
                         rules={[{ required: true, message: 'Please input your username!' }]}
                     >
-                        <Input />
+                        <Input ref={emailInput} />
                     </Form.Item>
                     <Form.Item
                         label="Email"
                         name="email"
                         rules={[{ required: true, message: 'Please input your email!' }]}
                     >
-                        <Input.Password />
+                        <Input />
                     </Form.Item>
 
                     <Form.Item

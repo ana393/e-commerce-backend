@@ -7,6 +7,7 @@ const composeEnhancer = composeWithDevTools({
     trace: true
 });
 
-const store = createStore(rootReducer, load(), composeEnhancer(applyMiddleware(save())))
+const StoreWithMiddleware = applyMiddleware(save())(createStore);
+const store = StoreWithMiddleware(rootReducer, load({preloadedState : {state: []}} ), composeEnhancer());
 
 export default store;
