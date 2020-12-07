@@ -2,16 +2,20 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-//import { logout } from '../../redux/actions/userAction';
+import { logout } from '../../redux/actions/userAction';
 import './header.scss';
 const Header = props => {
-    console.log('user conectado ?', props.user.email);
+    console.log('user conectado ?', props.user.user.name);
+
 
     return (
         <header>
             <span className="logo"><NavLink to="/" exact><h2>MIMO</h2></NavLink> </span>
             {props.user ?
-                <span>{props.user.name ? props.user.name : props.user.email}Bienvenid@</span>
+                <div>
+                    <span>{props.user.user.name ? props.user.user.name : props.user.user.email}Bienvenid@</span>
+                    <NavLink to="/">LogOut</NavLink>
+                </div>
                 :
                 <div className="user">
                     <NavLink to="/signup">SignUp</NavLink>
@@ -20,5 +24,10 @@ const Header = props => {
         </header>
     )
 }
+const mapDispatchToProps = (dispatch) => {
+    return {
+        logout: () => dispatch(logout())
+    }
+}
 const mapStateToProps = (state) => ({ user: state.user })
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
