@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { logout } from '../../redux/actions/userAction';
 import './header.scss';
 const Header = props => {
-    console.log('user conectado ?', props.user.token);
+    console.log('user conectado ?', props.user.user.token);
 
 
     return (
@@ -14,7 +14,7 @@ const Header = props => {
             {props.user.user.isUser ? (
                 <div>
                     <span>{props.user.user.isUser.name ? props.user.user.isUser.name : props.user.user.isUser.email}     Bienvenid@</span>
-                    <NavLink to="/">LogOut</NavLink>
+                    <button onClick={() => logout()}>LogOut</button>
                 </div>)
                 : (
                     <div className="user">
@@ -24,10 +24,6 @@ const Header = props => {
         </header>
     )
 }
-const mapDispatchToProps = (dispatch) => {
-    return {
-        logout: () => dispatch(logout())
-    }
-}
+
 const mapStateToProps = (state) => ({ user: state.user })
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(mapStateToProps)(Header);

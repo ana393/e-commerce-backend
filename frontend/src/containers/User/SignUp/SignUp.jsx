@@ -19,7 +19,7 @@ const SignUp = () => {
     const register = user => {
         signup(user).then(() => {
             notification.success({ message: 'Register', description: 'You signed up successfully!' })
-            history.push('/login')
+            history.push('/signin')
         }).catch(error => {
             console.error(error)
             notification.error({ message: 'Error', description: 'This user already exists, try to sign in!' })
