@@ -24,7 +24,7 @@ try {
  //user
  async getMyOrders(req, res) {
     try {
-       const myOrders = await Order.find({ user: req.params.id});
+       const myOrders = await Order.find({ user: req.params.id}).populate('user');
         res.status(200).json({msg: "Successfully found my orders", myOrders })
     } catch (error) {
       console.error(error);
@@ -44,7 +44,7 @@ try {
  //admin 
  async deleteOrder(req, res) {
     try {
-      const earase = await Order.findByIdAndDelete(req.params.id, req.body);
+      const earase = await Order.findByIdAndDelete(req.params.id);
       res.status(200).json({msg: "Successfully deleted orders", earase }) 
     } catch (error) {
     console.error(error);
