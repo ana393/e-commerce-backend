@@ -3,6 +3,12 @@ export const userActions={
     SIGNIN:"SIGNIN",
     LOGOUT:"LOGOUT",
     ALLUSERS:"ALLUSERS",
-    UPDATE:"UPDATE",
-    DELETE:"DELETE"
+   
 };
+
+export const ProductActions ={
+    LIST_PRODUCTS: "LIST_PRODUCTS",
+    SEARCH:"SEARCH",
+    BYPRICE:"BYPRICE",
+    
+}
