@@ -12,3 +12,6 @@ export const ProductActions ={
     BYPRICE:"BYPRICE",
     
 }
+export const OrderActions = {
+    LIST_OREDERS: "LIST_ORDERS"
+}
