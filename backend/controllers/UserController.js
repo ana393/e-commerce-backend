@@ -42,7 +42,7 @@ async logIn(req, res) {
 //update profile
 async Update(req, res){
    try {
-     const Updated = await User.findOneAndUpdate(req.body.email, req.body, {new:true});
+     const Updated = await User.findByIdAndUpdate(req.params.id, req.body, {new:true});
      res.status(200).json({ message: "Successfully updaded", Updated})
    } catch (error) {
      console.error(error);
