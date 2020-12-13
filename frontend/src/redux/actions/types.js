@@ -15,3 +15,9 @@ export const ProductActions ={
 export const OrderActions = {
     LIST_OREDERS: "LIST_ORDERS"
 }
+
+export const CartActions = {
+    ADD_ITEM: "ADD_ITEM",
+    REMOVE_ITEM: "REMOVE_ITEM",
+    CLEAR_CART: "CLEAR_CART"
+}

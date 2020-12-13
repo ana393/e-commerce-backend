@@ -28,15 +28,12 @@ section {
         color: honeydew;
         font-size: 4em;
       }
-      a {
-        text-decoration: none;
-        color: white;
+      span {
+        cursor: pointer;
+        color: whitesmoke;
         font-size: 1.5em;
         border: 3px solid rgb(77, 172, 77);
         border-radius: 5px;
-        span {
-          padding: 2em;
-        }
       }
     }
   }

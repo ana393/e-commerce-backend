@@ -5,7 +5,7 @@ import { userActions } from '../actions/types';
 
 export const allUsers = async()=> {
     const res = await axios.get(API_URL + 'users');
-   //  console.log('allUsers',res.data)
+    console.log('allUsers',res.data)
     store.dispatch({
         type: userActions.ALLUSERS,
         payload: res.data

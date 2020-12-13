@@ -1,7 +1,7 @@
 import { OrderActions } from '../actions/types';
 
-const ordersReducer =(state=[], action)=>{
- console.log("reducer action: ", action, state);
+const ordersReducer =(state={ }, action)=>{
+
     switch (action.type){
         case OrderActions.LIST_OREDERS:
             return {

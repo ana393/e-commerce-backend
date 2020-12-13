@@ -1,7 +1,7 @@
 import { ProductActions } from '../actions/types';
 
-const productsReducer =(state=[], action)=>{
- console.log("reducer action: ", action, state);
+const productsReducer =(state={}, action)=>{
+ console.log("reducer action Lista Productos: ", action, state);
     switch (action.type){
         case ProductActions.LIST_PRODUCTS:
             return {

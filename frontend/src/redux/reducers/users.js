@@ -1,7 +1,7 @@
 import { userActions } from '../actions/types';
 
 const userReducer =(state=[], action)=>{
-    console.log("reducer action: ", action, state);
+ 
     switch (action.type){
         case userActions.ALLUSERS:
             return {

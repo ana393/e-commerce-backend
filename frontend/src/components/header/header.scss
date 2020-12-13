@@ -12,18 +12,19 @@ header {
     margin: 0.2em;
     margin-left: 3.5em;
   }
-  .user {
+  .newUser {
     margin: 0.8em;
     display: flex;
     justify-content: space-around;
-  }
-  a {
-    all: unset;
-    padding: 0.8em;
-    color: $white;
-    cursor: pointer;
-    &:hover {
-      color: $yellowGreen;
+
+    a {
+      all: unset;
+      padding: 0.8em;
+      color: $white;
+      cursor: pointer;
+      &:hover {
+        color: $yellowGreen;
+      }
     }
   }
 }
