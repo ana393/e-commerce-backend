@@ -12,7 +12,7 @@ const AllProducts = ({ product }) => {
 
     const columns = [
         {
-            title: 'Nombre', dataIndex: 'name',
+            title: 'Nombre', dataIndex: 'name', key: '_id',
             sorter: (a, b) => a.name.localeCompare(b.name), sortDirections: ['descend', 'ascend'],
         },
         {

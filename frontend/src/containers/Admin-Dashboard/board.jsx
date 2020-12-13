@@ -1,8 +1,10 @@
 import React from 'react'
 import AllProducts from './AllProducts/product';
-function board () {
+
+const board = () => {
     return (
         <div>
+
             <AllProducts />
         </div>
     )
