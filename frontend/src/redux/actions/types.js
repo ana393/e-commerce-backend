@@ -10,6 +10,7 @@ export const ProductActions ={
     LIST_PRODUCTS: "LIST_PRODUCTS",
     SEARCH:"SEARCH",
     BYPRICE:"BYPRICE",
+    DELETE:"DELETE"
     
 }
 export const OrderActions = {

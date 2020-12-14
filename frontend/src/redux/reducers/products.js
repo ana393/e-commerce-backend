@@ -8,7 +8,11 @@ const productsReducer =(state={}, action)=>{
                 ...state,
                 product: action.payload
             }
-        
+        case ProductActions.DELETE:
+            return {
+                ...state,
+                product: action.payload
+            }
         default:
              return state;
     }

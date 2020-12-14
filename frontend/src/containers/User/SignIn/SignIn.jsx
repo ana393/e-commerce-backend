@@ -12,6 +12,7 @@ const tailLayout = {
     wrapperCol: { offset: 8, span: 16 },
 };
 const SignIn = () => {
+
     const location = useLocation();
     const redirect = location.search ? location.search.split('=')[1] : '/'
     const emailInput = useRef(null);//like get get element byId

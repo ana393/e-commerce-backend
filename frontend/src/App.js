@@ -6,7 +6,7 @@ import Home from './containers/Home/Home.jsx';
 import SignUp from './containers/User/SignUp/SignUp.jsx';
 import SignIn from './containers/User/SignIn/SignIn.jsx';
 import './App.css';
-import board from './containers/Admin-Dashboard/board.jsx';
+import Board from './containers/Admin-Dashboard/board.jsx';
 
 
 
@@ -20,7 +20,7 @@ function App() {
            <Route path="/" component = {Home} exact />
            <Route path="/signUp" component = {SignUp} exact />
            <Route path="/signIn" component = {SignIn} exact />
-           <Route path="/admin" component = {board} exact />
+           <Route path="/admin" component = {Board} exact />
        </Switch>
      
       </BrowserRouter>
