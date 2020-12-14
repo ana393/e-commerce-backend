@@ -1,12 +1,12 @@
 import { userActions } from '../actions/types';
 
-const userReducer =(state=[], action)=>{
+const userReducer =(state={}, action)=>{
  
     switch (action.type){
         case userActions.ALLUSERS:
             return {
                 ...state,
-                user: action.payload
+                users: action.payload
             }
         case userActions.SIGNIN:
             return {

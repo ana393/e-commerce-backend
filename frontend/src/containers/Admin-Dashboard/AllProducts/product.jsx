@@ -9,7 +9,7 @@ const AllProducts = ({ product }) => {
     console.log('AllProduct', product)
     useEffect(() => { listProducts(); }, []);
     const { Title } = Typography;
-    console.log(product._id);
+    console.log('product', product);
     const columns = [
         {
             title: 'Nombre', dataIndex: 'name', key: '_id',

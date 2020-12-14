@@ -3,6 +3,7 @@ import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../../redux/actions/userAction';
+
 import './header.scss';
 
 
@@ -16,8 +17,8 @@ const Header = props => {
             <span className="logo"><NavLink to="/" exact><h2>MIMO</h2></NavLink> </span>
             {props.user.user.isUser ? (
                 <div className="user">
-                    <span> {props.user.user.isUser.name ? props.user.user.isUser.name : props.user.user.isUser.email}     </span>
-                    {Admin && <Link to='/admin'>Dashboard</Link>}
+                    <span> {props.user.user.isUser.name ? props.user.user.isUser.name : props.user.user.isUser.email}    </span>
+                    {Admin && <Link to='/admin'>/ Dashboard</Link>}
                     <button onClick={() => logout()}>LogOut</button>
                 </div>)
                 : (

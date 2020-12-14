@@ -7,7 +7,7 @@ import SignUp from './containers/User/SignUp/SignUp.jsx';
 import SignIn from './containers/User/SignIn/SignIn.jsx';
 import './App.css';
 import Board from './containers/Admin-Dashboard/board.jsx';
-
+import AllProducts from './containers/Admin-Dashboard/AllProducts/product.jsx';
 
 
 function App() {
@@ -21,6 +21,7 @@ function App() {
            <Route path="/signUp" component = {SignUp} exact />
            <Route path="/signIn" component = {SignIn} exact />
            <Route path="/admin" component = {Board} exact />
+            <Route path="/products" component = { AllProducts } exact />
        </Switch>
      
       </BrowserRouter>
