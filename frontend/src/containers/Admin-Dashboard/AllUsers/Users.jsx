@@ -141,5 +141,5 @@ const Users = ({ users }) => {
 }
 
 
-const mapStateToProps = (state) => ({ users: state.user.users });
+const mapStateToProps = state => ({ users: state.user.users });
 export default connect(mapStateToProps)(Users);

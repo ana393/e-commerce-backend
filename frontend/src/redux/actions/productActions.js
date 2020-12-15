@@ -5,7 +5,7 @@ import { ProductActions } from '../actions/types';
 
 export const listProducts = async()=>{
    const res = await axios.get(API_URL + 'products');
-   console.log('Products',res.data)
+   
    store.dispatch({
        type: ProductActions.LIST_PRODUCTS,
        payload: res.data
@@ -14,6 +14,7 @@ export const listProducts = async()=>{
 }
 export const searchProduct = async(word)=>{
      const res = await axios.get(API_URL + `products/search?name=${word}`);
+     console.log('Products',res.data)
    store.dispatch({
        type: ProductActions.SEARCH,
        payload:res.data.product

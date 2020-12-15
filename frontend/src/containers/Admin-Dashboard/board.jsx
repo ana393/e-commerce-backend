@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import AllProducts from './AllProducts/product';
-//import Users from './AllUsers/Users';
+import Users from './AllUsers/Users';
 import { Layout, Menu, Breadcrumb } from 'antd';
 import {
 
@@ -60,7 +60,7 @@ const Board = () => {
                             <AllProducts />
                         </div>
                         <div className="site-layout-background" style={{ padding: 10, minHeight: 360 }}>
-
+                            <Users />
                         </div>
 
                     </Content>
