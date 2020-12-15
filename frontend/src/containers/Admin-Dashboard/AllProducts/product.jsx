@@ -72,7 +72,7 @@ const AllProducts = ({ product }) => {
                         </Col>
                     </Row>
                     <div>
-                        <Table columns={columns} dataSource={product} size="middle" key={product._id} />
+                        <Table columns={columns} dataSource={product} rowKey="_id" size="middle" key={product._id} />
                     </div>
                 </Card>
             </Col>

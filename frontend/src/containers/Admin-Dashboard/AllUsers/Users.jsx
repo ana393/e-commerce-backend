@@ -51,7 +51,7 @@ const Users = ({ users }) => {
         }
         updateProfile(updateUser._id, user)
             .then(res => {
-                notification.success({ message: 'Actualizado', description: 'Usuario modificado con éxito', duration: 2000 })
+                notification.success({ message: 'Updated', description: 'User updated successfully', duration: 2000 })
                 setAnimationModal('bounceOutUp');
                 setTimeout(() => {
                     setVisible(false);
@@ -59,28 +59,28 @@ const Users = ({ users }) => {
             })
             .catch(() => {
                 notification.error({
-                    message: 'Error', description: 'Hubo un problema al intentar modificar el usuario',
+                    message: 'Error', description: 'There was a problem trying to update the user',
                     duration: 2000
                 })
             })
     }
 
 
-    function confirm (e) {
+    const confirm = (e) => {
         deleteUser(e)
             .then(res => {
-                notification.success({ message: 'Eliminado', description: res.message, duration: 2000 })
+                notification.success({ message: 'Deleted', description: res.message, duration: 2000 })
             })
             .catch(() => {
                 notification.error({
-                    message: 'Error', description: 'Hubo un problema al intentar modificar el usuario',
+                    message: 'Error', description: 'There was a problem trying to eliminate the user',
                     duration: 2000
                 })
             })
     }
 
     function cancel (e) {
-        message.error('Cancelado');
+        message.error('Canceled');
     }
 
     useEffect(() => { allUsers(); }, []);
@@ -93,7 +93,7 @@ const Users = ({ users }) => {
                     <Title level={2}> Usuarios </Title>
                     <Row justify="center">
                         <Col span={20}>
-                            <Table columns={columns} dataSource={users} size="middle" style={{ marginTop: 10 }} />
+                            <Table columns={columns} dataSource={users} rowKey="_id" size="middle" style={{ marginTop: 10 }} />
                         </Col>
                     </Row>
                 </Card>
