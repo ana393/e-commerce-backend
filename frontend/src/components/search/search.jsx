@@ -6,17 +6,14 @@ import { searchProduct } from '../../redux/actions/productActions';
 import './search.scss';
 
 
+const SearchBox = props => {
+    const [keyword, setKeyword] = useState("");
 
-
-const Searchox = props => {
-    const [keyword, setKeyword] = useState('');
-
-    const searchItem = (e) => {
-
-        if (keyword.trim()) {
-            props.searchName(keyword);
+    const searchProduct = (e) => {
+        if (keyword) {
+            props.searchItem(keyword)
         }
-        setKeyword("");
+        setKeyword("")
     };
     const handleChange = e => {
         setKeyword(e.target.value);
@@ -24,21 +21,21 @@ const Searchox = props => {
     return (
         <div className="search">
             <div className="searchbar">
+                <Link to="/products/:_id">
+                    <span onClick={() => searchProduct()}><SearchOutlined /></span>
+                </Link>
                 <input
                     type="text"
                     placeholder="search..."
                     value={keyword}
                     onChange={handleChange}
-
                 />
-                <Link to="products/:id">
-                    <span onClick={() => searchItem()}><SearchOutlined /></span>
-                </Link>
             </div>
         </div>
     )
 }
-const mapDispatchToProps = state => ({ searchName: (word) => searchProduct(state, word) });
-const connectedSearch = connect(null, mapDispatchToProps)(Searchox);
-export default connectedSearch;
+
+const mapDispatchToProps = dispatch => ({ searchItem: (word) => searchProduct(dispatch, word) });
+const connectedSearchBox = connect(null, mapDispatchToProps)(SearchBox)
+export default connectedSearchBox;
 

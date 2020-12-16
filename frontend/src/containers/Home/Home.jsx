@@ -1,28 +1,20 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom'
 
-import Products from '../../components/AllProducts/Products';
 import './Home.scss';
 
 const Home = () => {
-    const myRef = useRef(null);
-    const onScroll = () => myRef.current.scrollIntoView();
-    useEffect(() => {
-        onScroll();
-    }, [])
-
     return (
         <div>
             <section >
                 <div className="container">
                     <div className="welcome">
                         <h1>Welcome to the Store</h1>
-                        <span onClick={onScroll}>Take a look...</span>
+                        <span><Link to="/products/:_id">Take a look...</Link></span>
                     </div>
                 </div>
             </section>
-            <div ref={myRef}>
-                <Products />
-            </div>
+
         </div >
     )
 }

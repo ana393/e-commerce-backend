@@ -3,7 +3,8 @@ import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../../redux/actions/userAction';
-import SearchBox from '../search/search';
+import SearchBox from '../search/search.jsx';
+import { ShoppingCartOutlined } from '@ant-design/icons';
 import './header.scss';
 
 
@@ -14,8 +15,9 @@ const Header = props => {
 
     return (
         <header>
-            <span className="logo"><NavLink to="/" exact><h2>MIMO</h2></NavLink> </span>
             <SearchBox />
+            <span className="logo"> <NavLink to="/" exact><h2>MIMO</h2></NavLink>  </span>
+
             {props.user.user.isUser ? (
                 <div className="user">
                     <span> {props.user.user.isUser.name ? props.user.user.isUser.name : props.user.user.isUser.email}    </span>
@@ -23,7 +25,10 @@ const Header = props => {
                     <button onClick={() => logout()}>LogOut</button>
                 </div>)
                 : (
+
                     <div className="newUser">
+
+                        <ShoppingCartOutlined />
                         <NavLink to="/signup">SignUp</NavLink>
                         <NavLink to="/signin">SignIn</NavLink>
                     </div>)}

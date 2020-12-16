@@ -1,12 +1,41 @@
+@import "../../variables.scss";
 .search {
-  margin: 0.5em;
-  display: flex;
-  justify-content: space-around;
-  .ant-input-wrapper {
-    border-radius: 5px 5px 5px 5px;
-    border-color: salmon;
-  }
-  .ant-input-group-adon {
-    background: seagreen !important;
+  .searchbar {
+    background-color: $greyGreen;
+    border-radius: 30px;
+    padding: 0.4em;
+    display: flex;
+
+    input {
+      color: white;
+      border: 0;
+      outline: 0;
+      background: none;
+      width: 0;
+      caret-color: $yellowGreen;
+      transition: $animation;
+    }
+    .anticon {
+      height: 2em;
+      width: 2em;
+      font-size: x-large;
+      float: left;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      color: white;
+      text-decoration: none;
+      &:hover {
+        background: $yellowGreen;
+        color: white;
+      }
+    }
+    &:hover > input {
+      //padding: 0 5px;
+      width: 10rem;
+      caret-color: $yellowGreen;
+      transition: $animation;
+    }
   }
 }

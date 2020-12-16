@@ -12,12 +12,18 @@ export const listProducts = async()=>{
    })
    
 }
-export const searchProduct = async(word)=>{
-     const res = await axios.get(API_URL + `products/search?name=${word}`);
-     console.log('Products',res.data)
-   store.dispatch({
-       type: ProductActions.SEARCH,
-       payload:res.data.product
+export const searchProduct = async(dispatch,word)=>{
+     const { data } = await axios.get(API_URL + `products/search?name=${word}`);
+     const Item = data["filter"].map((item) => ({
+       _id: item["_id"],
+       name: item["name"],
+       price: item["price"],
+       category: item["category"]
+     }));
+     console.log('search item:', Item);
+    return dispatch({
+       type: ProductActions.LIST_PRODUCTS,
+       payload: Item,
    })
 }
 export const byPrice = async()=>{

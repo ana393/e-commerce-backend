@@ -6,6 +6,7 @@ header {
   background: $greyGreen;
   z-index: 1;
   h2 {
+    margin: 0.4em;
     color: $yellowGreen;
   }
   span {
@@ -16,7 +17,14 @@ header {
     margin: 0.8em;
     display: flex;
     justify-content: space-around;
-
+    .anticon {
+      padding: 0.2em;
+      color: $white;
+      font-size: xx-large;
+      &:hover {
+        color: $yellowGreen;
+      }
+    }
     a {
       all: unset;
       padding: 0.8em;

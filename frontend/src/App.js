@@ -8,7 +8,7 @@ import SignIn from './containers/User/SignIn/SignIn.jsx';
 import './App.css';
 import Board from './containers/Admin-Dashboard/board.jsx';
 import AllProducts from './containers/Admin-Dashboard/AllProducts/product.jsx';
-
+import Products from './components/AllProducts/Products.jsx';
 
 function App() {
   return ( 
@@ -22,6 +22,7 @@ function App() {
            <Route path="/signIn" component = {SignIn} exact />
            <Route path="/admin" component = {Board} exact />
             <Route path="/products" component = { AllProducts } exact />
+            <Route path="/products/:_id" component = { Products } exact />
        </Switch>
      
       </BrowserRouter>
