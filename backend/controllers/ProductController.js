@@ -39,9 +39,10 @@ const ProductsController={
     async filterProduct(req, res) {
   
       try {
-        const filter = await Product.find({ name : { $regex: req.body.name,  $options: 'i'} });
-        if  (filter.length === 0) { res.status(404).json({msg:`No product with given name: ${ req.body.name}, in your Data Base. `});
+        const filter = await Product.find({ name : { $regex: req.query.name,  $options: 'i'} });
+        if  (filter.length === 0) { res.status(404).json({msg:`No product with given name: ${ req.query.name}, in your Data Base. `});
       }
+      console.log(req.query);
         res.status(200).json({ message: "Successfully found", filter})
       } catch (error) {
         console.error(error);

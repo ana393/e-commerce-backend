@@ -8,7 +8,7 @@ const { only } = require('../config/utils.js');
 router.post("/signUp", UserController.signUp);
 router.post('/login', UserController.logIn);
 router.put("/:id", passport.authenticate('jwt', { session:false}), UserController.Update)
-router.get("/",  passport.authenticate('jwt', { session:false}), only(['admin','seller']),  UserController.getAll);
+router.get("/",   UserController.getAll);
 router.delete("/:id", passport.authenticate('jwt', { session:false}), only(['admin']), UserController.deleteUser);
 
 module.exports = router;
