@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-import AllProducts from './AllProducts/product';
-import Users from './AllUsers/Users';
+import AllProducts from '../AllProducts/product';
+import Users from '../AllUsers/Users';
 import { Layout, Menu, Breadcrumb } from 'antd';
 import {
 

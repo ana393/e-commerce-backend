@@ -8,13 +8,13 @@ export const userActions={
 
 export const ProductActions ={
     LIST_PRODUCTS: "LIST_PRODUCTS",
-    SEARCH:"SEARCH",
+    INSERT:"INSERT",
     BYPRICE:"BYPRICE",
     DELETE:"DELETE"
     
 }
 export const OrderActions = {
-    LIST_OREDERS: "LIST_ORDERS"
+    LIST_ORDERS: "LIST_ORDERS"
 }
 
 export const CartActions = {

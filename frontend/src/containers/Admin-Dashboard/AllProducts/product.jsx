@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Card, Row, Col, Table, Typography, Popconfirm, message, Button, Space } from 'antd';
 import { listProducts, deleteProduct } from '../../../redux/actions/productActions';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import './product.scss';
 
 const AllProducts = ({ product }) => {
@@ -32,7 +32,7 @@ const AllProducts = ({ product }) => {
             render: (record) => (
 
                 <Space size="middle">
-                    <NavLink to={{ pathname: '/', data: record }} exact>
+                    <NavLink to={{ pathname: '/products/newProduct', data: record }} exact>
                         Editar
                     </NavLink>
                     <Popconfirm title="Estás seguro que quieres eliminar el producto?" okText="Si" cancelText="No"
@@ -63,11 +63,11 @@ const AllProducts = ({ product }) => {
                         <Col>
                             <Title level={2}> Productos </Title>
                             <Row>
-                                <NavLink to='/' exact>
+                                <Link to='/products/newProduct' exact >
                                     <Button type="primary">
-                                        Nuevo Producto
+                                        New Product
                                     </Button>
-                                </NavLink>
+                                </Link>
                             </Row>
                         </Col>
                     </Row>

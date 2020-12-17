@@ -12,7 +12,7 @@ const Users = ({ users }) => {
     const { Title } = Typography;
     const [visible, setVisible] = useState(false);
     const [animationModal, setAnimationModal] = useState();
-    const [updateUser, setUser] = useState();
+    const [updateUser, setUpdatedUser] = useState("");
     const classModal = `cardModal animated ${animationModal}`
     const { Option } = Select;
     const columns = [
@@ -32,7 +32,7 @@ const Users = ({ users }) => {
             title: 'Action', key: 'action',
             render: (record) => (
                 <Space size="middle">
-                    <button type="button" className="link-button" onClick={() => { setUser(record); setVisible(true); setAnimationModal('bounceInUp') }} >
+                    <button type="button" className="link-button" onClick={() => { setUpdatedUser(record); setVisible(true); setAnimationModal('bounceInUp') }} >
                         cambiar rol
                         </button>
                     <Popconfirm title="Estás seguro que quieres eliminar el usuario?" okText="Si" cancelText="No"
@@ -107,7 +107,7 @@ const Users = ({ users }) => {
                             <Form {...layout} name="formUpdate" onFinish={onFinish}>
                                 <Row justify="center">
                                     <Col span={24}>
-                                        <Form.Item name="role" label="Rol de usuario" rules={[{ required: false }]}>
+                                        <Form.Item name="role" label="Rol " rules={[{ required: false }]}>
                                             <Select placeholder={updateUser?.role} initialvalues={updateUser?.role}>
                                                 <Option value="standar">standar</Option>
                                                 <Option value="admin">admin</Option>

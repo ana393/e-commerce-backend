@@ -34,7 +34,11 @@ export const byPrice = async()=>{
 
 export const insertProduct = async(product) => {
   const res =  await axios.post(API_URL + 'products/insert',product);
-   return res
+     console.log('New product:',res.data)
+    store.dispatch({
+        type: ProductActions.INSERT,
+        payload: res.data.product
+    })
 }
 export const updateProduct = async(id, product) => {
      await axios.post(API_URL + 'products/update' + id, product);
@@ -46,7 +50,7 @@ export const deleteProduct = async(id) => {
         });
  
   store.dispatch({
-    type: ProductActions.DELETE,
+    type: ProductActions.LIST_PRODUCTS,
     payload: res.data
   })
    
