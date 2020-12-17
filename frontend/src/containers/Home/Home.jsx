@@ -10,7 +10,7 @@ const Home = () => {
                 <div className="container">
                     <div className="welcome">
                         <h1>Welcome to the Store</h1>
-                        <span><Link to="/products/:_id">Take a look...</Link></span>
+                        <Link to="products/newProduct"> <div className="look">Look</div></Link>
                     </div>
                 </div>
             </section>

@@ -29,11 +29,11 @@ const NewProduct = () => {
 
         }).catch(error => {
             console.error(error)
-            notification.error({ message: 'Error', description: 'Unable to create new product.Ckeck the input data.' })
+            notification.error({ message: 'Error', description: 'Unable to create new product.Check the input data.' })
         })
     }
     return (
-        <div>
+        <div className="newProduct">
             <h2>Create New Product</h2>
             <div className="form">
                 <Form
@@ -50,7 +50,7 @@ const NewProduct = () => {
                     >
                         <Input />
                     </Form.Item>
-                    <Form.Item label="Category">
+                    <Form.Item label="Category" name="category" rules={[{ required: true, message: 'Please input your username!' }]} >
                         <Select>
                             <Select.Option value="Food">Food</Select.Option>
                             <Select.Option value="Technology">Technology</Select.Option>
@@ -59,10 +59,10 @@ const NewProduct = () => {
                             <Select.Option value="Sofware&Games">Sofware&Games</Select.Option>
                         </Select>
                     </Form.Item>
-                    <Form.Item label="Price">
+                    <Form.Item label="Price" name="price">
                         <InputNumber />
                     </Form.Item>
-                    <Form.Item label="InStock">
+                    <Form.Item label="InStock" name="InStock">
                         <InputNumber />
                     </Form.Item>
                     <Form.Item

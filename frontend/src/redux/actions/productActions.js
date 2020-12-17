@@ -37,7 +37,7 @@ export const insertProduct = async(product) => {
      console.log('New product:',res.data)
     store.dispatch({
         type: ProductActions.INSERT,
-        payload: res.data.product
+        payload: res.data
     })
 }
 export const updateProduct = async(id, product) => {

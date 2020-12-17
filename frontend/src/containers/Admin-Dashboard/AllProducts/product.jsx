@@ -32,7 +32,7 @@ const AllProducts = ({ product }) => {
             render: (record) => (
 
                 <Space size="middle">
-                    <NavLink to={{ pathname: '/products/newProduct', data: record }} exact>
+                    <NavLink to={{ pathname: "/products/newProduct", data: record }} exact>
                         Editar
                     </NavLink>
                     <Popconfirm title="Estás seguro que quieres eliminar el producto?" okText="Si" cancelText="No"
@@ -63,7 +63,7 @@ const AllProducts = ({ product }) => {
                         <Col>
                             <Title level={2}> Productos </Title>
                             <Row>
-                                <Link to='/products/newProduct' exact >
+                                <Link to="/products/newProduct" >
                                     <Button type="primary">
                                         New Product
                                     </Button>

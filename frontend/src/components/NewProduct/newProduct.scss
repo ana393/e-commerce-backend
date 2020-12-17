@@ -1,0 +1,28 @@
+@import "../../variables.scss";
+.newProduct {
+  margin: 2em 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h2 {
+    color: $greyGreen;
+  }
+  .form {
+    width: 50%;
+
+    label {
+      color: darkgreen;
+      font-style: italic;
+    }
+
+    .ant-btn {
+      background: $greyGreen;
+      border-color: $greyGreen;
+      color: cornsilk;
+      &:hover {
+        color: $yellowGreen;
+        border-color: $yellowGreen;
+      }
+    }
+  }
+}

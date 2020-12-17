@@ -16,7 +16,9 @@
     justify-content: space-around;
     border-radius: 0.3em;
     transition: 0.3s;
-
+    &:hover {
+      box-shadow: 5px 5px 5px 8px rgb(160, 115, 30);
+    }
     h4 {
       color: green;
       font-weight: bold;
@@ -26,11 +28,5 @@
       font-weight: bolder;
       color: rgb(49, 49, 49);
     }
-  }
-  :hover {
-    transform: scale(1.1);
-    -webkit-transform: scale(1.1);
-    -ms-transform: scale(1.1);
-    border-color: rgb(27, 27, 27);
   }
 }
