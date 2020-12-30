@@ -20,13 +20,26 @@
       box-shadow: 5px 5px 5px 8px rgb(160, 115, 30);
     }
     h4 {
-      color: green;
+      color: $green;
       font-weight: bold;
     }
-    div,
+    div {
+      font-weight: bolder;
+      color: $orange;
+    }
     span {
       font-weight: bolder;
-      color: rgb(49, 49, 49);
+      color: $greyGreen;
+    }
+    .add {
+      background: $green;
+      border-color: $green;
+      color: white;
+      border-radius: 0.5em;
+      &:hover {
+        color: $orange;
+        border-color: $yellowGreen;
+      }
     }
   }
 }

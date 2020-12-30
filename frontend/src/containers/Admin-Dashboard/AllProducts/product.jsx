@@ -6,10 +6,10 @@ import { NavLink, Link } from 'react-router-dom';
 import './product.scss';
 
 const AllProducts = ({ product }) => {
-    console.log('AllProduct', product)
+
     useEffect(() => { listProducts(); }, []);
     const { Title } = Typography;
-    console.log('product', product);
+
     const columns = [
         {
             title: 'Nombre', dataIndex: 'name', key: '_id',

@@ -1,7 +1,7 @@
 import store from '../store';
 import axios from 'axios';
 import { API_URL } from '../../config'
-import { ProductActions } from '../actions/types';
+import { ProductActions} from '../actions/types';
 
 export const listProducts = async()=>{
    const res = await axios.get(API_URL + 'products');
@@ -18,7 +18,8 @@ export const searchProduct = async(dispatch,word)=>{
        _id: item["_id"],
        name: item["name"],
        price: item["price"],
-       category: item["category"]
+       category: item["category"],
+       InStock: item["InStock"]
      }));
      console.log('search item:', Item);
     return dispatch({
@@ -33,7 +34,7 @@ export const byPrice = async()=>{
 }
 
 export const insertProduct = async(product) => {
-  const res =  await axios.post(API_URL + 'products/insert',product);
+  const res =  await axios.post(API_URL + 'products/insert', product);
      console.log('New product:',res.data)
     store.dispatch({
         type: ProductActions.INSERT,
@@ -52,6 +53,6 @@ export const deleteProduct = async(id) => {
   store.dispatch({
     type: ProductActions.LIST_PRODUCTS,
     payload: res.data
-  })
-   
+  })  
 }
+

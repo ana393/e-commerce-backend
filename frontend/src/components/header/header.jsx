@@ -9,32 +9,34 @@ import './header.scss';
 
 
 
-const Header = props => {
-    console.log('user conectado ?', props.user.user.token);
-    const Admin = props.user.user.isUser?.role === 'admin';
+const Header = ({ user, count }) => {
+
+    const Admin = user.isUser?.role === 'admin';
 
     return (
         <header>
             <SearchBox />
             <span className="logo"> <NavLink to="/" exact><h2>MIMO</h2></NavLink>  </span>
 
-            {props.user.user.isUser ? (
+            {user.isUser ? (
                 <div className="user">
-                    <span> {props.user.user.isUser.name ? props.user.user.isUser.name : props.user.user.isUser.email}    </span>
+                    <span>Hello {user.isUser.name ? user.isUser.name : user.isUser.email} </span>
+                    <span onClick={() => logout()}> Sign Out</span>
                     {Admin && <Link to='/admin'>/ Dashboard</Link>}
-                    <button onClick={() => logout()}>LogOut</button>
-                </div>)
-                : (
+                    <ShoppingCartOutlined /><div className="counter">({count})</div>
 
+                </div>
+            ) : (
                     <div className="newUser">
-
+                        <div className="counter">({count})</div>
                         <ShoppingCartOutlined />
                         <NavLink to="/signup">SignUp</NavLink>
                         <NavLink to="/signin">SignIn</NavLink>
-                    </div>)}
+                    </div>
+                )}
         </header>
     )
 }
 
-const mapStateToProps = (state) => ({ user: state.user })
+const mapStateToProps = (state) => ({ user: state.user.user, cart: state.cart.items })
 export default connect(mapStateToProps)(Header);

@@ -3,19 +3,22 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './Products.scss';
 import { listProducts } from '../../redux/actions/productActions';
+import { addCart } from '../../redux/actions/cartActions';
 
-const Products = props => {
+const Products = ({ product }) => {
+
     useEffect(() => { listProducts(); }, []);
     return (
         <div className="Container" key="product" id="product">
-            { props.product.map((p) => (
+            { product.map((p) => (
 
                 <div className="card" key={p._id} id={p._id}>
                     <Link to={`/products/${p._id}`}>
                         <img src="" alt=""></img>
                         <h4>{p.name}</h4>
                         <span>{p.price}€</span>
-                        <div>In Stock: {p.InStock}</div>
+                        <div>{p.InStock > 0 ? (<span>In Stock: {p.InStock} </span>) : 'Out of Stock'}</div>
+                        <button onClick={() => addCart(p)} className="add" disabled={p.InStock === 0}> Add To Cart</button>
                     </Link>
                 </div>)
 
@@ -24,6 +27,6 @@ const Products = props => {
         </div>
     )
 }
-const mapStateToProps = (state) => ({ product: state.product.product });
+const mapStateToProps = (state) => ({ product: state.product.product, cart: state.cart.items });
 export default connect(mapStateToProps, null)(Products);
 
