@@ -13,11 +13,12 @@ export const addCart = (newProduct) =>{
   if (!exists){
      cartItems.push({...newProduct, count: 1});
   }
-  localStorage.setItem("cartItems", JSON.stringify(cartItems));
-    store.dispatch({
+   store.dispatch({
       type:CartActions.ADD_ITEM,
       payload: { cartItems }
     });
+  localStorage.setItem("cartItems", JSON.stringify(cartItems));
+   
 };
 
 export const removeItemCart = (removeItem) =>{
@@ -28,10 +29,23 @@ export const removeItemCart = (removeItem) =>{
        payload: { cartItems }
    })
 }
+export const addAnItemCart = (removeItem) =>{
+   const cartItems =store.getState().cart.items.filter((i) =>{
+       if ( i._id === removeItem._id){
+         removeItem.count = removeItem.count + 1;
+       }
+       return removeItem;
+   });
+   localStorage.setItem("cartItems", JSON.stringify(cartItems));
+   store.dispatch({
+       type: CartActions.REMOVE_1_ITEM,
+       payload: { cartItems }
+   })
+}
 export const removeAnItemCart = (removeItem) =>{
    const cartItems =store.getState().cart.items.filter((i) =>{
        if ( i._id === removeItem._id){
-         removeItem.count = removeItem.count --;
+         removeItem.count = removeItem.count - 1;
        }
        return removeItem;
    });

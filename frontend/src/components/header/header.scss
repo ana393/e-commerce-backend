@@ -20,7 +20,7 @@ header {
     display: flex;
     justify-content: space-around;
     .counter {
-      padding: 0 2px;
+      padding: -5 0px;
       color: $white;
     }
     .anticon {
@@ -34,7 +34,7 @@ header {
     span,
     a {
       all: unset;
-      padding: 0.8em;
+      padding: 0.6em;
       color: $white;
       cursor: pointer;
       &:hover {

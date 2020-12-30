@@ -9,7 +9,8 @@ import './App.css';
 import Board from './containers/Admin-Dashboard/Board/board.jsx';
 import AllProducts from './containers/Admin-Dashboard/AllProducts/product.jsx';
 import Products from './components/AllProducts/Products.jsx';
-import NewProduct from './components/NewProduct/newProduct.jsx'
+import NewProduct from './components/NewProduct/newProduct.jsx';
+import Cart from './containers/cart/cart.jsx';
 
 function App() {
   return ( 
@@ -24,6 +25,7 @@ function App() {
            <Route path="/admin" component = {Board} exact />
             <Route path="/products" component = { AllProducts } exact />
             <Route path="/products/:_id" component = { Products } exact />
+            <Route path="/cart" component = { Cart } exact />
             <Route path="/products/newProduct" component = { NewProduct } exact />
        </Switch>
      

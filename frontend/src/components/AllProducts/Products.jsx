@@ -27,6 +27,6 @@ const Products = ({ product }) => {
         </div>
     )
 }
-const mapStateToProps = (state) => ({ product: state.product.product, cart: state.cart.items });
+const mapStateToProps = (state) => ({ product: state.product.product });
 export default connect(mapStateToProps, null)(Products);
 

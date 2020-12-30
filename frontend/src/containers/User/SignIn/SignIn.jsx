@@ -15,7 +15,7 @@ const SignIn = () => {
 
     const location = useLocation();
     const redirect = location.search ? location.search.split('=')[1] : '/'
-    const emailInput = useRef(null);//like get get element byId
+    const emailInput = useRef(null);//like  get element byId
     const history = useHistory();
 
     useEffect(() => {

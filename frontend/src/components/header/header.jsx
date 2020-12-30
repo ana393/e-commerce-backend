@@ -8,8 +8,7 @@ import { ShoppingCartOutlined } from '@ant-design/icons';
 import './header.scss';
 
 
-
-const Header = ({ user, count }) => {
+const Header = ({ user, cartItems }) => {
 
     const Admin = user.isUser?.role === 'admin';
 
@@ -23,13 +22,19 @@ const Header = ({ user, count }) => {
                     <span>Hello {user.isUser.name ? user.isUser.name : user.isUser.email} </span>
                     <span onClick={() => logout()}> Sign Out</span>
                     {Admin && <Link to='/admin'>/ Dashboard</Link>}
-                    <ShoppingCartOutlined /><div className="counter">({count})</div>
+                    <NavLink to='/cart'>
+                        <div className="counter">({cartItems.reduce((a, c) => a + c.count, 0)})</div>
+                        <ShoppingCartOutlined />
+                    </NavLink>
+
 
                 </div>
             ) : (
                     <div className="newUser">
-                        <div className="counter">({count})</div>
-                        <ShoppingCartOutlined />
+
+                        <NavLink to='/cart'>
+                            <div className="counter">({cartItems.reduce((a, c) => a + c.count, 0)})</div><ShoppingCartOutlined />
+                        </NavLink>
                         <NavLink to="/signup">SignUp</NavLink>
                         <NavLink to="/signin">SignIn</NavLink>
                     </div>
@@ -38,5 +43,5 @@ const Header = ({ user, count }) => {
     )
 }
 
-const mapStateToProps = (state) => ({ user: state.user.user, cart: state.cart.items })
+const mapStateToProps = (state) => ({ user: state.user.user, cartItems: state.cart.items })
 export default connect(mapStateToProps)(Header);
