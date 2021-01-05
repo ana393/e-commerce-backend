@@ -1,10 +1,9 @@
 @import "../../variables.scss";
 .Container {
   display: grid;
-
   grid-template: repeat(5, 1fr) / repeat(4, 1fr);
   align-items: center;
-  background-color: rgb(221, 162, 51);
+  background-color: gainsboro;
   .card {
     cursor: pointer;
     display: flex;
@@ -17,7 +16,7 @@
     border-radius: 0.3em;
     transition: 0.3s;
     &:hover {
-      box-shadow: 5px 5px 5px 8px rgb(160, 115, 30);
+      box-shadow: 0px 0px 5px 5px rgb(112, 107, 96);
     }
     h4 {
       color: $green;

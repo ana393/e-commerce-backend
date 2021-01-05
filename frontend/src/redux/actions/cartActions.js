@@ -2,50 +2,50 @@ import store from '../store';
 import {  CartActions } from '../actions/types';
 
 export const addCart = (newProduct) =>{
-  const cartItems =store.getState().cart.items; 
+  const cartItems =store.getState().cart.cart; 
   let exists = false;
  cartItems.forEach(cItem => {
    if (cItem._id === newProduct._id) {
      exists= true;
      cItem.count++;
+     
    }
  });
   if (!exists){
      cartItems.push({...newProduct, count: 1});
   }
+   localStorage.setItem("cartItems", JSON.stringify(cartItems));
    store.dispatch({
       type:CartActions.ADD_ITEM,
       payload: { cartItems }
-    });
-  localStorage.setItem("cartItems", JSON.stringify(cartItems));
-   
+    }); 
 };
 
 export const removeItemCart = (removeItem) =>{
-   const cartItems =store.getState().cart.items.filter(i => i._id !== removeItem._id);
+   const cartItems =store.getState().cart.cart.filter(i => i._id !== removeItem._id);
    localStorage.setItem("cartItems", JSON.stringify(cartItems));
    store.dispatch({
        type: CartActions.REMOVE_ITEM,
        payload: { cartItems }
    })
-}
-export const addAnItemCart = (removeItem) =>{
-   const cartItems =store.getState().cart.items.filter((i) =>{
-       if ( i._id === removeItem._id){
-         removeItem.count = removeItem.count + 1;
+};
+export const addAnItemCart = (addItem) =>{
+   const cartItems =store.getState().cart.cart.filter((i) =>{
+       if ( i._id === addItem._id){
+         addItem.count ++;
        }
-       return removeItem;
+       return addItem;
    });
    localStorage.setItem("cartItems", JSON.stringify(cartItems));
    store.dispatch({
-       type: CartActions.REMOVE_1_ITEM,
+       type: CartActions.ADD_1_ITEM,
        payload: { cartItems }
    })
 }
 export const removeAnItemCart = (removeItem) =>{
-   const cartItems =store.getState().cart.items.filter((i) =>{
+   const cartItems =store.getState().cart.cart.filter((i) =>{
        if ( i._id === removeItem._id){
-         removeItem.count = removeItem.count - 1;
+         removeItem.count --;
        }
        return removeItem;
    });

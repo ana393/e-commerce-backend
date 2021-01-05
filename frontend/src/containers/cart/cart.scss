@@ -1,0 +1,174 @@
+@import "../../variables.scss";
+.cartContainer {
+  display: grid;
+  grid-template-columns: 75% 25%;
+  grid-template-rows: auto 1fr;
+  grid-template-areas: "main  aside";
+  margin: 20px;
+  padding-left: 6px;
+  box-shadow: 0 0 5px 5px grey;
+
+  main {
+    grid-area: main;
+    display: grid;
+    grid-template-rows: 15% 85%;
+    grid-template-columns: auto;
+    grid-template-areas: "header" " main";
+    background-color: $white;
+    margin: 2em;
+    .cartHeader {
+      grid-area: header;
+      display: grid;
+      grid-template-columns: 40% 15% 15% 15% 15%;
+      grid-template-rows: auto 1fr;
+      grid-template-areas: "title Price Qty Total Remove";
+
+      .title {
+        grid-area: title;
+        font-weight: bolder;
+        font-size: 1.2em;
+        color: $lightPeach;
+      }
+      .Price {
+        grid-area: Price;
+        font-weight: bolder;
+        font-size: 1.2em;
+        margin: 0px 15px 0px;
+        color: $lightPeach;
+      }
+      .Qty {
+        grid-area: Qty;
+        font-weight: bolder;
+        font-size: 1.2em;
+        margin: 0px 25px 0px;
+        color: $lightPeach;
+      }
+      .Total {
+        grid-area: Total;
+        font-weight: bolder;
+        font-size: 1.2em;
+        color: $lightPeach;
+        margin: 0px 50px 0px;
+      }
+    }
+    .items {
+      grid-area: main;
+      .cart-item {
+        display: grid;
+        grid-template-columns: 40% 15% 15% 15% 15%;
+        grid-template-rows: auto 1fr;
+        grid-template-areas: "product price qty total remove";
+        img,
+        .name {
+          grid-area: product;
+        }
+        img {
+          width: 70px;
+          height: 70px;
+          padding-top: 0.5em;
+        }
+        .name {
+          padding-top: 0.5em;
+          margin-top: 70px;
+          font-weight: bolder;
+          font-size: 1.2em;
+          color: $greyGreen;
+        }
+        .price {
+          grid-area: price;
+          color: $greyGreen;
+          padding: 0.6em;
+          font-size: 1.2em;
+          font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+            "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+        }
+        .up-btn,
+        .down-btn,
+        .amount {
+          grid-area: qty;
+          border: none;
+          background-color: transparent;
+        }
+        .up-btn {
+          margin-left: auto;
+          font-size: 2em;
+          cursor: pointer;
+        }
+        .down-btn {
+          font-size: 2em;
+          margin-right: auto;
+          cursor: pointer;
+        }
+        .amount {
+          font-size: 1.2em;
+          align-self: center;
+          margin: 0px 50px 0px;
+          margin-bottom: 3em;
+        }
+        .totalPrice {
+          grid-area: total;
+          margin: 15px 50px 0px;
+          font-size: 1.2em;
+        }
+
+        .remove-btn {
+          grid-area: remove;
+          margin-bottom: 3.2em;
+          border: none;
+          border-color: transparent;
+          background-color: transparent;
+          color: $lightPeach;
+          font-weight: bolder;
+          font-size: 1.2em;
+        }
+      }
+    }
+  }
+  aside {
+    grid-area: aside;
+    padding: 4em;
+    background-color: $yellowGreen;
+    align-content: center;
+    hr {
+      border: 4px solid $greyGreen;
+    }
+    h4 {
+      font-size: 1em;
+      padding: 1em;
+      color: $white;
+      text-transform: uppercase;
+      span {
+        color: $greyGreen;
+        font-size: large;
+        font-weight: 700;
+      }
+    }
+    .clear-btn,
+    .checkout {
+      margin: 1em;
+      padding: 0.5em;
+      border-radius: 15px;
+      text-transform: uppercase;
+      font-weight: bolder;
+      border: none;
+      cursor: pointer;
+      transition: 320ms all ease-in-out;
+    }
+    .clear-btn {
+      color: $white;
+      background-color: $greyGreen;
+      &:hover {
+        background-color: $white;
+        color: $greyGreen;
+      }
+    }
+    .checkout {
+      background-color: $white;
+      color: $greyGreen;
+      &:hover {
+        background-color: $greyGreen;
+        color: $white;
+      }
+    }
+  }
+}

@@ -1,16 +1,18 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { logout } from '../../redux/actions/userAction';
 import SearchBox from '../search/search.jsx';
 import { ShoppingCartOutlined } from '@ant-design/icons';
 import './header.scss';
 
 
-const Header = ({ user, cartItems }) => {
-
+const Header = () => {
+    const user = useSelector(state => state.user.user);
+    const cartItems = useSelector(state => state.cart.cart);
     const Admin = user.isUser?.role === 'admin';
+    const totalItems = cartItems.reduce((a, c) => a + c.count, 0);
 
     return (
         <header>
@@ -19,11 +21,11 @@ const Header = ({ user, cartItems }) => {
 
             {user.isUser ? (
                 <div className="user">
-                    <span>Hello {user.isUser.name ? user.isUser.name : user.isUser.email} </span>
+                    <span>Hello {user.isUser.name} </span>
                     <span onClick={() => logout()}> Sign Out</span>
                     {Admin && <Link to='/admin'>/ Dashboard</Link>}
                     <NavLink to='/cart'>
-                        <div className="counter">({cartItems.reduce((a, c) => a + c.count, 0)})</div>
+                        <div className="counter">({totalItems})</div>
                         <ShoppingCartOutlined />
                     </NavLink>
 
@@ -33,7 +35,7 @@ const Header = ({ user, cartItems }) => {
                     <div className="newUser">
 
                         <NavLink to='/cart'>
-                            <div className="counter">({cartItems.reduce((a, c) => a + c.count, 0)})</div><ShoppingCartOutlined />
+                            <div className="counter">({totalItems})</div><ShoppingCartOutlined />
                         </NavLink>
                         <NavLink to="/signup">SignUp</NavLink>
                         <NavLink to="/signin">SignIn</NavLink>
@@ -42,6 +44,4 @@ const Header = ({ user, cartItems }) => {
         </header>
     )
 }
-
-const mapStateToProps = (state) => ({ user: state.user.user, cartItems: state.cart.items })
-export default connect(mapStateToProps)(Header);
+export default Header;
