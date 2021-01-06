@@ -5,20 +5,21 @@ import { userActions } from '../actions/types';
 
 export const allUsers = async()=> {
     const res = await axios.get(API_URL + 'users');
-    console.log('allUsers',res.data)
     store.dispatch({
         type: userActions.ALLUSERS,
         payload: res.data
     })
 }
 export const updateProfile = async (id, user)=>{
-   await axios.put(API_URL + 'users/' + id, user, {
+   const res =await axios.put(API_URL + 'users/' + id, user, {
         headers: {
-            Authorization: localStorage.getItem('authToken')
+            Authorization: 'Bearer' + localStorage.getItem('authToken')
         }
-     })
-       
-   
+     });
+     store.dispatch({
+        type: userActions.SIGNUP,
+        payload: res.data.user
+    })
 }
  export const deleteUser = async(id) =>{
       await axios.delete(API_URL + 'users/' + id,  {
@@ -31,7 +32,6 @@ export const updateProfile = async (id, user)=>{
 
 export const signup = async(user) => {
     const res =   await axios.post(API_URL + 'users/signUp', user);
-   // console.log('signUp',res.data)
     store.dispatch({
         type: userActions.SIGNUP,
         payload: res.data.user
@@ -40,7 +40,6 @@ export const signup = async(user) => {
 }
 export const login = async(user) => {
     const res =   await axios.post(API_URL + 'users/login', user);
-  //  console.log('login',res.data.token);
     localStorage.setItem('authToken',JSON.stringify(res.data.token) );
     store.dispatch({
         type: userActions.SIGNIN,

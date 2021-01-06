@@ -43,6 +43,15 @@ const SignUp = () => {
                         name="name"
                         rules={[{ required: true, message: 'Please input your username!' }]}
                     >
+
+                        <Input ref={emailInput} />
+                    </Form.Item>
+                    <Form.Item
+                        label="surname"
+                        name="surname"
+                        rules={[{ required: true, message: 'Please input your username!' }]}
+                    >
+
                         <Input ref={emailInput} />
                     </Form.Item>
                     <Form.Item

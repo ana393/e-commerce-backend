@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import AllProducts from '../AllProducts/product';
 import Users from '../AllUsers/Users';
@@ -37,7 +38,7 @@ const Board = () => {
                         <SubMenu key="products" title={<span>
                             <PartitionOutlined /><span>Products</span>
                         </span>}>
-                            <Menu.Item key="products">Products</Menu.Item>
+                            <Menu.Item key="products"><Link to="/products">Products</Link></Menu.Item>
 
                         </SubMenu>
                         <SubMenu key="sub2" icon={< ContactsOutlined />} title="Users">

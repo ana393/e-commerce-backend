@@ -5,8 +5,7 @@ import { ProductActions} from '../actions/types';
 
 export const listProducts = async()=>{
    const res = await axios.get(API_URL + 'products');
-   
-   store.dispatch({
+    store.dispatch({
        type: ProductActions.LIST_PRODUCTS,
        payload: res.data
    })
@@ -35,20 +34,30 @@ export const byPrice = async()=>{
 
 export const insertProduct = async(product) => {
   const res =  await axios.post(API_URL + 'products/insert', product);
-     console.log('New product:',res.data)
+    console.log('New product:',res.data)
     store.dispatch({
         type: ProductActions.INSERT,
         payload: res.data
     })
 }
 export const updateProduct = async(id, product) => {
-     await axios.post(API_URL + 'products/update' + id, product);
-    return listProducts();
+    const res = await axios.post(API_URL + 'products/update' + id,{headers: {
+            Authorization: 'Bearer' + localStorage.getItem('authToken')}}, product);
+    console.log('Update Product:',res.data)
+    store.dispatch({
+        type: ProductActions.INSERT,
+        payload: res.data
+    })
 }
 export const deleteProduct = async(id) => {
  const res =  await axios.delete(API_URL + 'products/' + id, {headers: {
-            Authorization: localStorage.getItem('authToken')}
-        });
+            Authorization: 'Bearer' + localStorage.getItem('authToken')}
+        })
+    console.log('delete:',res)
+    store.dispatch({
+        type: ProductActions.DELETE,
+        payload: res.data 
+    });
  
   store.dispatch({
     type: ProductActions.LIST_PRODUCTS,

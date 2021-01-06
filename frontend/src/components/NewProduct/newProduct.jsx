@@ -46,11 +46,11 @@ const NewProduct = () => {
                     <Form.Item
                         label="name"
                         name="name"
-                        rules={[{ required: true, message: 'Please input your username!' }]}
+                        rules={[{ required: true, message: 'Please input product name!' }]}
                     >
                         <Input />
                     </Form.Item>
-                    <Form.Item label="Category" name="category" rules={[{ required: true, message: 'Please input your username!' }]} >
+                    <Form.Item label="Category" name="category" rules={[{ required: true, message: 'Please input the category!' }]} >
                         <Select>
                             <Select.Option value="Food">Food</Select.Option>
                             <Select.Option value="Technology">Technology</Select.Option>

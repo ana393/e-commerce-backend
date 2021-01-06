@@ -32,7 +32,7 @@ const AllProducts = ({ product }) => {
             render: (record) => (
 
                 <Space size="middle">
-                    <NavLink to={{ pathname: "/products/newProduct", data: record }} exact>
+                    <NavLink to="" exact>
                         Editar
                     </NavLink>
                     <Popconfirm title="Estás seguro que quieres eliminar el producto?" okText="Si" cancelText="No"
@@ -46,7 +46,7 @@ const AllProducts = ({ product }) => {
         },
     ];
 
-    function confirm (e) {
+    const confirm = e => {
         deleteProduct(e);
         message.success('Confirmado');
     }
@@ -63,11 +63,13 @@ const AllProducts = ({ product }) => {
                         <Col>
                             <Title level={2}> Productos </Title>
                             <Row>
-                                <Link to="/products/newProduct" >
-                                    <Button type="primary">
+
+                                <Button type="primary">
+                                    <Link to="/newProduct" >
                                         New Product
-                                    </Button>
-                                </Link>
+                                         </Link>
+                                </Button>
+
                             </Row>
                         </Col>
                     </Row>

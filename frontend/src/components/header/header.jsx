@@ -23,12 +23,12 @@ const Header = () => {
                 <div className="user">
                     <span>Hello {user.isUser.name} </span>
                     <span onClick={() => logout()}> Sign Out</span>
+                    <Link to="/updateProfile">Profile</Link>
                     {Admin && <Link to='/admin'>/ Dashboard</Link>}
                     <NavLink to='/cart'>
                         <div className="counter">({totalItems})</div>
                         <ShoppingCartOutlined />
                     </NavLink>
-
 
                 </div>
             ) : (

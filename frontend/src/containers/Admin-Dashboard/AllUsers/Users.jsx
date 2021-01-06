@@ -8,7 +8,7 @@ import './Users.scss'
 const layout = { labelCol: { span: 6 }, wrapperCol: { span: 16, } };
 
 const Users = ({ users }) => {
-    console.log('Users', { users });
+
     const { Title } = Typography;
     const [visible, setVisible] = useState(false);
     const [animationModal, setAnimationModal] = useState();
