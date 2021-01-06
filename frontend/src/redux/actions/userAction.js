@@ -11,11 +11,13 @@ export const allUsers = async()=> {
     })
 }
 export const updateProfile = async (id, user)=>{
+  console.log('updateProfile', id)
    const res =await axios.put(API_URL + 'users/' + id, user, {
         headers: {
             Authorization: 'Bearer' + localStorage.getItem('authToken')
         }
      });
+   
      store.dispatch({
         type: userActions.SIGNUP,
         payload: res.data.user

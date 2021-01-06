@@ -20,9 +20,9 @@ const Cart = () => {
                         <h5 className="Qty">Quantity</h5>
                         <h5 className="Total">Total</h5>
                     </div>
-                    <div className="items">
+                    <div className="items" >
                         {cartItems.map((item) => (
-                            item.count > 0 && <CartItem item={item} />
+                            item.count > 0 && <CartItem key={item._id} item={item} />
                         ))}
                     </div>
                 </main>
