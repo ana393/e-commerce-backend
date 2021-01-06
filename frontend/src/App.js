@@ -11,6 +11,7 @@ import AllProducts from './containers/Admin-Dashboard/AllProducts/product.jsx';
 import Products from './components/AllProducts/Products.jsx';
 import NewProduct from './components/NewProduct/newProduct.jsx';
 import Cart from './containers/cart/cart.jsx';
+import Checkout from './containers/Checkout/Checkout.jsx';
 
 function App() {
   return ( 
@@ -25,8 +26,10 @@ function App() {
            <Route path="/admin" component = {Board} exact />
             <Route path="/products" component = { AllProducts } exact />
             <Route path="/products/:_id" component = { Products } exact />
-            <Route path="/cart" component = { Cart } exact />
             <Route path="/products/newProduct" component = { NewProduct } exact />
+            <Route path="/cart" component = { Cart } exact />
+             <Route path="/checkout" component = { Checkout } exact />
+            
        </Switch>
      
       </BrowserRouter>

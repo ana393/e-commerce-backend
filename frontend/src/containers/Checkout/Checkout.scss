@@ -1,0 +1,31 @@
+@import "../../variables.scss";
+.stripe-form {
+  border-radius: 10px;
+  padding: 40px;
+  box-shadow: $shadow;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2em;
+  label {
+    color: $greyGreen;
+    font-style: italic;
+    font-weight: bolder;
+  }
+  .ant-btn {
+    margin: 1.5em;
+    padding: 0.5em;
+    border-radius: 10px;
+    text-transform: uppercase;
+    font-weight: bolder;
+    border: none;
+    cursor: pointer;
+    transition: $transition;
+    color: $white;
+    background-color: $green;
+
+    &:hover {
+      background-color: $orange;
+      color: $white;
+    }
+  }
+}

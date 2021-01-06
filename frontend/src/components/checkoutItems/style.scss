@@ -1,0 +1,25 @@
+@import "../../variables.scss";
+
+.divider {
+  width: 1px;
+  background-color: rgba(0, 0, 0, 0.2);
+  height: 500px;
+}
+h1 {
+  font-size: 1em;
+  padding: 1em;
+  font-weight: bold;
+  color: $green;
+  text-transform: uppercase;
+}
+h3,
+p {
+  font-size: 1em;
+  font-weight: bold;
+  padding: 1em;
+  color: $greyGreen;
+  text-transform: uppercase;
+}
+hr {
+  border: 2px solid $lightPeach;
+}

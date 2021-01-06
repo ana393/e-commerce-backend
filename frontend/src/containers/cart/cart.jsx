@@ -35,7 +35,7 @@ const Cart = () => {
                 </h4>
                 <button className="clear-btn" onClick={() => clearCart()}>Clear Cart</button>
                 <br />
-                <button className="checkout" ><Link to=""> Checkout <LockFilled /></Link></button>
+                <button className="checkout" ><Link to="/checkout"> Checkout <LockFilled /></Link></button>
             </aside>
         </div >
     )

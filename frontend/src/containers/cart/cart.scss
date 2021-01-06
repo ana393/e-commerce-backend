@@ -6,7 +6,7 @@
   grid-template-areas: "main  aside";
   margin: 20px;
   padding-left: 6px;
-  box-shadow: 0 0 5px 5px grey;
+  box-shadow: $shadow;
 
   main {
     grid-area: main;
@@ -83,26 +83,28 @@
       font-weight: bolder;
       border: none;
       cursor: pointer;
-      transition: 320ms all ease-in-out;
+      transition: $transition;
     }
     .clear-btn {
       color: $white;
       background-color: $greyGreen;
       &:hover {
-        background-color: $white;
-        color: $greyGreen;
+        background-color: $green;
+        color: $white;
       }
     }
     .checkout {
       background-color: $white;
       color: $greyGreen;
       &:hover {
-        background-color: $greyGreen;
-        color: $white;
+        background-color: $green;
       }
       a {
         all: unset;
         color: $greyGreen;
+        &:hover {
+          color: $white;
+        }
       }
     }
   }
