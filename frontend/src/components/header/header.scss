@@ -6,11 +6,12 @@ header {
   background: $greyGreen;
   z-index: 1;
   h2 {
-    margin: 0.4em;
+    margin-top: 0.4em;
     color: $yellowGreen;
   }
   span {
     margin: 0.2em;
+    height: 1em;
     margin-left: 3.5em;
   }
 
@@ -19,6 +20,9 @@ header {
     margin: 0.8em;
     display: flex;
     justify-content: space-around;
+    span {
+      height: 1em;
+    }
     .counter {
       padding: -5 0px;
       color: $white;
@@ -36,6 +40,7 @@ header {
       all: unset;
       padding: 0.6em;
       color: $white;
+      height: 2.5em;
       cursor: pointer;
       &:hover {
         color: $yellowGreen;

@@ -20,7 +20,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
       <Header/>
-      
+    
        <Switch>
             <Route path="/" component = {Home} exact />
             <Route path="/signUp" component = {SignUp} exact />

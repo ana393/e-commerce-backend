@@ -17,7 +17,7 @@ const Header = () => {
     return (
         <header>
             <SearchBox />
-            <span className="logo"> <NavLink to="/" exact><h2>MIMO</h2></NavLink>  </span>
+            <span > <NavLink to="/" exact><h2>MIMO</h2></NavLink>  </span>
 
             {user.isUser ? (
                 <div className="user">
@@ -33,7 +33,7 @@ const Header = () => {
                 </div>
             ) : (
                     <div className="newUser">
-
+                        <span>Hello User </span>
                         <NavLink to="/cart">
                             <div className="counter">({totalItems})</div><ShoppingCartOutlined />
                         </NavLink>
