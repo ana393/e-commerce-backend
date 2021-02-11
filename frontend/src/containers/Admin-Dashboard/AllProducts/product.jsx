@@ -36,7 +36,7 @@ const AllProducts = ({ product }) => {
                         Editar
                     </NavLink>
                     <Popconfirm title="Estás seguro que quieres eliminar el producto?" okText="Si" cancelText="No"
-                        onConfirm={confirm.bind(record._id)} onCancel={cancel}>
+                        onConfirm={() => deleteProduct(record._id)} onCancel={cancel}>
                         <button type="button" className="link-button">
                             Eliminar
                         </button>
@@ -46,10 +46,7 @@ const AllProducts = ({ product }) => {
         },
     ];
 
-    const confirm = e => {
-        deleteProduct(e);
-        message.success('Confirmado');
-    }
+
 
     function cancel (e) {
         message.error('Cancelado');

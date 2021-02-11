@@ -7,12 +7,12 @@ import './Users.scss'
 const layout = { labelCol: { span: 6 }, wrapperCol: { span: 16, } };
 
 const Users = ({ users }) => {
-    const id = users;
-    console.log(id);
+
+
     const { Title } = Typography;
     const [visible, setVisible] = useState(false);
     const [animationModal, setAnimationModal] = useState();
-    const [updateUser, setUpdatedUser] = useState();
+    const [updateUser, setUpdatedUser] = useState(users);
     const classModal = `cardModal animated ${animationModal}`
     const { Option } = Select;
     const columns = [
@@ -67,20 +67,8 @@ const Users = ({ users }) => {
     }
 
 
-    /* const confirm = (key) => {
-         console.log(key);
-         deleteUser(key)
-             .then(res => {
-                 notification.success({ message: 'Deleted', description: res.message, duration: 2000 })
-             })
-             .catch(() => {
-                 notification.error({
-                     message: 'Error', description: 'There was a problem trying to eliminate the user',
-                     duration: 2000
-                 })
-             })
-     }
- */
+
+
     function cancel (e) {
         message.error('Canceled');
     }
@@ -105,14 +93,15 @@ const Users = ({ users }) => {
                     <Col span={12} >
                         <Card className={classModal} style={{ marginTop: 140, borderRadius: 10, boxShadow: "1px 1px 3px #727272" }}>
 
-
+                            <Title level={2}>Cambiar role</Title>
                             <Form {...layout} name="formUpdate" onFinish={onFinish}>
                                 <Row justify="center">
                                     <Col span={24}>
-                                        <Form.Item name="role" label="Rol " rules={[{ required: false }]}>
+                                        <Form.Item name="role" label="Rol de usuario " rules={[{ required: false }]}>
                                             <Select placeholder={updateUser?.role} initialvalues={updateUser?.role}>
-                                                <Option value="user">user</Option>
                                                 <Option value="admin">admin</Option>
+                                                <Option value="seller">admin</Option>
+                                                <Option value="user">user</Option>
                                             </Select>
                                         </Form.Item>
                                     </Col>

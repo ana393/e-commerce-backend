@@ -50,18 +50,11 @@ export const updateProduct = async(id, product) => {
     })
 }
 export const deleteProduct = async(id) => {
- const res =  await axios.delete(API_URL + 'products/' + id, {headers: {
-            Authorization: 'Bearer' + localStorage.getItem('authToken')}
-        })
-    console.log('delete:',res)
-    store.dispatch({
-        type: ProductActions.DELETE,
-        payload: res.data 
-    });
- 
-  store.dispatch({
-    type: ProductActions.LIST_PRODUCTS,
-    payload: res.data
-  })  
+  const token = JSON.parse(localStorage.getItem('authToken'));
+ await axios.delete(API_URL + 'products/' + id, 
+            {headers: {Authorization: token}}
+        )
+    
+ return listProducts();
 }
 
