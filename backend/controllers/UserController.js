@@ -30,7 +30,7 @@ async logIn(req, res) {
            const tokenObj = issueJWT(isUser);
            return res.status(200).json({isUser, token: tokenObj.token, expiresIn: tokenObj.expires, msg:"You are logged in"})
          } else {
-           res.status(401).json({msg:"Wrong pasword"})
+           res.status(401).json({msg:"Wrong password"})
          }  
        }
   } catch (error) {
@@ -41,9 +41,11 @@ async logIn(req, res) {
 },
 //update profile
 async Update(req, res){
+ console.log(req.body) ;
    try {
      const Updated = await User.findByIdAndUpdate(req.params.id, req.body, {new:true});
      res.status(200).json({ message: "Successfully updaded", Updated})
+     console.log('Updated user:', Updated)
    } catch (error) {
      console.error(error);
       res

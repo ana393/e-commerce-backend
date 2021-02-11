@@ -4,7 +4,7 @@ const Product = require('../models/Products');
 const ProductsController={
     //insert new product
     async insertProduct(req, res) {
-      console.log(req.file);
+      console.log('insertProduct', req.body, req.file);
       try {
         const product = await Product.create(req.body, req.file);
         res.send({product, msg:"Successfully created product."})
@@ -42,7 +42,7 @@ const ProductsController={
         const filter = await Product.find({ name : { $regex: req.query.name,  $options: 'i'} });
         if  (filter.length === 0) { res.status(404).json({msg:`No product with given name: ${ req.query.name}, in your Data Base. `});
       }
-      console.log(req.query);
+      
         res.status(200).json({ message: "Successfully found", filter})
       } catch (error) {
         console.error(error);
