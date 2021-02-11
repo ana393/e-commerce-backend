@@ -1,7 +1,7 @@
 import { userActions } from '../actions/types';
 
 const userReducer =(state={}, action)=>{
- 
+
     switch (action.type){
         case userActions.ALLUSERS:
             return {
@@ -9,6 +9,11 @@ const userReducer =(state={}, action)=>{
                 users: action.payload
             }
         case userActions.SIGNIN:
+            return {
+                ...state,
+                user: action.payload
+            }
+            case userActions.UPDATE:
             return {
                 ...state,
                 user: action.payload

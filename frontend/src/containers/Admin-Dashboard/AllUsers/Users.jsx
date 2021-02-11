@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Row, Col, notification, Card, Table, Typography, Popconfirm, message, Button, Space, Form, Select } from 'antd';
-
 import { allUsers, updateProfile, deleteUser } from '../../../redux/actions/userAction';
 import './Users.scss'
 
@@ -12,7 +11,7 @@ const Users = ({ users }) => {
     const { Title } = Typography;
     const [visible, setVisible] = useState(false);
     const [animationModal, setAnimationModal] = useState();
-    const [updateUser, setUpdatedUser] = useState("");
+    const [updateUser, setUpdatedUser] = useState();
     const classModal = `cardModal animated ${animationModal}`
     const { Option } = Select;
     const columns = [
@@ -103,13 +102,13 @@ const Users = ({ users }) => {
                     <Col span={12} >
                         <Card className={classModal} style={{ marginTop: 140, borderRadius: 10, boxShadow: "1px 1px 3px #727272" }}>
 
-                            <Title level={2}> Cambiar Rol </Title>
+
                             <Form {...layout} name="formUpdate" onFinish={onFinish}>
                                 <Row justify="center">
                                     <Col span={24}>
                                         <Form.Item name="role" label="Rol " rules={[{ required: false }]}>
                                             <Select placeholder={updateUser?.role} initialvalues={updateUser?.role}>
-                                                <Option value="standar">standar</Option>
+                                                <Option value="user">user</Option>
                                                 <Option value="admin">admin</Option>
                                             </Select>
                                         </Form.Item>

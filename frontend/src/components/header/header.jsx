@@ -1,4 +1,4 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
+
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -9,9 +9,9 @@ import './header.scss';
 
 
 const Header = () => {
+
     const user = useSelector(state => state.user.user);
     const cartItems = useSelector(state => state.cart.cart);
-    const Admin = user.isUser?.role === 'admin';
     const totalItems = cartItems.reduce((a, c) => a + c.count, 0);
 
     return (
@@ -23,9 +23,9 @@ const Header = () => {
                 <div className="user">
                     <span>Hello {user.isUser.name} </span>
                     <span onClick={() => logout()}> Sign Out</span>
-                    <Link to="/updateProfile">Profile</Link>
-                    {Admin && <Link to='/admin'>/ Dashboard</Link>}
-                    <NavLink to='/cart'>
+                    <Link to={`/users/${user.isUser._id}`}>Profile</Link>
+                    {user.isUser.role === 'admin' && <Link to="/admin">/ Dashboard</Link>}
+                    <NavLink to="/cart">
                         <div className="counter">({totalItems})</div>
                         <ShoppingCartOutlined />
                     </NavLink>
@@ -34,7 +34,7 @@ const Header = () => {
             ) : (
                     <div className="newUser">
 
-                        <NavLink to='/cart'>
+                        <NavLink to="/cart">
                             <div className="counter">({totalItems})</div><ShoppingCartOutlined />
                         </NavLink>
                         <NavLink to="/signup">SignUp</NavLink>
@@ -44,4 +44,8 @@ const Header = () => {
         </header>
     )
 }
+/*const mapStateToProps = (state) => ({
+    user: state.user.user,
+});
+const connectedHeader = connect(mapStateToProps, null)(Header);*/
 export default Header;

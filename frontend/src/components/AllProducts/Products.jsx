@@ -7,9 +7,11 @@ import { addCart } from '../../redux/actions/cartActions';
 
 const Products = () => {
     const product = useSelector(state => state.product.product);
+    console.log(product);
     const cartItems = useSelector(state => state.cart.cart);
     const totalItems = cartItems.reduce((a, c) => a + c.count, 0);
     useEffect(() => { listProducts(); }, []);
+
     return (
         <div className="Container" key="product" id="product">
             { product.map((p) => (

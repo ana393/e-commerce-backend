@@ -34,7 +34,7 @@ export const byPrice = async()=>{
 
 export const insertProduct = async(product) => {
   const res =  await axios.post(API_URL + 'products/insert', product);
-    console.log('New product:',res.data)
+    
     store.dispatch({
         type: ProductActions.INSERT,
         payload: res.data
