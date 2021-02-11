@@ -7,7 +7,8 @@ import './Users.scss'
 const layout = { labelCol: { span: 6 }, wrapperCol: { span: 16, } };
 
 const Users = ({ users }) => {
-
+    const id = users;
+    console.log(id);
     const { Title } = Typography;
     const [visible, setVisible] = useState(false);
     const [animationModal, setAnimationModal] = useState();
@@ -30,12 +31,13 @@ const Users = ({ users }) => {
         {
             title: 'Action', key: 'action',
             render: (record) => (
+
                 <Space size="middle">
                     <button type="button" className="link-button" onClick={() => { setUpdatedUser(record); setVisible(true); setAnimationModal('bounceInUp') }} >
                         cambiar rol
                         </button>
                     <Popconfirm title="Estás seguro que quieres eliminar el usuario?" okText="Si" cancelText="No"
-                        onConfirm={confirm.bind(this, record._id)} onCancel={cancel}>
+                        onConfirm={() => deleteUser(record._id)} onCancel={cancel}>
                         <button type="button" className="link-button">
                             Eliminar
                         </button>
@@ -65,19 +67,20 @@ const Users = ({ users }) => {
     }
 
 
-    const confirm = (e) => {
-        deleteUser(e)
-            .then(res => {
-                notification.success({ message: 'Deleted', description: res.message, duration: 2000 })
-            })
-            .catch(() => {
-                notification.error({
-                    message: 'Error', description: 'There was a problem trying to eliminate the user',
-                    duration: 2000
-                })
-            })
-    }
-
+    /* const confirm = (key) => {
+         console.log(key);
+         deleteUser(key)
+             .then(res => {
+                 notification.success({ message: 'Deleted', description: res.message, duration: 2000 })
+             })
+             .catch(() => {
+                 notification.error({
+                     message: 'Error', description: 'There was a problem trying to eliminate the user',
+                     duration: 2000
+                 })
+             })
+     }
+ */
     function cancel (e) {
         message.error('Canceled');
     }

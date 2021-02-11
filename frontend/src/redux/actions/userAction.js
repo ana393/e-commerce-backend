@@ -21,6 +21,7 @@ export const updateProfile = async (id, body)=>{
    
 }
  export const deleteUser = async(id) =>{
+     console.log(id);
      const token = JSON.parse(localStorage.getItem('authToken'));
       await axios.delete(API_URL + 'users/' + id, {headers: {Authorization: token}}
      )
