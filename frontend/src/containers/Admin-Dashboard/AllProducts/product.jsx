@@ -4,7 +4,7 @@ import { Form, Card, Row, Col, Table, Typography, Popconfirm, message, notificat
 import { listProducts, deleteProduct, updateProduct } from '../../../redux/actions/productActions';
 import { Link } from 'react-router-dom';
 import './product.scss';
-import ProductForm from '../../../components/NewProduct/Product.jsx';
+import EditProduct from '../../../components/NewProduct/EditProduct.jsx';
 const layout = { labelCol: { span: 6 }, wrapperCol: { span: 16, } };
 
 
@@ -108,11 +108,11 @@ const AllProducts = ({ product }) => {
             <Col span={24} className="modalContainer" style={{ display: visible ? "block" : "none" }}>
                 <Row justify="center">
                     <Col span={12} >
-                        <Card className={classModal} style={{ marginTop: 140, borderRadius: 10, boxShadow: "1px 1px 3px #727272" }}>
+                        <Card className={classModal} style={{ marginTop: 20, borderRadius: 10, boxShadow: "1px 1px 3px #727272" }}>
                             <Title level={2}>Edit Product</Title>
-                            <Form {...layout} name="UformUpdate" onFinish={onFinish} >
+                            <Form {...layout} name="productUpdate" onFinish={onFinish} >
 
-                                <ProductForm Product={Product} className={classModal} setAnimationModal={setAnimationModal} setVisible={setVisible} />
+                                <EditProduct Product={Product} className={classModal} key={Product._id} setAnimationModal={setAnimationModal} setVisible={setVisible} />
                             </Form>
 
                         </Card>

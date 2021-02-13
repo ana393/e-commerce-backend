@@ -33,7 +33,8 @@ export const byPrice = async()=>{
 }
 
 export const insertProduct = async(product) => {
-  const res =  await axios.post(API_URL + 'products/insert', product);
+   const token = JSON.parse(localStorage.getItem('authToken'));
+  const res =  await axios.post(API_URL + 'products/insert', product,  {headers: {Authorization: token}});
     
     store.dispatch({
         type: ProductActions.INSERT,

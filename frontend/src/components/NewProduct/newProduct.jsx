@@ -1,10 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Form, Input, Select, InputNumber, Button, Upload, notification } from 'antd';
-import { UploadOutlined } from '@ant-design/icons';
+import { Form, Button, notification } from 'antd';
 import { insertProduct } from '../../redux/actions/productActions';
+import ProductForm from './ProductForm.jsx';
 import './newProduct.scss';
-
 const layout = {
     labelCol: { span: 6 },
     wrapperCol: { span: 14 },
@@ -12,19 +11,13 @@ const layout = {
 const tailLayout = {
     wrapperCol: { offset: 8, span: 16 },
 };
-const normFile = (e) => {
-    console.log('Upload event:', e);
 
-    if (Array.isArray(e)) {
-        return e;
-    }
 
-    return e && e.fileList;
-};
 const NewProduct = () => {
 
 
     const register = product => {
+        console.log(product);
         insertProduct(product).then(() => {
             notification.success({ message: 'Register', description: 'New Product created!' })
 
@@ -35,49 +28,15 @@ const NewProduct = () => {
     }
     return (
         <div className="newProduct">
-            <h2>Create New Product</h2> <label>Edit Product</label>
+            <h2>Create New Product</h2>
             <div className="form">
                 <Form
                     {...layout}
                     name="basic"
                     initialValues={{ remember: true }}
-                    onFinish={register}
-                    onFinishFailed={console.error}
+                    onFinish={register} onFinishFailed={console.error}
                 >
-                    <Form.Item
-                        label="name"
-                        name="name"
-                        rules={[{ required: true, message: 'Please input product name!' }]}
-                    >
-                        <Input />
-                    </Form.Item>
-                    <Form.Item label="Category" name="category" rules={[{ required: true, message: 'Please input the category!' }]} >
-                        <Select>
-                            <Select.Option value="Food">Food</Select.Option>
-                            <Select.Option value="Technology">Technology</Select.Option>
-                            <Select.Option value="Books">Books</Select.Option>
-                            <Select.Option value="Cloths">Cloths</Select.Option>
-                            <Select.Option value="Sofware&Games">Sofware&Games</Select.Option>
-                        </Select>
-                    </Form.Item>
-                    <Form.Item label="Price" name="price">
-                        <InputNumber />
-                    </Form.Item>
-                    <Form.Item label="InStock" name="InStock">
-                        <InputNumber />
-                    </Form.Item>
-                    <Form.Item
-                        name="upload"
-                        label="Upload image"
-                        valuePropName="fileList"
-                        getValueFromEvent={normFile}
-                        extra="image/jpeg/png"
-                    >
-                        <Upload name="logo" action="/upload.do" listType="picture">
-                            <Button icon={<UploadOutlined />}>Click to upload</Button>
-                        </Upload>
-                    </Form.Item>
-
+                    <ProductForm />
                     <Form.Item {...tailLayout}>
                         <Button type="primary" htmlType="submit">
                             Register
