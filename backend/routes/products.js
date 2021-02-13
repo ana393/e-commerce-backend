@@ -27,9 +27,9 @@ const upload = multer({storage: storage, limits:{fileSize: 1024 * 1024 * 5}, fil
 router.post('/ProdIMG', upload.single("imgURL"), function (req, res){
     console.log(req.file, req.body)
 });
-router.post('/insert',    ProductsController.insertProduct);
-router.put('/update',passport.authenticate('jwt', { session:false}),only(['admin']), ProductsController.updateProduct);
-router.delete('/:id',passport.authenticate('jwt', { session:false}),  ProductsController.deleteProduct);
+router.post('/insert', passport.authenticate('jwt', { session:false}),only(['admin']),   ProductsController.insertProduct);
+router.put('/update/:id',passport.authenticate('jwt', { session:false}),only(['admin']), ProductsController.updateProduct);
+router.delete('/:id',passport.authenticate('jwt', { session:false}),only(['admin']),  ProductsController.deleteProduct);
 //for all users
 router.get('/search', ProductsController.filterProduct)
 router.get('/', ProductsController.getProducts);

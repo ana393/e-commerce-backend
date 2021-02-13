@@ -17,7 +17,7 @@ const ProductsController={
     async updateProduct(req,res) {
       console.log(req.body)
       try {
-        const updated = await Product.findByIdAndUpdate(req.body._id, req.body, {new:true});
+        const updated = await Product.findByIdAndUpdate(req.params.id, req.body, {new:true});
         res.status(200).json({ message: "Successfully updaded product", updated})
         
       } catch (error) {
