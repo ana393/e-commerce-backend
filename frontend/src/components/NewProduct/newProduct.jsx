@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Form, Input, Select, InputNumber, Button, Upload, notification } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import { insertProduct } from '../../redux/actions/productActions';
@@ -34,7 +35,7 @@ const NewProduct = () => {
     }
     return (
         <div className="newProduct">
-            <h2>Create New Product</h2>
+            <h2>Create New Product</h2> <label>Edit Product</label>
             <div className="form">
                 <Form
                     {...layout}
@@ -88,5 +89,5 @@ const NewProduct = () => {
         </div>
     )
 }
-
-export default NewProduct;
+const mapStateToProps = ({ product }) => ({ product: product.product });
+export default connect(mapStateToProps, null)(NewProduct);

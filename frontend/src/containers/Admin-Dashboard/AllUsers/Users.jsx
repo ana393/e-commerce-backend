@@ -100,7 +100,7 @@ const Users = ({ users }) => {
                                         <Form.Item name="role" label="Rol de usuario " rules={[{ required: false }]}>
                                             <Select placeholder={updateUser?.role} initialvalues={updateUser?.role}>
                                                 <Option value="admin">admin</Option>
-                                                <Option value="seller">admin</Option>
+                                                <Option value="seller">seller</Option>
                                                 <Option value="user">user</Option>
                                             </Select>
                                         </Form.Item>

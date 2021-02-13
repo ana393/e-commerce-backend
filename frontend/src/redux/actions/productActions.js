@@ -41,13 +41,11 @@ export const insertProduct = async(product) => {
     })
 }
 export const updateProduct = async(id, product) => {
-    const res = await axios.post(API_URL + 'products/update' + id,{headers: {
-            Authorization: 'Bearer' + localStorage.getItem('authToken')}}, product);
-    console.log('Update Product:',res.data)
-    store.dispatch({
-        type: ProductActions.INSERT,
-        payload: res.data
-    })
+   
+   const token = JSON.parse(localStorage.getItem('authToken'));
+    await axios.put(API_URL + `products/update/${id}`, product, {headers: {Authorization: token}} );
+    
+     return listProducts();
 }
 export const deleteProduct = async(id) => {
   const token = JSON.parse(localStorage.getItem('authToken'));

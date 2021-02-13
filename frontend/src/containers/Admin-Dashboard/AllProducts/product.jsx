@@ -1,14 +1,23 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Card, Row, Col, Table, Typography, Popconfirm, message, Button, Space } from 'antd';
-import { listProducts, deleteProduct } from '../../../redux/actions/productActions';
-import { NavLink, Link } from 'react-router-dom';
+import { Form, Card, Row, Col, Table, Typography, Popconfirm, message, notification, Button, Space } from 'antd';
+import { listProducts, deleteProduct, updateProduct } from '../../../redux/actions/productActions';
+import { Link } from 'react-router-dom';
 import './product.scss';
+import ProductForm from '../../../components/NewProduct/Product.jsx';
+const layout = { labelCol: { span: 6 }, wrapperCol: { span: 16, } };
+
 
 const AllProducts = ({ product }) => {
 
     useEffect(() => { listProducts(); }, []);
+
     const { Title } = Typography;
+    const [visible, setVisible] = useState(false);
+    const [animationModal, setAnimationModal] = useState();
+    const [Product, setProduct] = useState(product);
+    const classModal = `cardModal animated ${animationModal}`
+
 
     const columns = [
         {
@@ -32,9 +41,9 @@ const AllProducts = ({ product }) => {
             render: (record) => (
 
                 <Space size="middle">
-                    <NavLink to="" exact>
+                    <button type="button" className="link-button" onClick={() => { setProduct(record); setVisible(true); setAnimationModal('bounceInUp') }} >
                         Editar
-                    </NavLink>
+                        </button>
                     <Popconfirm title="Estás seguro que quieres eliminar el producto?" okText="Si" cancelText="No"
                         onConfirm={() => deleteProduct(record._id)} onCancel={cancel}>
                         <button type="button" className="link-button">
@@ -45,6 +54,28 @@ const AllProducts = ({ product }) => {
                 </Space>),
         },
     ];
+
+    const onFinish = (values) => {
+        const product = {
+            category: values.category
+        }
+
+        updateProduct(Product._id, product)
+            .then(res => {
+                notification.success({ message: 'Updated', description: 'Product updated successfully', duration: 2000 })
+                setAnimationModal('bounceOutUp');
+                setTimeout(() => {
+                    setVisible(false);
+                }, 800);
+            })
+            .catch(() => {
+                notification.error({
+                    message: 'Error', description: 'There was a problem trying to update the Product',
+                    duration: 2000
+                })
+            })
+    }
+
 
 
 
@@ -60,13 +91,11 @@ const AllProducts = ({ product }) => {
                         <Col>
                             <Title level={2}> Productos </Title>
                             <Row>
-
                                 <Button type="primary">
                                     <Link to="/newProduct" >
                                         New Product
                                          </Link>
                                 </Button>
-
                             </Row>
                         </Col>
                     </Row>
@@ -75,9 +104,25 @@ const AllProducts = ({ product }) => {
                     </div>
                 </Card>
             </Col>
+
+            <Col span={24} className="modalContainer" style={{ display: visible ? "block" : "none" }}>
+                <Row justify="center">
+                    <Col span={12} >
+                        <Card className={classModal} style={{ marginTop: 140, borderRadius: 10, boxShadow: "1px 1px 3px #727272" }}>
+                            <Title level={2}>Edit Product</Title>
+                            <Form {...layout} name="UformUpdate" onFinish={onFinish} >
+
+                                <ProductForm Product={Product} className={classModal} setAnimationModal={setAnimationModal} setVisible={setVisible} />
+                            </Form>
+
+                        </Card>
+                    </Col>
+                </Row>
+            </Col>
+
         </Row>
     )
 }
 
 const mapStateToProps = ({ product }) => ({ product: product.product });
-export default connect(mapStateToProps, null)(AllProducts);
+export default connect(mapStateToProps)(AllProducts);
