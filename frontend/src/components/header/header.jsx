@@ -10,7 +10,7 @@ import './header.scss';
 
 const Header = () => {
 
-    const user = useSelector(state => state.user.user);
+    const user = useSelector(state => state.user.user.isUser);
     const cartItems = useSelector(state => state.cart.cart);
     const totalItems = cartItems.reduce((a, c) => a + c.count, 0);
 
@@ -19,12 +19,12 @@ const Header = () => {
             <SearchBox />
             <span > <NavLink to="/" exact><h2>MIMO</h2></NavLink>  </span>
 
-            {user.isUser ? (
+            {user ? (
                 <div className="user">
-                    <span>Hello {user.isUser.name} </span>
+                    <span>Hello {user.name} </span>
                     <span onClick={() => logout()}> Sign Out</span>
-                    <Link to={`/users/${user.isUser._id}`}>Profile</Link>
-                    {user.isUser.role === 'admin' && <Link to="/admin">/ Dashboard</Link>}
+                    <Link to={`/users/${user._id}`}>Profile</Link>
+                    {user.role === 'admin' && <Link to="/admin">/ Dashboard</Link>}
                     <NavLink to="/cart">
                         <div className="counter">({totalItems})</div>
                         <ShoppingCartOutlined />

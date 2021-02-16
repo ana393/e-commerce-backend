@@ -5,8 +5,8 @@ import { listProducts, deleteProduct, updateProduct } from '../../../redux/actio
 import { Link } from 'react-router-dom';
 import './product.scss';
 import EditProduct from '../../../components/NewProduct/EditProduct.jsx';
-const layout = { labelCol: { span: 6 }, wrapperCol: { span: 16, } };
 
+const layout = { labelCol: { span: 6 }, wrapperCol: { span: 20, } };
 
 const AllProducts = ({ product }) => {
 
@@ -15,7 +15,7 @@ const AllProducts = ({ product }) => {
     const { Title } = Typography;
     const [visible, setVisible] = useState(false);
     const [animationModal, setAnimationModal] = useState();
-    const [Product, setProduct] = useState(product);
+    const [Product, setProduct] = useState({ product });
     const classModal = `cardModal animated ${animationModal}`
 
 
@@ -57,7 +57,11 @@ const AllProducts = ({ product }) => {
 
     const onFinish = (values) => {
         const product = {
-            category: values.category
+            name: values.name,
+            category: values.category,
+            price: values.price,
+            InStock: values.InStock,
+            upload: values.upload
         }
 
         updateProduct(Product._id, product)
@@ -85,7 +89,7 @@ const AllProducts = ({ product }) => {
 
     return (
         <Row justify="center">
-            <Col span={18} style={{ marginTop: 5 }}>
+            <Col span={18} style={{ marginTop: 3 }}>
                 <Card className=" cardRegister animated bounceInRight" style={{ marginTop: 20, borderRadius: 10, backgroundColor: "#cccccc17", boxShadow: "1px 1px 3px #727272" }}>
                     <Row justify="center" style={{ marginBottom: 5 }}>
                         <Col>
@@ -108,11 +112,12 @@ const AllProducts = ({ product }) => {
             <Col span={24} className="modalContainer" style={{ display: visible ? "block" : "none" }}>
                 <Row justify="center">
                     <Col span={12} >
-                        <Card className={classModal} style={{ marginTop: 20, borderRadius: 10, boxShadow: "1px 1px 3px #727272" }}>
+                        <Card className={classModal} style={{ marginTop: 10, borderRadius: 10, boxShadow: "1px 1px 3px #727272" }}>
                             <Title level={2}>Edit Product</Title>
-                            <Form {...layout} name="productUpdate" onFinish={onFinish} >
+                            <Form {...layout} name="formUpdate" onFinish={onFinish}  >
 
-                                <EditProduct Product={Product} className={classModal} key={Product._id} setAnimationModal={setAnimationModal} setVisible={setVisible} />
+                                <EditProduct Product={Product} setVisible={setVisible} setAnimationModal={setAnimationModal} />
+
                             </Form>
 
                         </Card>
@@ -124,5 +129,5 @@ const AllProducts = ({ product }) => {
     )
 }
 
-const mapStateToProps = ({ product }) => ({ product: product.product });
+const mapStateToProps = state => ({ product: state.product.product });
 export default connect(mapStateToProps)(AllProducts);

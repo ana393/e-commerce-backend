@@ -1,8 +1,8 @@
 import  { combineReducers } from 'redux';
 import user from './users.js';
-import  product from './products';
-import cart from './cart';
-import orders from './orders';
+import  product from './products.js';
+import cart from './cart.js';
+import orders from './orders.js';
 
 
 

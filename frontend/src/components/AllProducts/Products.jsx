@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './Products.scss';
 import { listProducts } from '../../redux/actions/productActions';
 import { addCart } from '../../redux/actions/cartActions';
 
-const Products = () => {
-    const product = useSelector(state => state.product.product);
+const Products = ({ product }) => {
+    //const product = useSelector(state => state.product.product);
     console.log(product);
     const cartItems = useSelector(state => state.cart.cart);
     const totalItems = cartItems.reduce((a, c) => a + c.count, 0);
@@ -14,7 +14,7 @@ const Products = () => {
 
     return (
         <div className="Container" key="product" id="product">
-            { product.map((p) => (
+            { product?.map((p) => (
 
                 <div className="card" key={p._id} id={p._id}>
                     <Link to={`/products/${p._id}`}>
@@ -31,6 +31,7 @@ const Products = () => {
         </div>
     )
 }
+const mapStateToProps = state => ({ product: state.product.product });
+export default connect(mapStateToProps)(Products)
 
-export default Products;
 
