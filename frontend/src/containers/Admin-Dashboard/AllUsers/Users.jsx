@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import { Row, Col, notification, Card, Table, Typography, Popconfirm, message, Button, Space, Form, Select } from 'antd';
 import { allUsers, updateProfile, deleteUser } from '../../../redux/actions/userAction';
 import './Users.scss'
@@ -23,6 +23,10 @@ const Users = ({ users }) => {
         {
             title: 'Rol', dataIndex: 'role',
             sorter: (a, b) => a.role.localeCompare(b.role), sortDirections: ['descend', 'ascend'],
+        },
+        {
+            title: 'E-mail', dataIndex: 'email',
+            sorter: (a, b) => a.email.localeCompare(b.email), sortDirections: ['descend', 'ascend'],
         },
         {
             title: 'Fecha de Alta', dataIndex: 'createdAt',
@@ -69,7 +73,7 @@ const Users = ({ users }) => {
 
 
 
-    function cancel (e) {
+    const cancel = (e) => {
         message.error('Canceled');
     }
 
@@ -77,17 +81,17 @@ const Users = ({ users }) => {
 
 
     return (
-        <Row justify="center">
-            <Col span={18}>
-                <Card className="animated bounceInRight" style={{ marginTop: 40, borderRadius: 10, backgroundColor: "#cccccc17", boxShadow: "1px 1px 3px #727272" }}>
-                    <Title level={2}> Usuarios </Title>
-                    <Row justify="center">
-                        <Col span={20}>
-                            <Table columns={columns} dataSource={users} rowKey="_id" size="middle" style={{ marginTop: 10 }} />
-                        </Col>
-                    </Row>
-                </Card>
-            </Col>
+        <Row justify="center" style={{ margin: 0 }} >
+
+            <Card className="animated bounceInRight" style={{ marginTop: 5, borderRadius: 10, backgroundColor: "#cccccc17", boxShadow: "1px 1px 3px #727272" }}>
+                <Row justify="center">
+                    <Title level={4}> Usuarios </Title>
+                </Row>
+                <div>
+                    <Table columns={columns} dataSource={users} rowKey="_id" size="middle" scroll={{ y: 340 }} />
+                </div>
+            </Card>
+
             <Col span={24} className="modalContainer" style={{ display: visible ? "block" : "none" }}>
                 <Row justify="center">
                     <Col span={12} >

@@ -1,9 +1,21 @@
-#components-layout-demo-side .logo {
-  height: 32px;
-  margin: 16px;
-  background: rgba(255, 255, 255, 0.3);
-}
+@import "../../../variables.scss";
 
+.ant-menu-item-selected {
+  background-color: $yellowGreen;
+}
+.ant-layout-sider-dark,
+.ant-menu.ant-menu-dark.ant-menu-root.ant-menu-inline {
+  background-color: $greyGreen;
+}
+.ant-menu-item-selected,
+.ant-menu-item,
+.ant-menu-submenu:hover {
+  background: $yellowGreen;
+}
+.ant-layout-sider-trigger {
+  background: $yellowGreen;
+}
 .site-layout .site-layout-background {
   background: #fff;
+  margin: 0;
 }

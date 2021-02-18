@@ -41,8 +41,7 @@ export const insertProduct = async(product) => {
         payload: res.data
     })
 }
-export const updateProduct = async(id, product) => {
-   
+export const updateProduct = async(id, product) => { 
    const token = JSON.parse(localStorage.getItem('authToken'));
     await axios.put(API_URL + `products/update/${id}`, product, {headers: {Authorization: token}} );
     

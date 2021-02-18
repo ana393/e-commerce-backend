@@ -12,14 +12,12 @@ export const allUsers = async()=> {
     })
 }
 export const updateProfile = async (id, body)=>{
-    console.log(id, body);
   const token = JSON.parse(localStorage.getItem('authToken'));
     await axios.put(API_URL + `users/${id}` , body, {headers: {Authorization: token}});
     
   return allUsers(); 
 }
  export const deleteUser = async(id) =>{
-    
      const token = JSON.parse(localStorage.getItem('authToken'));
       await axios.delete(API_URL + 'users/' + id, {headers: {Authorization: token}}
      )

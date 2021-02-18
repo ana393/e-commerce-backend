@@ -1,0 +1,13 @@
+@import "../../variables.scss";
+
+.ant-layout-sider-dark,
+.ant-menu.ant-menu-dark.ant-menu-inline-collapsed.ant-menu-root.antmenu-vertical {
+  background-color: $greyGreen;
+}
+
+.ant-menu-item-selected {
+  background: $yellowGreen !important;
+}
+.ant-layout-sider-trigger {
+  background: $yellowGreen;
+}

@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { Form, Card, Row, Col, Table, Typography, Popconfirm, message, notification, Button, Space } from 'antd';
 import { listProducts, deleteProduct, updateProduct } from '../../../redux/actions/productActions';
 import { Link } from 'react-router-dom';
 import './product.scss';
-import EditProduct from '../../../components/NewProduct/EditProduct.jsx';
+import EditProduct from '../../../components/ProductForm/EditProduct.jsx';
 
 const layout = { labelCol: { span: 6 }, wrapperCol: { span: 20, } };
 
 const AllProducts = ({ product }) => {
-
+    const history = useHistory();
     useEffect(() => { listProducts(); }, []);
 
     const { Title } = Typography;
@@ -71,6 +72,7 @@ const AllProducts = ({ product }) => {
                 setTimeout(() => {
                     setVisible(false);
                 }, 800);
+                history.push('/admin/Products_List')
             })
             .catch(() => {
                 notification.error({
@@ -81,33 +83,30 @@ const AllProducts = ({ product }) => {
     }
 
 
-
-
-    function cancel (e) {
+    const cancel = (e) => {
         message.error('Cancelado');
     }
 
     return (
-        <Row justify="center">
-            <Col span={18} style={{ marginTop: 3 }}>
-                <Card className=" cardRegister animated bounceInRight" style={{ marginTop: 20, borderRadius: 10, backgroundColor: "#cccccc17", boxShadow: "1px 1px 3px #727272" }}>
-                    <Row justify="center" style={{ marginBottom: 5 }}>
-                        <Col>
-                            <Title level={2}> Productos </Title>
-                            <Row>
-                                <Button type="primary">
-                                    <Link to="/newProduct" >
-                                        New Product
+        <Row justify="center" style={{ marginTop: 8 }}>
+            <Card style={{ marginTop: 5, borderRadius: 10, backgroundColor: "#cccccc17", boxShadow: "1px 1px 3px #727272" }}>
+                <Row justify="center" style={{ marginBottom: 5 }}>
+                    <Col>
+                        <Title level={4}> Products </Title>
+                        <Row>
+                            <Button type="primary">
+                                <Link to="/admin/NewProduct" >
+                                    New Product
                                          </Link>
-                                </Button>
-                            </Row>
-                        </Col>
-                    </Row>
-                    <div>
-                        <Table columns={columns} dataSource={product} rowKey="_id" size="middle" key={product._id} />
-                    </div>
-                </Card>
-            </Col>
+                            </Button>
+                        </Row>
+                    </Col>
+                </Row>
+                <div>
+                    <Table columns={columns} dataSource={product} rowKey="_id" size="middle" key={product._id} scroll={{ y: 340 }} />
+                </div>
+            </Card>
+
 
             <Col span={24} className="modalContainer" style={{ display: visible ? "block" : "none" }}>
                 <Row justify="center">
