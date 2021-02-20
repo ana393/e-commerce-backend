@@ -1,50 +1,82 @@
 @import "../../variables.scss";
 header {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+
   font-size: 1.2rem;
+  height: 5em;
   background: $greyGreen;
   z-index: 1;
   h2 {
     margin-top: 0.4em;
     color: $yellowGreen;
   }
-  span {
-    margin: 0.2em;
-    height: 1em;
-    margin-left: 3.5em;
+
+  //fixed div
+  .cart-and-account {
+    position: fixed;
+    display: block;
+    top: 1.2rem;
+    right: 2rem;
+    z-index: 3;
+    .cart {
+      background: $yellowGreen;
+      display: inline-block;
+      position: relative;
+      overflow: hidden;
+      vertical-align: middle;
+      font-size: 24px;
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      border-radius: 50%;
+    }
+    .cart-items {
+      display: inline-block;
+      position: relative;
+      overflow: hidden;
+      background: $white;
+      color: $greyGreen;
+      width: 22px;
+      height: 22px;
+      margin-left: -0.9em;
+      vertical-align: top;
+      text-align: center;
+      border-radius: 50%;
+    }
+
+    a {
+      margin-left: 0.5rem;
+      color: white;
+      svg {
+        vertical-align: -0.16em;
+        width: 30px;
+        height: 30px;
+      }
+    }
+    .li-item {
+      all: unset;
+    }
   }
 
-  .user,
-  .newUser {
-    margin: 0.8em;
-    display: flex;
-    justify-content: space-around;
-    span {
-      height: 1em;
+  .Home-link {
+    all: unset;
+    margin-top: 0.5em;
+    padding: 0.6em;
+    color: $white;
+    font-size: 1.2em;
+    cursor: pointer;
+    &:hover {
+      color: $yellowGreen;
     }
-    .counter {
-      padding: -5 0px;
-      color: $white;
-    }
-    .anticon {
-      padding: 0.2em;
-      color: $white;
-      font-size: xx-large;
+
+    /*.SignIn,
+    .dashboard {
+      background: $yellowGreen;
+      border-radius: 1em;
       &:hover {
-        color: $yellowGreen;
+        color: $greyGreen;
       }
-    }
-    span,
-    a {
-      all: unset;
-      padding: 0.6em;
-      color: $white;
-      height: 2.5em;
-      cursor: pointer;
-      &:hover {
-        color: $yellowGreen;
-      }
-    }
+    }*/
   }
 }

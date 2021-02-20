@@ -5,7 +5,7 @@ import { Form, Card, Row, Col, Table, Typography, Popconfirm, message, notificat
 import { listProducts, deleteProduct, updateProduct } from '../../../redux/actions/productActions';
 import { Link } from 'react-router-dom';
 import './product.scss';
-import EditProduct from '../../../components/ProductForm/EditProduct.jsx';
+import EditProduct from '../../../components/NewProduct/EditProduct.jsx';
 
 const layout = { labelCol: { span: 6 }, wrapperCol: { span: 20, } };
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch, useRouteMatch } from "react-router-dom";
 import SideBar from '../../../components/AdminSideBar/SideBar.jsx';
 import AllProducts from '../AllProducts/product';
-import NewProduct from '../../../components/ProductForm/newProduct.jsx';
+import NewProduct from '../../../components/NewProduct/newProduct.jsx';
 import Users from '../AllUsers/Users';
 import { Layout } from 'antd';
 

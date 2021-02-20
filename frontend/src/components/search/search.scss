@@ -1,6 +1,6 @@
 @import "../../variables.scss";
 .search {
-  height: 20px;
+  height: 2em;
   .searchbar {
     background-color: $greyGreen;
     border-radius: 30px;
@@ -16,7 +16,7 @@
       caret-color: $yellowGreen;
       transition: $animation;
     }
-    .anticon {
+    .loop {
       height: 2em;
       width: 2em;
       font-size: x-large;
@@ -29,14 +29,18 @@
       text-decoration: none;
       &:hover {
         background: $yellowGreen;
-        color: white;
       }
     }
     &:hover > input {
-      //padding: 0 5px;
       width: 10rem;
       caret-color: $yellowGreen;
       transition: $animation;
+    }
+  }
+  @media screen and (max-width: 960px) {
+    .searchbar {
+      display: block;
+      width: auto;
     }
   }
 }

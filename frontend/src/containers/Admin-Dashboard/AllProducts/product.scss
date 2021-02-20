@@ -1,3 +1,4 @@
+@import "../../../variables.scss";
 .link-button {
   background-color: transparent;
   border: none;
@@ -7,5 +8,5 @@
   margin: 0;
   padding: 0;
   text-decoration: none;
-  color: #1890ff;
+  color: $green;
 }
