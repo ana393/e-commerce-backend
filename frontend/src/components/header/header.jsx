@@ -15,21 +15,9 @@ const Header = () => {
     const cartItems = useSelector(state => state.cart.cart);
     const totalItems = cartItems.reduce((a, c) => a + c.count, 0);
 
-    const onMouseEnter = () => {
-        if (window.innerWidth < 960) {
-            setDropdown(false);
-        } else {
-            setDropdown(true);
-        }
-    };
+    const onMouseEnter = () => { setDropdown(true); };
 
-    const onMouseLeave = () => {
-        if (window.innerWidth < 960) {
-            setDropdown(false);
-        } else {
-            setDropdown(false);
-        }
-    };
+    const onMouseLeave = () => { setDropdown(false); };
     return (
         <header>
             <SearchBox />

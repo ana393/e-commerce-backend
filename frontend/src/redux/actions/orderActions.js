@@ -4,27 +4,42 @@ import { API_URL } from '../../config'
 import { OrderActions } from '../actions/types';
 
 export const listOrders = async()=>{
+    
     try {
-        const res = await axios.get(API_URL + 'orders');
+        const token = JSON.parse(localStorage.getItem('authToken'));
+        const res = await axios.get(API_URL + 'orders', {headers: {Authorization: token}});
+        console.log(res.data);
         store.dispatch({
-            type:OrderActions.LIST_OREDERS,
+            type:OrderActions.LIST_ORDERS,
             payload:res.data
         })
     } catch (error) {
        console.error(error) 
     }
 }
+export const getMyOrders = async(userId)=>{
+     const token = JSON.parse(localStorage.getItem('authToken'));
+     await axios.get(API_URL + `orders/${userId}`, {headers: {Authorization: token}});
+     return listOrders();
+}
 export const createOrder = async(order)=>{
-  await axios.post(API_URL + 'orders/create', order);
-  return listOrders();
+   const token = JSON.parse(localStorage.getItem('authToken')); 
+  const res = await axios.post(API_URL + 'orders/create', order, {headers: {Authorization: token}});
+  store.dispatch({
+      type: OrderActions.INSERT,
+      payload: res.data
+  })
 }
 
-export const updateOrder= async(referenceNumber, order)=>{
-   await axios.put(API_URL + 'orders/update/' + referenceNumber, order);
+export const updateOrder= async(id, order)=>{
+    console.log(id, order)
+    const token = JSON.parse(localStorage.getItem('authToken'));
+   await axios.put(API_URL + 'orders/update/' + id, order, {headers: {Authorization: token}});
   return listOrders(); 
 }
 
 export const deleteOrder = async(id)=>{
-    await axios.delete(API_URL +'orders/' + id);
+     const token = JSON.parse(localStorage.getItem('authToken'));
+    await axios.delete(API_URL +'orders/' + id, {headers: {Authorization: token}});
     return listOrders();
 }

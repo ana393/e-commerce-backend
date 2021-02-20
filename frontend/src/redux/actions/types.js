@@ -2,8 +2,7 @@ export const userActions={
     SIGNUP: "SIGNUP",
     SIGNIN:"SIGNIN",
     LOGOUT:"LOGOUT",
-    ALLUSERS:"ALLUSERS",
-    UPDATE:"UPDATE"
+    ALLUSERS:"ALLUSERS"
    
 };
 
@@ -11,11 +10,12 @@ export const ProductActions ={
     LIST_PRODUCTS: "LIST_PRODUCTS",
     INSERT:"INSERT",
     BYPRICE:"BYPRICE",
-    DELETE:"DELETE"
+   
     
 }
 export const OrderActions = {
-    LIST_ORDERS: "LIST_ORDERS"
+    LIST_ORDERS: "LIST_ORDERS",
+    INSERT:"INSERT"
 }
 
 export const CartActions = {

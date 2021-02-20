@@ -4,6 +4,7 @@ import SideBar from '../../../components/AdminSideBar/SideBar.jsx';
 import AllProducts from '../AllProducts/product';
 import NewProduct from '../../../components/NewProduct/newProduct.jsx';
 import Users from '../AllUsers/Users';
+import AllOrders from '../AllOrders/AllOrders.jsx';
 import { Layout } from 'antd';
 
 import './board.scss';
@@ -23,6 +24,7 @@ const Board = () => {
                             <Route path={`${match.path}/Products_List`} component={AllProducts} />
                             <Route path={`${match.url}/Users_List`} component={Users} exact />
                             <Route path={`${match.url}/NewProduct`} component={NewProduct} exact />
+                            <Route path={`${match.url}/Orders_List`} component={AllOrders} exact />
                         </Switch>
                     </Content>
                     <Footer style={{ textAlign: 'center' }}>MIMO ©2021 Created by A.T.</Footer>
