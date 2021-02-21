@@ -2,9 +2,11 @@ const jsonwebtoken = require('jsonwebtoken');
 
 const issueJWT = (isUser) => {
     const id = isUser._id;
+    const role = isUser.role;
     const expiresIn = '30d';
     const payload = {
         sub: id,
+        role: role,
         iat: Date.now()
     };
     const signedToken = jsonwebtoken.sign(payload, process.env.SECRET_JWT, {expiresIn: expiresIn})

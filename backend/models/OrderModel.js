@@ -5,39 +5,31 @@ const OrderSchema =  new mongoose.Schema({
         type: Number,
         unique:true,
     },
- items: [
-       {
-        prodID: {
+     user:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    } ,
+ items: 
+      [ {
+        product: {
            type: mongoose.Schema.Types.ObjectId,
            required: true,
            ref:'Product'
         },
-        name:{
-            type: String,
-            required:true
-        },
         quantity:{
+            type:Number,
+            default: 1
+        }
+       } ]
+    ,
+    expenditure:{
             type: Number,
             required: true
-        } ,
-        price:{
-           type: Number,
-           required: true
-        }
-       } 
-    ],
-    expenditure:{
-            type: mongoose.Schema.Types.Decimal128,
-            required: true
         } , 
-    user:{
-        type: mongoose.Types.ObjectId,
-        required: true,
-        ref: 'User'
-    },
-       status: {
+   
+    status: {
         type: String,
-        enum:['paid', 'shipping', 'delivered','canceled'],
+        enum:['pending','paid', 'shipping', 'delivered','canceled'],
         required: true,
      },
     shippingAddress: {

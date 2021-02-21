@@ -1,10 +1,10 @@
-const { update } = require('../models/OrderModel');
 const Order = require('../models/OrderModel');
 
 const OrderController = {
  async createOrder(req, res) {
+       console.log('orders User',req.user._id);
      try {
-        const newOrder = await Order.create(req.body); 
+        const newOrder = await Order.create(req.body, {user: req.user._id}); 
         res.status(200).json({msg: "Successfully created order", newOrder  }) 
      } catch (error) {
           console.error(error);
@@ -14,7 +14,7 @@ const OrderController = {
  //update according to passed status
  async updateToReqStatus(req, res) {
 try {
-   const update = await Order.findOneAndUpdate({referenceNumber:req.body.referenceNumber}, {$set: {status: req.body.status}}, {new:true});
+   const update = await Order.findByIdAndUpdate(req.params.id, {$set: {status: req.body.status}}, {new:true});
      res.status(200).json({msg: "Successfully updated order", update }) 
 } catch (error) {
     console.error(error);
@@ -23,9 +23,11 @@ try {
  },
  //user
  async getMyOrders(req, res) {
+
     try {
-       const myOrders = await Order.find({ user: req.params.id}).populate('user');
+       const myOrders = await Order.find({user:req.user._id}).populate('items.product','name category price imgURL');
         res.status(200).json({msg: "Successfully found my orders", myOrders })
+        console.log(myOrders)
     } catch (error) {
       console.error(error);
       res.status(500).send({ msg: "Unable to find your orders."})  
@@ -34,7 +36,7 @@ try {
  //admin
  async getOrders(req, res) {
     try {
-          const orders = await Order.find({}).populate('user', 'email');
+          const orders = await Order.find({}).populate('user','name email');
           res.status(200).json({msg: "Successfully found orders", orders  }) 
     } catch (error) {
        console.error(error);
