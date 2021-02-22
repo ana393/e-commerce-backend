@@ -1,6 +1,6 @@
 @import "../../variables.scss";
 .dropdown-menu {
-  background: $yellowGreen;
+  background: rgba($color: $yellowGreen, $alpha: 0.7);
   width: 200px;
   position: absolute;
   top: 40px;
@@ -13,7 +13,8 @@
   span {
     cursor: pointer;
     &:hover {
-      background: $green;
+      background: $greyGreen;
+      border-radius: 10px;
     }
   }
   .dropdown-link {

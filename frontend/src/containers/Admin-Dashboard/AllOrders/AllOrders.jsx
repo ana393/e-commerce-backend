@@ -55,7 +55,6 @@ const AllOrders = () => {
         const order = {
             status: values.status
         }
-        console.log(Order._id, order)
         updateOrder(Order._id, order)
             .then(res => {
                 notification.success({ message: 'Updated', description: 'Order updated successfully', duration: 2000 })

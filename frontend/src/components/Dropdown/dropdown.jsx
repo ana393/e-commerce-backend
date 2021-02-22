@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { MenuItems } from './menuItems';
+import { connect } from 'react-redux';
 import { logout } from '../../redux/actions/userAction';
+
 import './dropdown.scss';
 
 
 
-const Dropdown = () => {
+const Dropdown = ({ user }) => {
     const [click, setClick] = useState(false);
     const handleClick = () => setClick(!click);
+
+    const Admin = user.role === 'admin';
+
     return (
         <>
             <ul
@@ -27,11 +32,14 @@ const Dropdown = () => {
                             </Link>
                         </li>
                     );
-                })}
+
+                })
+                }
+                {Admin && <Link to='/admin'>Dashboard</Link>}
                 <span className="dropdown-link" onClick={() => logout()}> Sign Out</span>
             </ul>
         </>
     )
 }
-
-export default Dropdown;
+const mapStateToProps = state => ({ user: state.user.user.isUser });
+export default connect(mapStateToProps)(Dropdown);

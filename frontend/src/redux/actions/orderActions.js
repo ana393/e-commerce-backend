@@ -17,9 +17,9 @@ export const listOrders = async()=>{
        console.error(error) 
     }
 }
-export const getMyOrders = async(userId)=>{
+export const getMyOrders = async()=>{
      const token = JSON.parse(localStorage.getItem('authToken'));
-     await axios.get(API_URL + `orders/${userId}`, {headers: {Authorization: token}});
+     await axios.get(API_URL + 'orders/myorders', {headers: {Authorization: token}});
      return listOrders();
 }
 export const createOrder = async(order)=>{
@@ -32,7 +32,6 @@ export const createOrder = async(order)=>{
 }
 
 export const updateOrder= async(id, order)=>{
-    console.log(id, order)
     const token = JSON.parse(localStorage.getItem('authToken'));
    await axios.put(API_URL + 'orders/update/' + id, order, {headers: {Authorization: token}});
   return listOrders(); 
