@@ -1,13 +1,100 @@
-.orderItems {
-  align-items: center;
-  background-color: grey;
-  max-height: fit-content;
-  .order-item {
-    background: honeydew;
-    img {
-      width: 70px;
-      height: 70px;
-      padding-top: 0.5em;
+@import "../../variables.scss";
+.checkoutContainer {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  grid-template-rows: auto 2fr;
+  grid-template-areas: "main aside";
+  padding: 2em;
+
+  main {
+    grid-area: main;
+    border-radius: 5%;
+    padding: 1em;
+    .ant-form {
+      padding: 2em;
+      background: rgba($color: $yellowGreen, $alpha: 0.4);
+
+      label {
+        color: $greyGreen;
+        font-weight: bolder;
+        font-style: italic;
+      }
+    }
+    h2 {
+      font-weight: bolder;
+    }
+    .ant-btn.ant-btn-primary {
+      background: $greyGreen;
+      border-color: $greyGreen;
+      border-radius: 5px 5px 5px 5px;
+      text-transform: uppercase;
+      font-weight: bolder;
+      letter-spacing: 1px;
+      color: white;
+      &:hover {
+        color: $yellowGreen;
+        border-color: $yellowGreen;
+      }
+    }
+  }
+
+  aside {
+    grid-area: aside;
+    padding: 1em;
+    hr {
+      border: 3px solid $greyGreen;
+    }
+    .summary {
+      font-weight: bolder;
+    }
+    .subtotal,
+    .total {
+      font-size: 1em;
+      font-weight: bolder;
+      padding: 0.3em;
+      text-transform: uppercase;
+    }
+    .total {
+      color: $greyGreen;
+    }
+    .subtotal {
+      color: $yellowGreen;
+    }
+
+    .orderItems {
+      align-items: center;
+      padding: 1em;
+      max-height: fit-content;
+
+      .order-item {
+        display: grid;
+        grid-template-columns: 25% 30% 30% 15%;
+        grid-template-rows: auto 2fr;
+        grid-template-areas: "img name price totalPrice";
+        background: honeydew;
+        padding: 0.2em;
+        img {
+          grid-area: img;
+          width: 50px;
+          height: 50px;
+        }
+
+        .name {
+          grid-area: name;
+          color: rgba($color: $greyGreen, $alpha: 0.7);
+          font-weight: bolder;
+        }
+        .price {
+          grid-area: price;
+          color: rgba($color: $greyGreen, $alpha: 0.7);
+          font-weight: bolder;
+        }
+        .totalPrice {
+          grid-area: totalPrice;
+          color: rgba($color: $greyGreen, $alpha: 0.7);
+          font-weight: bolder;
+        }
+      }
     }
   }
 }

@@ -1,14 +1,12 @@
 import React, { useEffect } from 'react';
-import { connect, useSelector } from 'react-redux';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './Products.scss';
 import { listProducts } from '../../redux/actions/productActions';
 import { addCart } from '../../redux/actions/cartActions';
 
 const Products = ({ product, cart }) => {
-    //const product = useSelector(state => state.product.product);
 
-    //const cartItems = useSelector(state => state.cart.cart);
     const totalItems = cart?.reduce((a, c) => a + c.count, 0);
     useEffect(() => { listProducts(); }, []);
 
