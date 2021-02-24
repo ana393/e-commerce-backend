@@ -12,7 +12,7 @@ const CartItem = ({ item }) => {
             <span className="up-btn" onClick={() => addAnItemCart(item)} >+</span>
             <span className="amount">{item.count}</span>
             <span className="down-btn" onClick={() => removeAnItemCart(item)} >-</span>
-            <span className="totalPrice" >{item.price * item.count}</span>
+            <span className="totalPrice" >{(item.price * item.count).toFixed(2)}</span>
             <button className="remove-btn" onClick={() => removeItemCart(item)}><DeleteFilled /></button>
 
         </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Col, Row } from "antd";
-import CheckoutForm from '../../components/checkoutItems/CheckoutForm.jsx';
-import OrderSummary from '../../components/checkoutItems/OrderSummary.jsx';
+//import CheckoutForm from '../../components/checkoutItems/CheckoutForm.jsx';
+//import OrderSummary from '../../components/checkoutItems/OrderSummary.jsx';
 import './Checkout.scss';
 
 const Checkout = () => {
@@ -10,12 +10,7 @@ const Checkout = () => {
             <Col offset={6} span={12} className="stripe-form-container">
                 <div className="stripe-form">
                     <Row gutter={12}>
-                        <Col span={14}>
-                            <CheckoutForm />
-                        </Col>
-                        <Col span={10}>
-                            <OrderSummary />
-                        </Col>
+                        <h2>checkout page</h2>
                     </Row>
                 </div>
             </Col>

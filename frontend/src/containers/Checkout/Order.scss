@@ -1,0 +1,13 @@
+.orderItems {
+  align-items: center;
+  background-color: grey;
+  max-height: fit-content;
+  .order-item {
+    background: honeydew;
+    img {
+      width: 70px;
+      height: 70px;
+      padding-top: 0.5em;
+    }
+  }
+}

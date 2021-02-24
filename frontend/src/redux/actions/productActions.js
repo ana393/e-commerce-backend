@@ -16,11 +16,12 @@ export const searchProduct = async(dispatch,word)=>{
      const Item = data["filter"].map((item) => ({
        _id: item["_id"],
        name: item["name"],
+       img: item["imgURL"],
        price: item["price"],
        category: item["category"],
-       InStock: item["InStock"]
+       
      }));
-     console.log('search item:', Item);
+     
     return dispatch({
        type: ProductActions.LIST_PRODUCTS,
        payload: Item,

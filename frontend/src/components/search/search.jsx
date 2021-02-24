@@ -21,7 +21,7 @@ const SearchBox = props => {
     return (
         <div className="search">
             <div className="searchbar">
-                <Link to="/products/:_id">
+                <Link to="/products/:id">
                     <span onClick={() => searchProduct()}>< SearchOutlined className="loop" /></span>
                 </Link>
                 <input

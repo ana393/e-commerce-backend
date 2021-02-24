@@ -24,11 +24,10 @@ export const getMyOrders = async()=>{
 }
 export const createOrder = async(order)=>{
    const token = JSON.parse(localStorage.getItem('authToken')); 
-  const res = await axios.post(API_URL + 'orders/create', order, {headers: {Authorization: token}});
-  store.dispatch({
-      type: OrderActions.INSERT,
-      payload: res.data
-  })
+   console.log(token)
+  const res = await axios.post(API_URL + 'orders/create', order , {headers: {Authorization: token}});
+     console.log(res);
+  return listOrders();
 }
 
 export const updateOrder= async(id, order)=>{

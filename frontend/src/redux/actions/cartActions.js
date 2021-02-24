@@ -1,4 +1,6 @@
 import store from '../store';
+//import axios from 'axios';
+//import { API_URL } from '../../config'
 import {  CartActions } from '../actions/types';
 
 export const addCart = (newProduct) =>{
@@ -14,12 +16,14 @@ export const addCart = (newProduct) =>{
   if (!exists){
      cartItems.push({...newProduct, count: 1});
   }
+  
    localStorage.setItem("cartItems", JSON.stringify(cartItems));
    store.dispatch({
       type:CartActions.ADD_ITEM,
       payload: { cartItems }
     }); 
 };
+
 
 export const removeItemCart = (removeItem) =>{
    const cartItems =store.getState().cart.cart.filter(i => i._id !== removeItem._id);

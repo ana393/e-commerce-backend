@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { clearCart } from '../../redux/actions/cartActions';
 import { LockFilled, SmileOutlined } from '@ant-design/icons';
-import CartItem from '../../components/cartItem.jsx/CartItem.jsx';
+import CartItem from '../../components/cartItem/CartItem.jsx';
 import './cart.scss';
 
 const Cart = () => {
@@ -12,7 +12,7 @@ const Cart = () => {
     const totalPay = cartItems.reduce((a, c) => a + c.price * c.count, 0).toFixed(2);
     return (
         <div className="cartContainer" key="cartItems" id="cartItems">
-            {cartItems.length === 0 ? (<h3>Your cart is empty...go shopping <SmileOutlined /></h3>) : (
+            {cartItems.length === 0 ? (<h3>Your cart is empty...<Link to="/products/:_id">go shopping <SmileOutlined /></Link></h3>) : (
                 <main >
                     <div className="cartHeader">
                         <h5 className="title">Product</h5>
@@ -35,7 +35,7 @@ const Cart = () => {
                 </h4>
                 <button className="clear-btn" onClick={() => clearCart()}>Clear Cart</button>
                 <br />
-                <button className="checkout" ><Link to="/checkout"> Checkout <LockFilled /></Link></button>
+                {cartItems.length > 0 && <button className="checkout" > < Link to="cart/checkout"> Checkout <LockFilled /></Link></button>}
             </aside>
         </div >
     )
