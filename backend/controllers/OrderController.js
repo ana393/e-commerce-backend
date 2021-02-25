@@ -2,9 +2,10 @@ const Order = require('../models/OrderModel');
 
 const OrderController = {
  async createOrder(req, res) {
-       console.log('orders User',req.user._id);
+      console.log('insert order', req.body) 
      try {
-        const newOrder = await Order.create(req.body, {user: req.user._id}); 
+        req.body.status='pending';
+        const newOrder = await Order.create(req.body); 
         res.status(200).json({msg: "Successfully created order", newOrder  }) 
      } catch (error) {
           console.error(error);
@@ -36,7 +37,7 @@ try {
  //admin
  async getOrders(req, res) {
     try {
-          const orders = await Order.find({}).populate('user','name email');
+          const orders = await Order.find({}).populate('product','name ');
           res.status(200).json({msg: "Successfully found orders", orders  }) 
     } catch (error) {
        console.error(error);

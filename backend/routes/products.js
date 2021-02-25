@@ -33,6 +33,7 @@ router.delete('/:id',passport.authenticate('jwt', { session:false}),only(['admin
 //for all users
 router.get('/search', ProductsController.filterProduct)
 router.get('/', ProductsController.getProducts);
+router.get('/:id', ProductsController.getProductById);
 router.get('/byPrice', ProductsController.byPriceProduct);
 
 module.exports = router;

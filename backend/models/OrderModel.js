@@ -10,15 +10,15 @@ const OrderSchema =  new mongoose.Schema({
         ref: 'User'
     } ,
  items: 
-      [ {
+       [{
         product: {
            type: mongoose.Schema.Types.ObjectId,
-           required: true,
            ref:'Product'
         },
         quantity:{
             type:Number,
-            default: 1
+            required: true
+            
         }
        } ]
     ,
@@ -26,6 +26,11 @@ const OrderSchema =  new mongoose.Schema({
             type: Number,
             required: true
         } , 
+    paymentMethod:{
+       type:String,
+       required: true
+
+    },    
    
     status: {
         type: String,
@@ -41,10 +46,10 @@ const OrderSchema =  new mongoose.Schema({
                 },
                  message: '{v} is not a valid phone number! '
             }  },
-        address: {type: String, required:true},
-        city:{type: String, required:true},
-        postalCode:{type: String, required:true},
-        country: {type: String, required:true},
+        address: {type: String,required: true },
+        city:{type: String,required: true },
+        postalCode:{type: String,required: true},
+        country: {type: String,required: true},
     },
     
 },{

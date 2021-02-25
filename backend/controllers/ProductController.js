@@ -71,6 +71,18 @@ const ProductsController={
            error});
        }
     
+    },
+    async getProductById(req, res) {
+       try{
+         const product = await Product.findById(req.params._id)
+         res.send(product)
+       }catch (error){
+          console.error(error)
+           res.status(500).send({
+           message: "There was a problem to see the products",
+           error});
+       }
+    
     }
 }
 module.exports = ProductsController;
