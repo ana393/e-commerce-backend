@@ -4,10 +4,16 @@ const Product = require('../models/Products');
 const ProductsController={
     //insert new product
     async insertProduct(req, res) {
-      console.log('insertProduct', req.body, req.file);
       try {
-        const product = await Product.create(req.body, req.file);
-        res.send({product, msg:"Successfully created product."})
+        const item =({
+          name: req.body.name,
+          category: req.body.category,
+          price: req.body.price,
+          InStock: req.body.InStock,
+          imgURL: req.file.filename
+        })
+        const product = await Product.create({...item} );
+        res.status(201).json({message:"Successfully created product.", product}) 
       } catch (error) {
         console.error(error);
         res.status(500).send({ msg: "Unable to create the product."})
@@ -29,7 +35,7 @@ const ProductsController={
     async deleteProduct(req, res) {
       try {
        const deleted = await Product.findByIdAndDelete(req.params.id) ;
-       res.status(200).json({ message: "Successfully deleted product",deleted})
+       res.status(204).json({ message: "Successfully deleted product",deleted})
       } catch (error) {
          console.error(error);
         res.status(500).send({ msg: "Unable to delete the product."})
@@ -63,7 +69,7 @@ const ProductsController={
     async getProducts(req, res) {
        try{
          const product = await Product.find();
-         res.send(product)
+          res.status(200).json({ message: "Successfully found products", product})
        }catch (error){
           console.error(error)
            res.status(500).send({
@@ -75,7 +81,7 @@ const ProductsController={
     async getProductById(req, res) {
        try{
          const product = await Product.findById(req.params._id)
-         res.send(product)
+          res.status(200).json({ message: "Successfully found", product})
        }catch (error){
           console.error(error)
            res.status(500).send({

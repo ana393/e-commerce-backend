@@ -8,7 +8,7 @@ const UserController = {
   async signUp(req, res) {
     try {
         const user = await User.create(req.body);
-        res.status(200).json({ user,  message: "User successfully created" });
+        res.status(201).json({ user,  message: "User successfully created" });
       } catch (error) {
       console.error(error);
       res
@@ -69,7 +69,7 @@ async Update(req, res){
   async deleteUser(req, res){
     try {
     const user = await User.findByIdAndDelete(req.params.id);
-     res.json({message:'User successfully deleted', user})
+     res.status(204).json({message:'User successfully deleted', user})
     } catch (error) {
       console.error(error);
       res.status(500).send({

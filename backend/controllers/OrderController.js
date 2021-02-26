@@ -6,7 +6,7 @@ const OrderController = {
      try {
         req.body.status='pending';
         const newOrder = await Order.create(req.body); 
-        res.status(200).json({msg: "Successfully created order", newOrder  }) 
+        res.status(201).json({msg: "Successfully created order", newOrder  }) 
      } catch (error) {
           console.error(error);
         res.status(500).send({ msg: "Unable to create the order."})
@@ -48,7 +48,7 @@ try {
  async deleteOrder(req, res) {
     try {
       const earase = await Order.findByIdAndDelete(req.params.id);
-      res.status(200).json({msg: "Successfully deleted orders", earase }) 
+      res.status(204).json({msg: "Successfully deleted orders", earase }) 
     } catch (error) {
     console.error(error);
     res.status(500).send({ msg: "Unable to delete order."})  

@@ -5,15 +5,17 @@ var express = require("express");
 var session = require('express-session');
 var passport = require('passport');
 
+
 var path = require("path");
 var dotenv = require('dotenv');
 var cookieParser = require("cookie-parser");
-var logger = require("morgan");
+
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var productsRouter =require("./routes/products");
 var orderRouter = require("./routes/orders");
+
 
 
 dotenv.config();
@@ -27,13 +29,13 @@ app.use((req, res, next) => {
 })
 
 
-
-
 app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+app.use('/images',express.static('images'));
+app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use('/uploads',express.static('uploads'));
-app.use(express.static(path.join(__dirname, "public")));
+
 //validate the session
 app.use(session({
   secret: process.env.SECRET_SESSION,
@@ -51,6 +53,7 @@ app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/products", productsRouter);
 app.use("/orders", orderRouter );
+
 
 
 
