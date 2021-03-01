@@ -5,9 +5,10 @@ import { ProductActions} from '../actions/types';
 
 export const listProducts = async()=>{
    const res = await axios.get(API_URL + 'products');
+   console.log(res.data.product)
     store.dispatch({
        type: ProductActions.LIST_PRODUCTS,
-       payload: res.data
+       payload: res.data.product
    })
    
 }

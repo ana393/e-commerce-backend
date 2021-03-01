@@ -8,6 +8,7 @@ import './cart.scss';
 
 const Cart = () => {
     const cartItems = useSelector(state => state.cart.cart);
+    const user = useSelector(state => state.user.user);
     const totalItems = cartItems.reduce((a, c) => a + c.count, 0);
     const totalPay = cartItems.reduce((a, c) => a + c.price * c.count, 0).toFixed(2);
     return (
@@ -35,7 +36,7 @@ const Cart = () => {
                 </h4>
                 <button className="clear-btn" onClick={() => clearCart()}>Clear Cart</button>
                 <br />
-                {cartItems.length > 0 && <button className="checkout" > < Link to="cart/checkout"> Checkout <LockFilled /></Link></button>}
+                {cartItems.length > 0 && user.isUser ? (<button className="checkout" > < Link to="cart/checkout"> Checkout <LockFilled /></Link></button>) : (<Link to="/signUp">get into your account</Link>)}
             </aside>
         </div >
     )

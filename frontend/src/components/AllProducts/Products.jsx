@@ -1,22 +1,25 @@
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './Products.scss';
 import { listProducts } from '../../redux/actions/productActions';
 import { addCart } from '../../redux/actions/cartActions';
 
-const Products = ({ product, cart }) => {
 
-    const totalItems = cart?.reduce((a, c) => a + c.count, 0);
+
+const Products = () => {
+
+    const prodList = useSelector(state => state.product.product);
+
     useEffect(() => { listProducts(); }, []);
 
     return (
         <div className="Container" key="product" id="product">
-            { product?.map((p) => (
+            { prodList?.map((p) => (
 
                 <div className="card" key={p._id} id={p._id}>
                     <Link to={`/products/${p._id}`}>
-                        <img src="" alt=""></img>
+                        <img src={p.imgURL} alt={p.name}></img>
                         <h4>{p.name}</h4>
                         <span>{p.price}€</span>
                         <div>{p.InStock > 0 ? (<span>In Stock: {p.InStock} </span>) : 'Out of Stock'}</div>
@@ -25,11 +28,10 @@ const Products = ({ product, cart }) => {
                     </Link>
                 </div>)
             )}
-            <span>{totalItems}</span>
+
         </div>
     )
 }
-const mapStateToProps = state => ({ product: state.product.product, cart: state.cart.cart });
-export default connect(mapStateToProps)(Products)
+export default Products;
 
 

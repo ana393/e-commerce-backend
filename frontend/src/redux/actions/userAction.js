@@ -28,13 +28,14 @@ export const signup = async(user) => {
     const res =   await axios.post(API_URL + 'users/signUp', user);
     store.dispatch({
         type: userActions.SIGNUP,
-        payload: res.data.user
+        payload: res.data
     })
    
 }
 export const login = async(user) => {
     const res =   await axios.post(API_URL + 'users/login', user);
     localStorage.setItem('authToken',JSON.stringify(res.data.token) );
+    console.log(res)
     store.dispatch({
         type: userActions.SIGNIN,
         payload: res.data

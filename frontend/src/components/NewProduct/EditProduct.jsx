@@ -1,21 +1,7 @@
 import React from 'react';
-import { Form, Input, Row, Col, Select, Button, Upload, InputNumber, } from 'antd';
-import { UploadOutlined } from '@ant-design/icons';
+import { Form, Input, Row, Col, Select, Button, InputNumber, } from 'antd';
 
-const normFile = (e) => {
-    console.log('Upload event:', e);
-
-    if (Array.isArray(e)) {
-        return e;
-    }
-
-    return e && e.fileList;
-};
-
-
-const EditProduct = ({ Product, setAnimationModal, setVisible }) => {
-
-
+const EditProduct = ({ Product, setAnimationModal, setVisible, setSelectedFile }) => {
     return (<>
         <Row justify="center"  >
             <Col span={24}>
@@ -42,19 +28,7 @@ const EditProduct = ({ Product, setAnimationModal, setVisible }) => {
                 <Form.Item type="InStock" label="InStock" name="InStock" rules={[{ required: true, message: 'Please input product name!' }]}>
                     <InputNumber placeholder={Product?.InStock} />
                 </Form.Item>
-                <Form.Item
-                    type="upload"
-                    placeholder="image"
-                    name="upload"
-                    label="Upload image"
-                    valuePropName="fileList"
-                    getValueFromEvent={normFile}
-                    extra="image/jpeg/png"
-                >
-                    <Upload name="logo" action="/upload.do" listType="picture">
-                        <Button icon={<UploadOutlined />}>Click to upload</Button>
-                    </Upload>
-                </Form.Item>
+
             </Col>
             <Col justify="center" span={24}>
                 <Row justify="space-around">

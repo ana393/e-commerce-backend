@@ -11,7 +11,7 @@ import './header.scss';
 
 const Header = () => {
     const [dropdown, setDropdown] = useState(false);
-    const user = useSelector(state => state.user.user.isUser);
+    const user = useSelector(state => state.user.user);
     const cartItems = useSelector(state => state.cart.cart);
     const totalItems = cartItems.reduce((a, c) => a + c.count, 0);
 
@@ -23,7 +23,7 @@ const Header = () => {
             <SearchBox />
             <span > <Link to="/" className="logo" ><h2>MIMO</h2></Link></span>
             <Link to="/" className="Home-link" >  Home</Link>
-            {user ? (
+            {user.isUser ? (
                 <div className="cart-and-account">
                     <Link className="fixed-cart" to="/cart">
                         <span className="cart"><ShoppingCartOutlined /> </span>

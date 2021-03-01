@@ -10,6 +10,7 @@ import EditProduct from '../../../components/NewProduct/EditProduct.jsx';
 const layout = { labelCol: { span: 6 }, wrapperCol: { span: 20, } };
 
 const AllProducts = ({ product }) => {
+    console.log(product);
     const history = useHistory();
     useEffect(() => { listProducts(); }, []);
 

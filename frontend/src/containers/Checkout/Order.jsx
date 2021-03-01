@@ -1,7 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { Input, notification, Form, Button } from 'antd';
-import { createOrder } from '../../redux/actions/orderActions'; import './Order.scss'
+import { createOrder } from '../../redux/actions/orderActions';
+import { clearCart } from '../../redux/actions/cartActions';
+import { useHistory } from 'react-router-dom';
+import './Order.scss'
 const layout = {
     labelCol: { span: 6 },
     wrapperCol: { span: 12 },
@@ -11,6 +14,7 @@ const tailLayout = {
 };
 
 const Order = props => {
+    const history = useHistory();
 
     const userId = props.user.isUser?._id;
     const totalItems = props.cart?.reduce((a, c) => a + c.count, 0);
@@ -25,12 +29,14 @@ const Order = props => {
             user: userId
         }
         createOrder(body).then(() => {
-            notification.success({ message: 'Register', description: 'New Product created!' })
+            notification.success({ message: 'Register', description: 'Succesfully created order!' })
+            clearCart();
 
         }).catch(error => {
             console.error(error)
-            notification.error({ message: 'Error', description: 'Unable to create new product.Check the input data.' })
+            notification.error({ message: 'Error', description: 'Unable to finish the order.Check the input data.' })
         })
+        history.push("/");
     }
 
     return (
@@ -41,7 +47,7 @@ const Order = props => {
                 <Form
                     {...layout}
                     name="basic"
-                    initialValues={{ remember: true }}
+
                     onFinish={registerOrder}
                     onFinishFailed={console.error}
                 >

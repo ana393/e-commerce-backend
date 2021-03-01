@@ -106,6 +106,13 @@
           color: $white;
         }
       }
+      a {
+        all: unset;
+        color: $greyGreen;
+        &:hover {
+          color: $white;
+        }
+      }
     }
   }
   h3 {

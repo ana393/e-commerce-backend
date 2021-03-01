@@ -7,11 +7,11 @@ const layout = { labelCol: { span: 6 }, wrapperCol: { span: 16, } };
 
 
 const AllOrders = () => {
-    const OrdersList = useSelector(state => state.orders.orders.orders)
+    const orderList = useSelector(state => state.orders.orders)
     const { Title } = Typography;
     const [visible, setVisible] = useState(false);
     const [animationModal, setAnimationModal] = useState();
-    const [Order, setUpdatedOrder] = useState(OrdersList);
+    const [Order, setUpdatedOrder] = useState(orderList);
     const classModal = `cardModal animated ${animationModal}`
     const { Option } = Select;
 
@@ -52,10 +52,10 @@ const AllOrders = () => {
         },
     ];
     const onFinish = (values) => {
-        const order = {
+        const body = {
             status: values.status
         }
-        updateOrder(Order._id, order)
+        updateOrder(Order._id, body)
             .then(res => {
                 notification.success({ message: 'Updated', description: 'Order updated successfully', duration: 2000 })
                 setAnimationModal('bounceOutUp');
@@ -84,7 +84,7 @@ const AllOrders = () => {
                         <Title level={4}> Orders </Title>
                     </Row>
                     <div>
-                        <Table columns={columns} dataSource={OrdersList} rowKey="_id" size="middle" scroll={{ y: 340 }} />
+                        <Table columns={columns} dataSource={orderList} rowKey="_id" size="middle" scroll={{ y: 340 }} />
                     </div>
                 </Card>
 

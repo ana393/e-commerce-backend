@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Menu, Layout } from 'antd';
 import {
 
@@ -13,6 +13,8 @@ const { Sider } = Layout;
 const SideBar = ({ match }) => {
 
     const [col, setCol] = useState(false);
+    const location = useLocation();
+
     const onCollapse = (col) => {
         setCol(col)
     }
@@ -20,7 +22,7 @@ const SideBar = ({ match }) => {
         <>
             <Sider collapsible collapsed={col} onCollapse={onCollapse}>
                 <div className="logo" />
-                <Menu theme="dark" mode="inline" >
+                <Menu theme="dark" defaultSelectedKeys={[location.pathname]} mode="inline" >
                     <Menu.Item key="1" title="Products Data Base" icon={< ContainerOutlined />}>
                         <Link to={`${match.url}/Products_List`} />
                             Products Data Base

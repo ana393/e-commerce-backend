@@ -22,9 +22,9 @@ const Board = () => {
                     <Content style={{ margin: 0, minHeight: '400' }}>
                         <Switch>
                             <Route path={`${match.path}/Products_List`} component={AllProducts} />
-                            <Route path={`${match.url}/Users_List`} component={Users} exact />
-                            <Route path={`${match.url}/NewProduct`} component={NewProduct} exact />
-                            <Route path={`${match.url}/Orders_List`} component={AllOrders} exact />
+                            <Route path={`${match.url}/Users_List`} component={Users} />
+                            <Route path={`${match.url}/NewProduct`} component={NewProduct} />
+                            <Route path={`${match.url}/Orders_List`} component={AllOrders} />
                         </Switch>
                     </Content>
                     <Footer style={{ textAlign: 'center' }}>MIMO ©2021 Created by A.T.</Footer>

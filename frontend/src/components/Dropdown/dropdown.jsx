@@ -9,10 +9,11 @@ import './dropdown.scss';
 
 
 const Dropdown = ({ user }) => {
+
     const [click, setClick] = useState(false);
     const handleClick = () => setClick(!click);
 
-    const Admin = user.role === 'admin';
+    const Admin = user.isUser?.role === 'admin';
 
     return (
         <>
@@ -35,11 +36,11 @@ const Dropdown = ({ user }) => {
 
                 })
                 }
-                {Admin && <Link to='/admin'>Dashboard</Link>}
+                {Admin && <span className="admin-link"> <Link to='/admin'>Dashboard</Link></span>}
                 <span className="dropdown-link" onClick={() => logout()}> Sign Out</span>
             </ul>
         </>
     )
 }
-const mapStateToProps = state => ({ user: state.user.user.isUser });
+const mapStateToProps = state => ({ user: state.user.user });
 export default connect(mapStateToProps)(Dropdown);

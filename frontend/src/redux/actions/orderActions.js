@@ -11,7 +11,7 @@ export const listOrders = async()=>{
         console.log(res.data);
         store.dispatch({
             type:OrderActions.LIST_ORDERS,
-            payload:res.data
+            payload:res.data.orders
         })
     } catch (error) {
        console.error(error) 

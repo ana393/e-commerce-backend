@@ -2,7 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { Input, notification } from 'antd';
 import { useSelector } from 'react-redux';
-import { updateProfile } from '../../../redux/actions/userAction';
+import { updateProfile, logout } from '../../../redux/actions/userAction';
 import './UpdateProfile.scss';
 const UpdateProfile = () => {
 
@@ -18,6 +18,7 @@ const UpdateProfile = () => {
                 email: event.target.email.value,
             }
             updateProfile(id, body);
+            logout();
             history.push("/");
         } catch (error) {
             console.log(error);
@@ -41,7 +42,5 @@ const UpdateProfile = () => {
 
     );
 }
-/*const mapStateToProps = (state) => ({ user: state.user.user });
-const mapDispatchToProps = dispatch => ({ update: (id, body) => updateProfile(dispatch, id, body) });
-const connectedUpdateProfile = connect(mapStateToProps, mapDispatchToProps)(UpdateProfile);*/
+
 export default UpdateProfile;
