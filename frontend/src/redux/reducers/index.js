@@ -1,15 +1,16 @@
 import  { combineReducers } from 'redux';
-import user from './users.js';
-import  product from './products.js';
-import cart from './cart.js';
-import orders from './orders.js';
+import {userReducer} from './users.js';
+import  {productsReducer} from './products.js';
+import {cartReducer} from './cart.js';
+import {ordersReducer, myOrdersReducer} from './orders.js';
 
 
 
 const rootReducer = combineReducers({
-  user,
-  product,
-  cart,
-  orders
+  user: userReducer,
+  product: productsReducer,
+  cart: cartReducer,
+  orders:ordersReducer,
+  myorders:myOrdersReducer
 });
 export default rootReducer;

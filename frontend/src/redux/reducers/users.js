@@ -1,6 +1,6 @@
 import { userActions } from '../actions/types';
 
-const userReducer =(state={}, action)=>{
+ export const userReducer =(state={}, action)=>{
 
     switch (action.type){
         case userActions.ALLUSERS:
@@ -30,4 +30,3 @@ const userReducer =(state={}, action)=>{
     }
 
 };
-export default userReducer;

@@ -15,7 +15,8 @@ export const ProductActions ={
 }
 export const OrderActions = {
     LIST_ORDERS: "LIST_ORDERS",
-    INSERT:"INSERT"
+    INSERT:"INSERT",
+    MYORDERS:"MYORDERS"
 }
 
 export const CartActions = {

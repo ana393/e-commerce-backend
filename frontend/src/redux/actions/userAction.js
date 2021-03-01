@@ -35,7 +35,7 @@ export const signup = async(user) => {
 export const login = async(user) => {
     const res =   await axios.post(API_URL + 'users/login', user);
     localStorage.setItem('authToken',JSON.stringify(res.data.token) );
-    console.log(res)
+    
     store.dispatch({
         type: userActions.SIGNIN,
         payload: res.data

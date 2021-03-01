@@ -17,10 +17,19 @@ export const listOrders = async()=>{
        console.error(error) 
     }
 }
-export const getMyOrders = async()=>{
-     const token = JSON.parse(localStorage.getItem('authToken'));
-     await axios.get(API_URL + 'orders/myorders', {headers: {Authorization: token}});
-     return listOrders();
+export const getMyOrders = async(userID)=>{
+    try {
+      const token = JSON.parse(localStorage.getItem('authToken'));
+      const res = await axios.get(API_URL + `orders/myorders?user=${userID}`, {headers: {Authorization: token}});
+    
+      store.dispatch({
+            type:OrderActions.MYORDERS,
+            payload:res.data.myOrders
+        })  
+    } catch (error) {
+        console.error(error) 
+    } 
+     
 }
 export const createOrder = async(order)=>{
    const token = JSON.parse(localStorage.getItem('authToken')); 

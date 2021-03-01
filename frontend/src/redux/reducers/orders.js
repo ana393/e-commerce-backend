@@ -1,6 +1,6 @@
 import { OrderActions } from '../actions/types';
 
-const ordersReducer =(state={}, action)=>{
+ export const ordersReducer =(state={}, action)=>{
 
     switch (action.type){
         case OrderActions.LIST_ORDERS:
@@ -13,5 +13,16 @@ const ordersReducer =(state={}, action)=>{
              return state;
     }
 }
+export const  myOrdersReducer =(state={myorders: []}, action)=>{
 
-export default ordersReducer;
+    switch (action.type){
+        case OrderActions.MYORDERS:
+            return {
+                ...state,
+                myorders: action.payload
+            }
+        
+        default:
+             return state;
+    }
+}

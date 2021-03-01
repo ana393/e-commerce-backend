@@ -1,6 +1,6 @@
 import { ProductActions } from '../actions/types';
 
-const productsReducer =(state = {selected:false}, action)=>{
+ export const productsReducer =(state = {selected:false}, action)=>{
   
     switch (action.type){
         case ProductActions.LIST_PRODUCTS:
@@ -20,4 +20,3 @@ const productsReducer =(state = {selected:false}, action)=>{
     }
 }
 
-export default productsReducer;

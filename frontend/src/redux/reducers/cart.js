@@ -3,7 +3,7 @@ import { CartActions } from '../actions/types';
 const cartItems =localStorage.getItem("cartItems", "cartCount") ? JSON.parse(localStorage.getItem("cartItems","cartCount")) : [];
 const initState = {cart: cartItems};
 
-const cartReducer =(state = initState, action) => {  
+export const cartReducer =(state = initState, action) => {  
     switch (action.type) {
         case CartActions.ADD_ITEM:
             return {
@@ -37,4 +37,3 @@ const cartReducer =(state = initState, action) => {
     }
 }
 
-export default cartReducer;
