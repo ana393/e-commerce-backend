@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { Input, notification } from 'antd';
 import { useSelector } from 'react-redux';
 import { updateProfile, logout } from '../../../redux/actions/userAction';
+import MyOrders from './MyOrders';
 import './UpdateProfile.scss';
 const UpdateProfile = () => {
 
@@ -37,7 +38,7 @@ const UpdateProfile = () => {
                     <button className="profUpdate" type="submit">Update your profile</button>
                 </form>
             </div>
-
+            <MyOrders />
         </div>
 
     );

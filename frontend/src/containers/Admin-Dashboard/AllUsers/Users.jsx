@@ -29,7 +29,8 @@ const Users = ({ users }) => {
         },
         {
             title: 'Fecha de Alta', dataIndex: 'createdAt',
-            sorter: (a, b) => a.createdAt.localeCompare(b.createdAt), sortDirections: ['descend', 'ascend'],
+            // render: (record) => record.createdAt.substring(0, 6),
+            sorter: (a, b) => a.createdAt.localeCompare(b.createdAt), sortDirections: ['descend', 'ascend']
         },
         {
             title: 'Action', key: 'action',
@@ -78,14 +79,14 @@ const Users = ({ users }) => {
 
 
     return (
-        <Row justify="center" style={{ margin: 0 }} >
+        <Row justify="center" style={{ margin: 0, xs: 8, sm: 16, md: 24, lg: 32 }} >
 
             <Card className="animated bounceInRight" style={{ marginTop: 5, borderRadius: 10, backgroundColor: "#cccccc17", boxShadow: "1px 1px 3px #727272" }}>
                 <Row justify="center">
                     <Title level={4}> Usuarios </Title>
                 </Row>
                 <div>
-                    <Table columns={columns} dataSource={users} rowKey="_id" size="middle" scroll={{ y: 340 }} />
+                    <Table columns={columns} dataSource={users} rowKey="_id" size="middle" scroll={{ x: 340, y: 340 }} />
                 </div>
             </Card>
 

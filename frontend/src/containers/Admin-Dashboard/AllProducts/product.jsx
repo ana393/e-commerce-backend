@@ -89,7 +89,7 @@ const AllProducts = ({ product }) => {
     }
 
     return (
-        <Row justify="center" style={{ marginTop: 8 }}>
+        <Row justify="center" style={{ margin: 10 }}>
             <Card style={{ marginTop: 5, borderRadius: 10, backgroundColor: "#cccccc17", boxShadow: "1px 1px 3px #727272" }}>
                 <Row justify="center" style={{ marginBottom: 5 }}>
                     <Col>
@@ -104,7 +104,7 @@ const AllProducts = ({ product }) => {
                     </Col>
                 </Row>
                 <div>
-                    <Table columns={columns} dataSource={product} rowKey="_id" size="middle" key={product._id} scroll={{ y: 340 }} />
+                    <Table columns={columns} dataSource={product} rowKey="_id" size="middle" key={product._id} scroll={{ x: 340, y: 340 }} />
                 </div>
             </Card>
 

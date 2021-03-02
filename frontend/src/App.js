@@ -9,7 +9,7 @@ import Board from './containers/Admin-Dashboard/Board/board.jsx';
 import Products from './components/AllProducts/Products.jsx';
 import Cart from './containers/cart/cart.jsx';
 import Order from './containers/Checkout/Order.jsx';
-import UpdateProfile from './containers/User/UpdateProfile/UpdateProfile.jsx';
+import UpdateProfile from './containers/User/Profile/UpdateProfile.jsx';
 import './App.css';
 
 function App() {

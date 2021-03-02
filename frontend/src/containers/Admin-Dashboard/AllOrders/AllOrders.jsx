@@ -19,20 +19,26 @@ const AllOrders = () => {
 
     const columns = [
         {
-            title: 'Ref_Number', dataIndex: 'referenceNumber', key: '_id',
+            title: 'Ref', dataIndex: 'referenceNumber', key: '_id',
+            width: 50,
+
             sorter: (a, b) => a.referenceNumber.localeCompare(b.referenceNumber), sortDirections: ['descend', 'ascend'],
         },
         {
             title: 'Status', dataIndex: 'status',
+
             sorter: (a, b) => a.status.localeCompare(b.status), sortDirections: ['descend', 'ascend'],
         },
         {
-            title: 'User', dataIndex: 'user',
-            sorter: (a, b) => a.user.localeCompare(b.user), sortDirections: ['descend', 'ascend'],
+            title: 'User',
+            render: (record) => record.user.email,
+
+            //sorter: (a, b) => a.user.localeCompare(b.user), sortDirections: ['descend', 'ascend'],
         },
         {
             title: 'CreatedAt', dataIndex: 'createdAt',
-            sorter: (a, b) => a.createdAt.localeCompare(b.createdAt), sortDirections: ['descend', 'ascend'],
+            //render: (record) => record.createdAt.substring(0, 6),
+            sorter: (a, b) => a.createdAt.tolocaleString(b.createdAt), sortDirections: ['descend', 'ascend'],
         },
         {
             title: 'Action', key: 'action',
@@ -75,18 +81,14 @@ const AllOrders = () => {
         message.error('Canceled');
     }
     return (
-        <div>
-            <h1>Orders</h1>
-            <Row justify="center" style={{ margin: 0 }} >
-
-                <Card className="animated bounceInRight" style={{ marginTop: 5, borderRadius: 10, backgroundColor: "#cccccc17", boxShadow: "1px 1px 3px #727272" }}>
-                    <Row justify="center">
-                        <Title level={4}> Orders </Title>
-                    </Row>
-                    <div>
-                        <Table columns={columns} dataSource={orderList} rowKey="_id" size="middle" scroll={{ y: 340 }} />
-                    </div>
-                </Card>
+        < >
+            <Row justify="center" style={{ margin: 20 }} >
+                <Row justify="center">
+                    <Title level={4}> Orders </Title>
+                </Row>
+                <div>
+                    <Table columns={columns} dataSource={orderList} rowKey="_id" size="small" scroll={{ x: 340, y: 340 }} />
+                </div>
 
                 <Col span={24} className="modalContainer" style={{ display: visible ? "block" : "none" }}>
                     <Row justify="center">
@@ -130,7 +132,7 @@ const AllOrders = () => {
                 </Col>
             </Row>
 
-        </div>
+        </>
     )
 }
 

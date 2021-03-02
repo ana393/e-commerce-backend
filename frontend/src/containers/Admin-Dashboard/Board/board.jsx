@@ -19,7 +19,7 @@ const Board = () => {
             <Layout style={{ minHeight: '100vh' }}>
                 <SideBar match={match} />
                 <Layout className="site-layout">
-                    <Content style={{ margin: 0, minHeight: '400' }}>
+                    <Content style={{ margin: 50, minHeight: '400' }}>
                         <Switch>
                             <Route path={`${match.path}/Products_List`} component={AllProducts} />
                             <Route path={`${match.url}/Users_List`} component={Users} />

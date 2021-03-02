@@ -3,6 +3,7 @@
 .ant-layout-sider-dark,
 .ant-menu.ant-menu-dark.ant-menu-inline-collapsed.ant-menu-root.antmenu-vertical {
   background-color: $greyGreen;
+  z-index: 2;
 }
 
 .ant-menu-item-selected {
