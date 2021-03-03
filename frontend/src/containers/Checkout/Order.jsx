@@ -29,12 +29,12 @@ const Order = props => {
             user: userId
         }
         createOrder(body).then(() => {
-            notification.success({ message: 'Register', description: 'Succesfully created order!' })
+            notification.success({ message: 'Register', description: 'Succesfully submmited order! For new shopping process we recomend to log yourself out. Thank you' })
             clearCart();
 
         }).catch(error => {
             console.error(error)
-            notification.error({ message: 'Error', description: 'Unable to finish the order.Check the input data.' })
+            notification.error({ message: 'Error', description: 'No order submmited! ' })
         })
         history.push("/");
     }
@@ -94,7 +94,7 @@ const Order = props => {
 
                     <Form.Item {...tailLayout}>
                         <Button type="primary" htmlType="submit">
-                            Accept order
+                            Submmit order
                     </Button>
                     </Form.Item>
                 </Form>

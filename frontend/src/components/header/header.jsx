@@ -16,7 +16,6 @@ const Header = () => {
     const totalItems = cartItems.reduce((a, c) => a + c.count, 0);
 
     const onMouseEnter = () => { setDropdown(true); };
-
     const onMouseLeave = () => { setDropdown(false); };
     return (
         <header>

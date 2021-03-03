@@ -79,7 +79,7 @@ const Users = ({ users }) => {
 
 
     return (
-        <Row justify="center" style={{ margin: 0, xs: 8, sm: 16, md: 24, lg: 32 }} >
+        <Row justify="center" style={{ margin: 0 }}  >
 
             <Card className="animated bounceInRight" style={{ marginTop: 5, borderRadius: 10, backgroundColor: "#cccccc17", boxShadow: "1px 1px 3px #727272" }}>
                 <Row justify="center">

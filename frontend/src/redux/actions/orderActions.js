@@ -36,6 +36,7 @@ export const createOrder = async(order)=>{
    console.log(token)
   const res = await axios.post(API_URL + 'orders/create', order , {headers: {Authorization: token}});
      console.log(res);
+     
   return listOrders();
 }
 

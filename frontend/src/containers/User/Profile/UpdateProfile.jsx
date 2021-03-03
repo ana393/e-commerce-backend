@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { Input, notification } from 'antd';
 import { useSelector } from 'react-redux';
 import { updateProfile, logout } from '../../../redux/actions/userAction';
-import MyOrders from './MyOrders';
+import MyOrders from './MyOrders.jsx';
 import './UpdateProfile.scss';
 const UpdateProfile = () => {
 

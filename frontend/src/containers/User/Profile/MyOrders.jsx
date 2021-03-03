@@ -1,18 +1,25 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { getMyOrders } from '../../../redux/actions/orderActions';
-import { Row, Table, Typography, Space } from 'antd';
-
+import { Row, Card, Col, Table, Button, Typography, Space } from 'antd';
+import PurchaseItem from '../../../components/Modal/modalItem.jsx';
+import './myorders.scss'
 
 const MyOrders = () => {
     const user = useSelector(state => state.user.user);
-    const userID = user.isUser?._id;
     const MyOrders = useSelector(state => state.myorders.myorders)
-    console.log(MyOrders)
+
     const { Title } = Typography;
+    const [visible, setVisible] = useState(false);
+    const [animationModal, setAnimationModal] = useState();
+    const [Order, setOrder] = useState('');
+    const classModal = `cardModal animated ${animationModal}`
+
+    const userID = user.isUser?._id;
     useEffect(() => {
         getMyOrders(userID);
-    }, [userID])
+    }, [userID]);
+
 
     const columns = [
 
@@ -20,7 +27,7 @@ const MyOrders = () => {
             title: 'Ref', dataIndex: 'referenceNumber', key: '_id',
             width: 50,
             sorter: (a, b) => a.name.localeCompare(b.name), sortDirections: ['descend', 'ascend'],
-
+            responsive: []
         },
         {
             title: 'Status', dataIndex: 'status',
@@ -41,7 +48,7 @@ const MyOrders = () => {
             render: (record) => (
 
                 <Space size="middle">
-                    <button type="button" className="link-button" >
+                    <button type="button" className="link-button" onClick={() => { setOrder(record); setVisible(true); setAnimationModal('bounceInUp') }} >
                         view
                         </button>
 
@@ -51,13 +58,35 @@ const MyOrders = () => {
 
     return (
         <>
-            <Row justify="center">
-                <Title level={4}> My orders </Title>
-            </Row>
-            <div>
-                <Table columns={columns} dataSource={MyOrders} rowKey="_id" size="small" scroll={{ x: 840, y: 340 }} />
-            </div>
+            <Col span={24} className="modalContainer" style={{ zIndex: 3, display: visible ? "block" : "none" }}>
+                <Row justify="center">
+                    <Col span={12} >
+                        <Card className={classModal} style={{ margin: 10, borderRadius: 10, boxShadow: "1px 1px 3px #727272" }}>
 
+                            <p>Reference_Number : {Order?.referenceNumber}</p>
+                            {Order.items?.map((item) => (
+                                <PurchaseItem key={item._id} item={item} />
+                            ))}
+                            <Button type="primary" onClick={() => {
+                                setAnimationModal('bounceOutUp'); setTimeout(() => {
+                                    setVisible(false);
+                                }, 800);
+                            }} >
+                                Cancelar
+                            </Button>
+                        </Card>
+                    </Col>
+                </Row>
+            </Col>
+            <div className="myOrder-container">
+                <Row justify="center">
+                    <Title level={4}> My orders </Title>
+                </Row>
+                <div>
+                    <Table columns={columns}
+                        dataSource={MyOrders} rowKey="_id" size="middle" scroll={{ y: 340 }} />
+                </div>
+            </div>
         </>
     )
 }

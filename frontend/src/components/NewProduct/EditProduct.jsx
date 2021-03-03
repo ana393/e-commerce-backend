@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, Input, Row, Col, Select, Button, InputNumber, } from 'antd';
 
-const EditProduct = ({ Product, setAnimationModal, setVisible, setSelectedFile }) => {
+const EditProduct = ({ Product, setAnimationModal, setVisible }) => {
     return (<>
         <Row justify="center"  >
             <Col span={24}>
