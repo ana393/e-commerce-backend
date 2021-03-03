@@ -6,13 +6,12 @@ const ProductSchema = new mongoose.Schema({
     },
     category: {
         type:String,
-        required: true
+       
         
         }, 
     price: {
-        type:Number,
+        type:String,
         required: true,
-        
         default: 0
         }, 
     imgURL: {
@@ -20,7 +19,7 @@ const ProductSchema = new mongoose.Schema({
       
         },
     InStock: {
-        type:Number,
+        type:String,
         required: true,
         default: 0
     }

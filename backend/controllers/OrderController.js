@@ -24,11 +24,10 @@ try {
  },
  //user
  async getMyOrders(req, res) {
-
     try {
-       const myOrders = await Order.find({user:req.user._id}).populate('items.product','name category price imgURL');
+       const myOrders = await Order.find({user:req.user._id}).populate('items.product','name price category imgURL');
         res.status(200).json({msg: "Successfully found my orders", myOrders })
-        console.log(myOrders)
+        
     } catch (error) {
       console.error(error);
       res.status(500).send({ msg: "Unable to find your orders."})  
@@ -37,8 +36,8 @@ try {
  //admin
  async getOrders(req, res) {
     try {
-          const orders = await Order.find({}).populate('product','name ');
-          res.status(200).json({msg: "Successfully found orders", orders  }) 
+          const orders = await Order.find({}).populate('user','name email ');
+          res.status(200).json({msg: "Successfully found orders", orders}) 
     } catch (error) {
        console.error(error);
       res.status(500).send({ msg: "Unable to find orders."}) 

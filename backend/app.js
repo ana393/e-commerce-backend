@@ -28,12 +28,9 @@ app.use((req, res, next) => {
   next();
 })
 
-
-app.use(express.json());
+app.use('/images',express.static(path.join(__dirname, "./public/images")));
 app.use(express.urlencoded({extended: true}));
-app.use('/images',express.static('images'));
-app.use(express.static(path.join(__dirname, "public")));
-app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 app.use(cookieParser());
 
 //validate the session
@@ -53,6 +50,8 @@ app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/products", productsRouter);
 app.use("/orders", orderRouter );
+
+
 
 
 

@@ -6,7 +6,7 @@ const ProductsController= require('../controllers/ProductController') ;
 const multerInstance = require('../config/multer')
 
 
-router.post('/insert',passport.authenticate('jwt', { session:false}), multerInstance.single('imgURL'),   ProductsController.insertProduct);
+router.post('/insert', multerInstance.single('imgURL'),   ProductsController.insertProduct);
 router.put('/update/:id',passport.authenticate('jwt', { session:false}), ProductsController.updateProduct);
 router.delete('/:id',passport.authenticate('jwt', { session:false}),only(['admin']),  ProductsController.deleteProduct);
 //for all users

@@ -4,13 +4,14 @@ const Product = require('../models/Products');
 const ProductsController={
     //insert new product
     async insertProduct(req, res) {
+      
       try {
         const item =({
           name: req.body.name,
           category: req.body.category,
           price: req.body.price,
           InStock: req.body.InStock,
-          imgURL: req.file.filename
+          imgURL: req.file.path
         })
         const product = await Product.create({...item} );
         res.status(201).json({message:"Successfully created product.", product}) 
