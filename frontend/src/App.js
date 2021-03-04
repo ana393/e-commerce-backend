@@ -10,6 +10,7 @@ import Products from './components/AllProducts/Products.jsx';
 import Cart from './containers/cart/cart.jsx';
 import Order from './containers/Checkout/Order.jsx';
 import UpdateProfile from './containers/User/Profile/UpdateProfile.jsx';
+import Footer from './components/Footer/Footer.jsx';
 import './App.css';
 
 function App() {
@@ -28,7 +29,7 @@ function App() {
              <Route path="/cart/checkout" component = { Order } exact />
             
        </Switch>
-     
+       <Footer/>
       </BrowserRouter>
     </div>
    
