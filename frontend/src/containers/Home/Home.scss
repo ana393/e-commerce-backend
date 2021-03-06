@@ -1,5 +1,6 @@
 @import "../../variables.scss";
 section {
+  margin: 0;
   height: 100vh;
   background-image: url(../../img/shopimg.jpg);
   background-size: cover;
@@ -26,7 +27,7 @@ section {
     .welcome {
       margin: 10rem 5rem;
       h1 {
-        color: honeydew;
+        color: $white;
         font-size: 4em;
       }
       .look {
@@ -34,7 +35,7 @@ section {
         background: #58ea00;
         position: absolute;
         text-align: center;
-        color: #fff;
+        color: $white;
         top: 50%;
         left: 10%;
         font-size: 1.5em;
@@ -43,7 +44,7 @@ section {
         border-radius: 50%;
         line-height: 80px;
         a {
-          color: honeydew;
+          color: $white;
           align-content: center;
         }
       }

@@ -2,25 +2,109 @@
 footer {
   margin-bottom: auto;
   background-color: $greyGreen;
-  .container {
+  .footerContainer {
     display: grid;
-    grid-template-columns: 75% 25%;
-    grid-template-rows: auto 1fr;
-    grid-template-areas: "info contact";
-    margin: 20px;
-    padding-left: 6px;
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    margin: 0 auto;
+    padding: 6px;
 
     .info {
-      grid-area: info;
-      color: #beb5b7;
+      background-color: $lightGrey;
+      margin: 2em;
+      padding-top: 1em;
+      border-radius: 1em;
+      text-align: center;
+      .hInfo {
+        color: white;
+        font-weight: bolder;
+      }
+
+      .hrInfo {
+        border: 1px solid $white;
+        width: 14em;
+        margin: 0 auto;
+      }
+      .text {
+        padding: 2.2em;
+        strong {
+          font-weight: bolder;
+          font-size: 1.3em;
+          color: $yellowGreen;
+        }
+        p {
+          color: $white;
+          font-weight: bolder;
+        }
+      }
+    }
+
+    .follow {
+      background-color: $lightGrey;
+      margin: 2em;
+      padding-top: 1em;
+      border-radius: 1em;
+      text-align: center;
+      .hFollow {
+        color: white;
+        font-weight: bolder;
+      }
+      .hrFollow {
+        border: 1px solid $yellowGreen;
+        margin: 0 auto;
+        width: 14em;
+      }
+      ul {
+        padding: 3em;
+        li {
+          all: unset;
+          padding: 1em;
+        }
+        svg {
+          width: 30px;
+          height: 30px;
+          color: $white;
+        }
+      }
     }
     .contact {
-      grid-area: contact;
-      color: #beb5b7;
+      background-color: $lightGrey;
+      margin: 2em;
+      padding-top: 1em;
+      border-radius: 1em;
+      text-align: center;
+    }
+    .hContact {
+      font-weight: bolder;
+      color: white;
+    }
+    .hrContact {
+      border: 1px solid $white;
+      margin: 0 auto;
+      width: 14em;
+    }
+    .send {
+      padding: 2.3em;
+      svg {
+        width: 1.5em;
+        height: 1.5em;
+        color: $white;
+      }
+      h3,
+      strong {
+        font-weight: bolder;
+        color: $yellowGreen;
+      }
     }
   }
-  hr {
-    border: 4px solid $yellowGreen;
-    margin: 3em;
+  .allRights {
+    margin: 0 auto;
+    padding-bottom: 2em;
+    text-align: center;
+    strong {
+      font-weight: bolder;
+      color: $yellowGreen;
+    }
   }
 }

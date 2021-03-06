@@ -1,25 +1,50 @@
-import React from 'react'
+import React from 'react';
+import { FacebookOutlined, InstagramOutlined, TwitterOutlined, MailOutlined, PhoneOutlined } from '@ant-design/icons';
 import './Footer.scss'
+
 const Footer = () => {
     return (
         <footer>
-            <div className="containter">
-                <div className="info" >
-                    <h3>HOME</h3>
-                    <p> Our Story.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius qui illum nesciunt corporis, dicta laudantium commodi inventore dolorem error tempore cupiditate est quasi ea nemo. Rerum ex voluptatem alias eligendi!</p>
+            <div className="footerContainer">
 
-                </div>
-                <div className="contact"  >
-                    <h3>KEEP IN TOUCH</h3>
+                <article className="info" >
+                    <h3 className="hInfo">HOME</h3>
+                    <hr className="hrInfo" />
+                    <div className="text">
+                        <strong >You find us here</strong>
+                        <p>20040, Spain, Madrid Gran Via Street, 23</p>
+                    </div>
+                </article>
+                <article className="follow" >
+                    <h3 className="hFollow">FOLLOW US</h3>
+                    <hr className="hrFollow" />
+                    <ul>
+                        <li>
+                            <InstagramOutlined />
+                        </li>
+                        <li>
+                            <FacebookOutlined />
+                        </li>
+                        <li>
+                            <TwitterOutlined />
+                        </li>
+                    </ul>
+                </article>
+                <article className="contact"  >
+                    <h3 className="hContact">KEEP IN TOUCH</h3>
+                    <hr className="hrContact" />
+                    <div className="send">
+                        <h3><PhoneOutlined /> +34  915522334</h3>
+                        <strong><MailOutlined /> MIMO@ecommerce.com</strong>
+                    </div>
+                </article>
 
-                </div>
             </div>
-            <hr />
-            <strong>
-                {(new Date().getFullYear())}
-            </strong>
-
+            <article className="allRights">
+                <strong>
+                    {(new Date().getFullYear())} &copy; MIMO .All Rights Reserved
+                    </strong>
+            </article>
         </footer>
     )
 }
