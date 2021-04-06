@@ -40,7 +40,6 @@ const MyOrders = () => {
         },
         {
             title: 'Purchase Date', dataIndex: 'createdAt',
-            // render: (record) => record.createdAt.substring(0, 6),
             sorter: (a, b) => a.createdAt.localeCompare(b.createdAt), sortDirections: ['descend', 'ascend']
         },
         {
@@ -63,7 +62,7 @@ const MyOrders = () => {
                     <Col span={12} >
                         <Card className={classModal} style={{ margin: 10, borderRadius: 10, boxShadow: "1px 1px 3px #727272" }}>
 
-                            <p>Reference_Number : {Order?.referenceNumber}</p>
+                            <h3>Reference_Number : {Order?.referenceNumber}</h3>
                             {Order.items?.map((item) => (
                                 <PurchaseItem key={item._id} item={item} />
                             ))}

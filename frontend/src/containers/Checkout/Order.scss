@@ -5,15 +5,22 @@
   grid-template-rows: auto 2fr;
   grid-template-areas: "main aside";
   padding: 2em;
-
+  @media only screen and (max-width: 700px) {
+    grid-template-rows: 60% 40%;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "main main"
+      "aside aside";
+  }
   main {
     grid-area: main;
-    border-radius: 5%;
+
     padding: 1em;
     .ant-form {
       padding: 2em;
       background: rgba($color: $yellowGreen, $alpha: 0.4);
-
+      box-shadow: $basicShadow;
+      border-radius: 1em;
       label {
         color: $greyGreen;
         font-weight: bolder;
@@ -24,8 +31,9 @@
       font-weight: bolder;
     }
     .ant-btn.ant-btn-primary {
-      background: $greyGreen;
-      border-color: $greyGreen;
+      background: rgba($color: $greyGreen, $alpha: 0.7);
+      border: none;
+      box-shadow: $btnShadow;
       border-radius: 5px 5px 5px 5px;
       text-transform: uppercase;
       font-weight: bolder;

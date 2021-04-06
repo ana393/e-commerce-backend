@@ -6,7 +6,7 @@ import './cartItem.scss';
 const CartItem = ({ item }) => {
     return (
         <div className="cart-item" key={item._id}>
-            <img src="" alt=""></img>
+            <img src={`/${item.imgURL}`} alt={item.name}></img>
             <span className="name" >{item.name}</span>
             <h4 className="price" > {item.price} €</h4>
             <span className="up-btn" onClick={() => addAnItemCart(item)} >+</span>

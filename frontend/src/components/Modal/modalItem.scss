@@ -1,7 +1,13 @@
-.item {
+@import "../../variables.scss";
+.purchaseItem {
+  padding: 1em;
+
   img {
     width: 70px;
     height: 70px;
     padding-top: 0.5em;
+  }
+  span {
+    color: $green;
   }
 }

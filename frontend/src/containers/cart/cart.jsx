@@ -13,7 +13,7 @@ const Cart = () => {
     const totalPay = cartItems.reduce((a, c) => a + c.price * c.count, 0).toFixed(2);
     return (
         <div className="cartContainer" key="cartItems" id="cartItems">
-            {cartItems.length === 0 ? (<h3>Your cart is empty...<Link to="/products/:_id">go shopping <SmileOutlined /></Link></h3>) : (
+            {cartItems.length === 0 ? (<h3>Your cart is empty...<Link className="smile" to="/products/:_id">go shopping <SmileOutlined /></Link></h3>) : (
                 <main >
                     <div className="cartHeader">
                         <h5 className="title">Product</h5>
@@ -36,7 +36,7 @@ const Cart = () => {
                 </h4>
                 <button className="clear-btn" onClick={() => clearCart()}>Clear Cart</button>
                 <br />
-                {cartItems.length > 0 && user.isUser ? (<button className="checkout" > < Link to="cart/checkout"> Checkout <LockFilled /></Link></button>) : (<Link to="/signUp">get into your account</Link>)}
+                {cartItems.length > 0 && user.isUser ? (<button className="checkout" > < Link to="cart/checkout"> Checkout <LockFilled /></Link></button>) : (<Link className="account" to="/signUp">get into your account</Link>)}
             </aside>
         </div >
     )

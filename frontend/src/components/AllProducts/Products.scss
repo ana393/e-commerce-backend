@@ -1,48 +1,88 @@
 @import "../../variables.scss";
 .Container {
   display: grid;
-  grid-template: repeat(5, 1fr) / repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   align-items: center;
   border-radius: 10px;
-  padding: 3em;
-  box-shadow: $shadow;
+  padding: 2em;
   margin: 2em;
+  box-shadow: $shadow;
 
   .card {
     cursor: pointer;
+    position: relative;
     display: flex;
     flex-direction: column;
     padding: 0.5em;
     margin: 0.5em;
-    align-items: center;
+    text-align: center;
     background-color: honeydew;
     justify-content: space-around;
-    border-radius: 0.3em;
+    border-radius: 0.7em;
     transition: 0.3s;
+    overflow: hidden;
     &:hover {
-      box-shadow: 0px 0px 5px 5px rgb(112, 107, 96);
+      box-shadow: $shadow;
+    }
+    &:hover .buy {
+      transform: translateX(0);
+    }
+
+    .buy {
+      cursor: pointer;
+      position: absolute;
+      top: 0px;
+      bottom: 0px;
+      left: 0px;
+      border-radius: 100%;
+      background: $yellowGreen;
+      color: $white;
+      margin-top: 0;
+      position: absolute;
+      margin-right: 0;
+      box-shadow: $shadow;
+      opacity: 1;
+      padding: 2rem;
+      transition: background-color 0.5s ease-out, color 0.5s ease-in-out,
+        transform 0.2s ease-in-out;
+      transform: translateX(-100%);
+      width: 20px;
+      height: 20px;
+      .anticon-shopping-cart {
+        margin: -1.3rem;
+        svg {
+          color: $white;
+          width: 35px;
+          height: 35px;
+        }
+      }
+    }
+    img {
+      width: 200px;
+      height: 200px;
+      margin: auto;
+      box-shadow: $basicShadow;
+    }
+    h3 {
+      padding: 0.5rem 0rem;
+      color: $green;
+      font-size: 1.3rem;
+      margin: auto;
+    }
+    .price {
+      padding: 0.5rem 2rem;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+      border-radius: 3rem;
     }
     h4 {
+      padding: 0.5rem 0rem;
       color: $green;
-      font-weight: bold;
-    }
-    div {
       font-weight: bolder;
-      color: $orange;
     }
+
     span {
       font-weight: bolder;
       color: $greyGreen;
-    }
-    .add {
-      background: $green;
-      border-color: $green;
-      color: white;
-      border-radius: 0.5em;
-      &:hover {
-        color: $orange;
-        border-color: $yellowGreen;
-      }
     }
   }
 }

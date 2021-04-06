@@ -41,7 +41,6 @@ const Order = props => {
 
     return (
         <div className="checkoutContainer">
-
             <main>
                 <h2>1. Shipping</h2>
                 <Form
@@ -104,7 +103,7 @@ const Order = props => {
                 <div className="orderItems">
                     {props.cart?.map((item) =>
                         <div className="order-item" key={item._id}>
-                            <img src="" alt=""></img>
+                            <img src={`/${item.imgURL}`} alt={item.name}></img>
                             <span className="name " >{item.name}</span>
                             <h4 className="price" > {item.count} x {item.price} €</h4>
 

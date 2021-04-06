@@ -11,7 +11,7 @@
     text-transform: uppercase;
   }
   .form {
-    width: 30%;
+    width: 70%;
     Input,
     select {
       margin: 1.5em;
@@ -48,9 +48,15 @@
       color: $white;
 
       &:hover {
-        color: $yellowGreen;
+        background-color: $yellowGreen;
         border-color: $yellowGreen;
       }
+    }
+  }
+  @media only screen and (max-width: 700px) and (min-width: 400px) {
+    .newProduct {
+      margin: 0;
+      background: cadetblue;
     }
   }
 }

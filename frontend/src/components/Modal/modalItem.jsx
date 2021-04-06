@@ -1,10 +1,10 @@
-import React from 'react'
-
+import React from 'react';
+import './modalItem.scss';
 const PurchaseItem = ({ item }) => {
     return (
-        <div className="item" key={item._id}>
-            <img src="" alt=""></img>
-            <p> {item.product.name} ({item.product.category}): {item.quantity} X {item.product.price}€</p>
+        <div className="purchaseItem" key={item._id}>
+            <img src={`/${item.imgURL}`} alt=""></img>
+            <span> {item.product.name} ({item.product.category}): {item.quantity} X {item.product.price}€</span>
 
         </div>
     )

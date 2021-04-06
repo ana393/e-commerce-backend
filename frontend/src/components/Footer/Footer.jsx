@@ -12,7 +12,7 @@ const Footer = () => {
                     <hr className="hrInfo" />
                     <div className="text">
                         <strong >You find us here</strong>
-                        <p>20040, Spain, Madrid Gran Via Street, 23</p>
+                        <p>20040, Spain, Planet Earth Street, 23</p>
                     </div>
                 </article>
                 <article className="follow" >

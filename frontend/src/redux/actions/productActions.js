@@ -5,14 +5,13 @@ import { ProductActions} from '../actions/types';
 
 export const listProducts = async()=>{
    const res = await axios.get(API_URL + 'products');
-   console.log(res.data.product)
     store.dispatch({
        type: ProductActions.LIST_PRODUCTS,
        payload: res.data.product
    })
    
 }
-export const searchProduct = async(dispatch,word)=>{
+export const searchProduct = async(dispatch, word)=>{
      const { data } = await axios.get(API_URL + `products/search?name=${word}`);
      const Item = data["filter"].map((item) => ({
        _id: item["_id"],
@@ -20,9 +19,10 @@ export const searchProduct = async(dispatch,word)=>{
        img: item["imgURL"],
        price: item["price"],
        category: item["category"],
+       InStock: item["InStock"]
        
      }));
-     
+     console.log(Item);
     return dispatch({
        type: ProductActions.LIST_PRODUCTS,
        payload: Item,

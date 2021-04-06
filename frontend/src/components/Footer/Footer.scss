@@ -12,7 +12,7 @@ footer {
 
     .info {
       background-color: $lightGrey;
-      margin: 2em;
+      margin: 2.2em;
       padding-top: 1em;
       border-radius: 1em;
       text-align: center;
@@ -27,7 +27,7 @@ footer {
         margin: 0 auto;
       }
       .text {
-        padding: 2.2em;
+        padding: 2.1em;
         strong {
           font-weight: bolder;
           font-size: 1.3em;
@@ -60,11 +60,17 @@ footer {
         li {
           all: unset;
           padding: 1em;
+          cursor: pointer;
         }
         svg {
           width: 30px;
           height: 30px;
           color: $white;
+          box-shadow: $basicShadow;
+          border-radius: 0.5em;
+          &:hover {
+            color: $yellowGreen;
+          }
         }
       }
     }
@@ -86,6 +92,11 @@ footer {
     }
     .send {
       padding: 2.3em;
+      cursor: pointer;
+
+      &:hover {
+        color: $white;
+      }
       svg {
         width: 1.5em;
         height: 1.5em;
@@ -95,6 +106,11 @@ footer {
       strong {
         font-weight: bolder;
         color: $yellowGreen;
+        box-shadow: $basicShadow;
+        border-radius: 1em;
+        &:hover {
+          color: $white;
+        }
       }
     }
   }

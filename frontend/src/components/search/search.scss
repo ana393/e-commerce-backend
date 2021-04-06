@@ -1,46 +1,40 @@
 @import "../../variables.scss";
-.search {
-  height: 2em;
+.Search {
+  background: rgba($color: $white, $alpha: 1);
+  margin: auto;
+  border-radius: 4em;
+  direction: flex;
+  z-index: 2;
+
   .searchbar {
-    background-color: $greyGreen;
-    border-radius: 30px;
-    padding: 0.4em;
     display: flex;
 
     input {
-      color: white;
+      color: $lightPeach;
       border: 0;
       outline: 0;
+      padding-left: 2em;
       background: none;
-      width: 0;
-      caret-color: $yellowGreen;
-      transition: $animation;
+      caret-color: $lightPeach;
     }
     .loop {
-      height: 2em;
-      width: 2em;
+      height: 1.5em;
+      width: 1.5em;
       font-size: x-large;
       float: left;
       display: flex;
       justify-content: center;
       align-items: center;
       border-radius: 50%;
-      color: white;
+      color: $lightGrey;
       text-decoration: none;
       &:hover {
         background: $yellowGreen;
       }
     }
-    &:hover > input {
-      width: 10rem;
-      caret-color: $yellowGreen;
-      transition: $animation;
-    }
   }
-  @media screen and (max-width: 960px) {
-    .searchbar {
-      display: block;
-      width: auto;
-    }
+  @media only screen and (max-width: 700px) {
+    margin-left: -5em;
+    margin-top: 2.5em;
   }
 }

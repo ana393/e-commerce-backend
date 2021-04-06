@@ -30,7 +30,7 @@ const UpdateProfile = () => {
     return (
         <div className="updateContainer">
             <div className="updateBox">
-                <div className="updateRegister"><h2>Welcome to your profile</h2> <em>"There is nothing permanent except change"</em></div>
+                <div className="updateRegister"><h2>Welcome to your profile</h2> <em>You may change your data</em></div>
                 <form className="updateForm" onSubmit={SubmitUpdate}>
                     <Input type="name" name="name" defaultValue={user.isUser.name} />
                     <Input type="surname" name="surname" defaultValue={user.isUser.surname} />

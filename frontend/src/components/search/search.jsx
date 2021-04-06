@@ -19,17 +19,19 @@ const SearchBox = props => {
         setKeyword(e.target.value);
     }
     return (
-        <div className="search">
+        <div className="Search">
             <div className="searchbar">
-                <Link to="/products/:id">
-                    <span onClick={() => searchProduct()}>< SearchOutlined className="loop" /></span>
-                </Link>
+
                 <input
+                    autoFocus
                     type="text"
                     placeholder="search..."
                     value={keyword}
                     onChange={handleChange}
                 />
+                <Link to="/products/:id">
+                    <span onClick={() => searchProduct()}>< SearchOutlined className="loop" /></span>
+                </Link>
             </div>
         </div>
     )
