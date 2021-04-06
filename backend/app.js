@@ -28,11 +28,25 @@ app.use((req, res, next) => {
   next();
 })
 
-app.use('/images',express.static(path.join(__dirname, "./public/images")));
+
+
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(cookieParser());
 
+app.use('/public', express.static(path.join(__dirname, '/public')))
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '/frontend/build')))
+
+  app.get('*', (req, res) =>
+    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
+  )
+} else {
+  app.get('/', (req, res) => {
+    res.send('API is running....')
+  })
+}
 //validate the session
 app.use(session({
   secret: process.env.SECRET_SESSION,

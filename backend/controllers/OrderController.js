@@ -26,8 +26,8 @@ try {
  async getMyOrders(req, res) {
     try {
        const myOrders = await Order.find({user:req.user._id}).populate('items.product','name price category imgURL');
-        res.status(200).json({msg: "Successfully found my orders", myOrders })
-        
+        res.status(200).json({msg: "Successfully found my orders", myOrders });
+     
     } catch (error) {
       console.error(error);
       res.status(500).send({ msg: "Unable to find your orders."})  
